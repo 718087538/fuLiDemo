@@ -1,0 +1,11 @@
+<!--pages/fragments/fragments.wxml-->
+<view class="bigImg">
+  <image src="{{imgSrc1}}"></image>
+</view>
+
+<button bindtap="sel" data-hi="1">1★图进度</button>
+<button bindtap="sel" data-hi="2">2★图进度</button>
+<button>3★图进度</button>
+<button>4★图进度</button>
+<button>5★图进度</button>
+

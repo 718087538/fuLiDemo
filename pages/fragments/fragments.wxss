@@ -1,0 +1,10 @@
+/* pages/fragments/fragments.wxss */
+.bigImg{
+  width: 325px;
+  height: 325px;
+
+}
+.bigImg image{
+  width: 100%;
+  height: 100%;
+}

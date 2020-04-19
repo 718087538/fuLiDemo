@@ -1,0 +1,16 @@
+/**index.wxss**/
+.nav{
+  display: flex;
+}
+.nav navigator{
+  border: 1px solid red;
+  margin: 0 6px;
+}
+.playArea{
+  width: 325px;
+  height: 325px;
+  background-color: aquamarine;
+  margin: 30px auto 0;
+  text-align: center;
+  line-height: 325px;
+}
