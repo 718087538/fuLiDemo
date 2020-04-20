@@ -1,11 +1,25 @@
 <!--pages/fragments/fragments.wxml-->
-<view class="bigImg">
-  <image src="{{imgSrc1}}"></image>
+<view class="shopBox">
+	<view class="shop">拼图市场</view>
 </view>
+<view class="title">活动截止时间：2天10小时</view>
+<view class="bigImgBox">
+	<image src="{{imgSrc1}}"></image>
+	<view class="shadow shadow1"></view>
+	<view class="shadow shadow2"></view>
+	<view class="shadow shadow3"></view>
+	<view class="shadow shadow4"></view>
+	<view class="shadow shadow5"></view>
+	<view class="shadow shadow6"></view>
+</view>
+<view class="page-section-spacing">
+	<scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
+		<view id="demo1" class="scroll-view-item_H demo-text-1">拼图01 数量：01</view>
+		<view id="demo2" class="scroll-view-item_H demo-text-2">拼图02 数量：0</view>
+		<view id="demo3" class="scroll-view-item_H demo-text-3">拼图03 数量：01</view>
+		<view id="demo4" class="scroll-view-item_H demo-text-3">拼图04 数量：02</view>
+		<view id="demo5" class="scroll-view-item_H demo-text-3">拼图05 数量：01</view>
+		<view id="demo6" class="scroll-view-item_H demo-text-3">拼图06 数量：03</view>
 
-<button bindtap="sel" data-hi="1">1★图进度</button>
-<button bindtap="sel" data-hi="2">2★图进度</button>
-<button>3★图进度</button>
-<button>4★图进度</button>
-<button>5★图进度</button>
-
+	</scroll-view>
+</view>

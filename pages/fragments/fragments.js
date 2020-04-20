@@ -1,4 +1,9 @@
 // pages/fragments/fragments.js
+
+const order = ['demo1', 'demo2', 'demo3']
+
+
+
 Page({
   changeName: function (e) {
     this.setData({
@@ -18,15 +23,57 @@ Page({
       imgSrc1: src
     })
   },
-
+  onShareAppMessage() {
+    return {
+      title: 'scroll-view',
+      path: 'page/component/pages/scroll-view/scroll-view'
+    }
+  },
   /**
    * 页面的初始数据
    */
   data: {
-    imgSrc1: "https://www.vvfeng.com/data/upload/ueditor/20170414/58f02ea113470.jpg",
+    imgSrc1: "http://img5.imgtn.bdimg.com/it/u=1040739115,3225906616&fm=26&gp=0.jpg",
     name: "1111111",
-
+    toView: 'green'
   },
+  upper(e) {
+    console.log(e)
+  },
+
+  lower(e) {
+    console.log(e)
+  },
+
+  scroll(e) {
+    console.log(e)
+  },
+
+  scrollToTop() {
+    this.setAction({
+      scrollTop: 0
+    })
+  },
+
+  tap() {
+    for (let i = 0; i < order.length; ++i) {
+      if (order[i] === this.data.toView) {
+        this.setData({
+          toView: order[i + 1],
+          scrollTop: (i + 1) * 200
+        })
+        break
+      }
+    }
+  },
+
+  tapMove() {
+    this.setData({
+      scrollTop: this.data.scrollTop + 10
+    })
+  },
+
+
   /**
    * 生命周期函数--监听页面加载
    */
