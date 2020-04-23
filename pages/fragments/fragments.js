@@ -1,9 +1,6 @@
 // pages/fragments/fragments.js
 
 const order = ['demo1', 'demo2', 'demo3']
-
-
-
 Page({
   changeName: function (e) {
     this.setData({
@@ -11,16 +8,9 @@ Page({
     })
   },
   sel: function (e) {
-    let num = e.currentTarget.dataset.hi;
-    let src = ""
-    if (num == 2) {
-      src = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=779748707,3495697773&fm=26&gp=0.jpg";
-    } else if (num == 1) {
-      src = "https://www.vvfeng.com/data/upload/ueditor/20170414/58f02ea113470.jpg"
-    }
-    console.log("111",src);
+    console.log("111",e.target.dataset.num);
     this.setData({
-      imgSrc1: src
+      selNum: e.target.dataset.num
     })
   },
   onShareAppMessage() {
@@ -35,7 +25,8 @@ Page({
   data: {
     imgSrc1: "http://img5.imgtn.bdimg.com/it/u=1040739115,3225906616&fm=26&gp=0.jpg",
     name: "1111111",
-    toView: 'green'
+    toView: 'green',
+    selNum:0,//要显示第几个赠送
   },
   upper(e) {
     console.log(e)

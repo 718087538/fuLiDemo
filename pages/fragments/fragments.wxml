@@ -14,12 +14,23 @@
 </view>
 <view class="page-section-spacing">
 	<scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
-		<view id="demo1" class="scroll-view-item_H demo-text-1">拼图01 数量：01</view>
-		<view id="demo2" class="scroll-view-item_H demo-text-2">拼图02 数量：0</view>
-		<view id="demo3" class="scroll-view-item_H demo-text-3">拼图03 数量：01</view>
-		<view id="demo4" class="scroll-view-item_H demo-text-3">拼图04 数量：02</view>
-		<view id="demo5" class="scroll-view-item_H demo-text-3">拼图05 数量：01</view>
-		<view id="demo6" class="scroll-view-item_H demo-text-3">拼图06 数量：03</view>
-
+		<view id="demo1" data-num="1" bindtap="sel" class="scroll-view-item_H demo-text-1">拼图01 数量：01
+			<view class="gift  {{selNum == 1?'show':''}}">赠送</view>
+		</view>
+		<view id="demo2" data-num="2" bindtap="sel" class="scroll-view-item_H demo-text-2">拼图02 数量：0
+			<view class="gift   {{selNum == 2?'show':''}}">赠送</view>
+		</view>
+		<view id="demo3" data-num="3" bindtap="sel" class="scroll-view-item_H demo-text-3">拼图03 数量：01
+			<view class="gift   {{selNum == 3?'show':''}}">赠送</view>
+		</view>
+		<view id="demo4" data-num="4" bindtap="sel" class="scroll-view-item_H demo-text-3">拼图04 数量：02
+			<view class="gift   {{selNum == 4?'show':''}}">赠送</view>
+		</view>
+		<view id="demo5" data-num="5" bindtap="sel" class="scroll-view-item_H demo-text-3">拼图05 数量：01
+			<view class="gift   {{selNum == 5?'show':''}}">赠送</view>
+		</view>
+		<view id="demo6" data-num="6" bindtap="sel" class="scroll-view-item_H demo-text-3">拼图06 数量：03
+			<view class="gift   {{selNum == 6?'show':''}}">赠送</view>
+		</view>
 	</scroll-view>
 </view>

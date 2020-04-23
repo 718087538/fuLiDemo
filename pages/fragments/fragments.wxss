@@ -1,4 +1,19 @@
 /* pages/fragments/fragments.wxss */
+.gift{
+  position: absolute;
+  /* margin-top: -60px; */
+  /* margin-left: 40px; */
+  width: 50px;
+  height: 30px;
+  top: -30px;
+  left: 20px;
+  background-color: red;
+  display: none;
+  z-index: 10;
+}
+.show{
+  display: block;
+}
 .bigImgBox {
   width: 325px;
   height: 325px;
@@ -7,7 +22,6 @@
 }
 .title{
   text-align: center;
-
 }
 .shopBox{
   display: flex;
@@ -35,9 +49,7 @@
 .bigImgBox .shadow2 {
   left: 50%;
 }
-
 .bigImgBox .shadow3 {
-
   top: 33%;
 }
 
@@ -45,17 +57,13 @@
   left: 50%;
   top: 33%;
 }
-
 .bigImgBox .shadow5 {
   top: 66%;
 }
-
 .bigImgBox .shadow6 {
   left: 50%;
   top: 66%;
 }
-
-
 /* 横向滚动 */
 #demo2{
   background-color: rgb(123, 207, 43);
@@ -65,13 +73,15 @@
 }
 .scroll-view_H{
   white-space: nowrap;
-  background-color: blueviolet;
+  /* border: 1px solid red; */
 }
 .scroll-view-item{
   height: 300rpx;
 }
 .scroll-view-item_H{
   display: inline-block;
+  position: relative;
+  margin-top: 30px;
   width: 150px;
   height:150rpx;
 }
