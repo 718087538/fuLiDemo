@@ -2,7 +2,7 @@
 <view class="container">
   <view class="nav">
      <navigator url="../pictureMarket/pictureMarket"  redirect="true">奖品市场</navigator> 
-    <navigator url="../gift/gift"  redirect="true">奖品列表</navigator> 
+    <navigator url="../gift/gift"  redirect="true">活动广场</navigator> 
     <button size="mini">排行榜</button>
     <button size="mini">邀请好友</button>
   </view>
