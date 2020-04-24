@@ -3,9 +3,31 @@ const app = getApp()
  
 Page({
   data: {
-     arr:['全部','审核中','未通过','已通过'],
+     arr:['全部','零食','粮油','母婴','电器','饰品','箱包',],
      currentTab:0,
-    winHeight:''
+    winHeight:'',
+    marketList: [
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {}, 
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+    ]
   },
   onLoad(){
     var that = this

@@ -25,17 +25,43 @@
 	</view>
 	<swiper current='{{currentTab}}' duration="300" style="height:{{winHeight}}px;" bindchange="bindChange">
 		<swiper-item>
-			全部
+			<scroll-view scroll-y="true" style="height: 100%;">
+				<view class="ul">
+					<view class="li" wx:for="{{marketList}}" wx:key="unique">
+						<image src="http://img5.imgtn.bdimg.com/it/u=1040739115,3225906616&fm=26&gp=0.jpg"></image>
+						<view class="titleBox">
+							<view class="title">奖品名称</view>
+							<view class="subText">介绍商品详细属性</view>
+						</view>
+						<navigator url="../fragments/fragments" redirect="true">
+							<button>进入</button>
+						</navigator>
+					</view>
+				</view>
+			</scroll-view>
 		</swiper-item>
 		<swiper-item>
-			审核中
+			待渲染
 		</swiper-item>
 		<swiper-item>
-			未通过
+			待渲染
+
 		</swiper-item>
 		<swiper-item>
-			已通过
+			待渲染
+
+		</swiper-item>
+		<swiper-item>
+			待渲染
+		</swiper-item>
+		<swiper-item>
+			待渲染
+
+		</swiper-item>
+		<swiper-item>
+			待渲染
+
 		</swiper-item>
 	</swiper>
-	
+
 </view>
