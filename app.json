@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/gift/gift",
-    "pages/fragments/fragments"
+    "pages/fragments/fragments",
+    "pages/pictureMarket/pictureMarket"
   ],
   "window": {
     "backgroundTextStyle": "light",

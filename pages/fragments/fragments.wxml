@@ -1,6 +1,10 @@
 <!--pages/fragments/fragments.wxml-->
 <view class="shopBox">
-	<view class="shop">拼图市场</view>
+	<navigator url="../pictureMarket/pictureMarket" redirect="true">
+		<view class="shop">
+			奖品市场
+		</view>
+	</navigator>
 </view>
 <view class="title">活动截止时间：2天10小时</view>
 <view class="bigImgBox">

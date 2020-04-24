@@ -60,6 +60,14 @@
 					"id": -1,
 					"name": "我的碎片",
 					"pathName": "pages/fragments/fragments",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "拼图市场",
+					"pathName": "pages/pictureMarket/pictureMarket",
+					"query": "",
 					"scene": null
 				}
 			]

@@ -8,10 +8,18 @@ Page({
     })
   },
   sel: function (e) {
-    console.log("111",e.target.dataset.num);
-    this.setData({
-      selNum: e.target.dataset.num
-    })
+    console.log("111", this.data.selNum);
+ 
+    if ( this.data.selNum != e.target.dataset.num) {
+      this.setData({
+        selNum: e.target.dataset.num
+      })
+    } else {
+      console.log("111",  e.target.dataset.num);
+      this.setData({
+        selNum: 0
+      })
+    }
   },
   onShareAppMessage() {
     return {
@@ -26,7 +34,7 @@ Page({
     imgSrc1: "http://img5.imgtn.bdimg.com/it/u=1040739115,3225906616&fm=26&gp=0.jpg",
     name: "1111111",
     toView: 'green',
-    selNum:0,//要显示第几个赠送
+    selNum: 0, //要显示第几个赠送
   },
   upper(e) {
     console.log(e)

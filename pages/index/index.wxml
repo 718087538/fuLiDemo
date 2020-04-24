@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <view class="nav">
-     <navigator url="../fragments/fragments"  redirect="true">我的碎片</navigator> 
+     <navigator url="../pictureMarket/pictureMarket"  redirect="true">奖品市场</navigator> 
     <navigator url="../gift/gift"  redirect="true">奖品列表</navigator> 
     <button size="mini">排行榜</button>
     <button size="mini">邀请好友</button>
