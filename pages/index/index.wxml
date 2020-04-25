@@ -1,13 +1,14 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="nav">
-     <navigator url="../pictureMarket/pictureMarket"  redirect="true">奖品市场</navigator> 
-    <navigator url="../gift/gift"  redirect="true">活动广场</navigator> 
-    <button size="mini">排行榜</button>
-    <button size="mini">邀请好友</button>
-  </view>
-  <view>体力：5</view>
-  <view class="playArea">
-    游戏区
-  </view>
+	<view class="nav">
+		<!-- <navigator url="../pictureMarket/pictureMarket"  redirect="true">奖品市场</navigator>  -->
+		<navigator url="../gift/gift" redirect="true">活动广场</navigator>
+		<button size="mini">排行榜</button>
+		<button size="mini">邀请好友</button>
+	</view>
+  <i-button type="primary" bind:click="handleClick">这是一个按钮</i-button>
+	<view>体力：5</view>
+	<view class="playArea">
+		游戏区
+	</view>
 </view>

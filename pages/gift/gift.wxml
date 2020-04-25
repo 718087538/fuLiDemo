@@ -18,13 +18,13 @@
 </view> -->
 
 
-<view class='container'>
+<!-- <view class='container'> -->
 	<!-- tab导航 -->
-	<view class='switchTab'>
+	<!-- <view class='switchTab'>
 		<view wx:for='{{arr}}' class='{{currentTab == index ? "active" : ""}}' data-current='{{index}}' bindtap='swichNav'>{{item}}</view>
 	</view>
 	<swiper current='{{currentTab}}' duration="300" style="height:{{winHeight}}px;" bindchange="bindChange">
-		<swiper-item>
+		<swiper-item> -->
 			<scroll-view scroll-y="true" style="height: 100%;">
 				<view class="ul">
 					<view class="li" wx:for="{{marketList}}" wx:key="unique">
@@ -39,7 +39,7 @@
 					</view>
 				</view>
 			</scroll-view>
-		</swiper-item>
+		<!-- </swiper-item>
 		<swiper-item>
 			待渲染
 		</swiper-item>
@@ -64,4 +64,4 @@
 		</swiper-item>
 	</swiper>
 
-</view>
+</view> -->
