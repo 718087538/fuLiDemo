@@ -1,12 +1,44 @@
 <!--index.wxml-->
 <view class="container">
+	<view class="page-body">
+		<view class="page-section page-section-spacing swiper">
+			<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+				<block wx:for="{{background}}" wx:key="*this">
+					<swiper-item>
+						<view class="swiper-item {{item}}">
+							<image src="http://img5.imgtn.bdimg.com/it/u=1040739115,3225906616&fm=26&gp=0.jpg"></image>
+						</view>
+					</swiper-item>
+				</block>
+			</swiper>
+		</view>
+		<!-- <view class="page-section" style="margin-top: 40rpx;margin-bottom: 0;">
+			<view class="weui-cells weui-cells_after-title">
+				<view class="weui-cell weui-cell_switch">
+					<view class="weui-cell__bd">指示点</view>
+					<view class="weui-cell__ft">
+						<switch checked="{{indicatorDots}}" bindchange="changeIndicatorDots" />
+					</view>
+				</view>
+				<view class="weui-cell weui-cell_switch">
+					<view class="weui-cell__bd">自动播放</view>
+					<view class="weui-cell__ft">
+						<switch checked="{{autoplay}}" bindchange="changeAutoplay" />
+					</view>
+				</view>
+			</view>
+		</view> -->
+
+
+	</view>
 	<view class="nav">
 		<!-- <navigator url="../pictureMarket/pictureMarket"  redirect="true">奖品市场</navigator>  -->
 		<navigator url="../gift/gift" redirect="true">活动广场</navigator>
-		<button size="mini">排行榜</button>
+		<navigator url="../customer/customer" redirect="true">找客服</navigator>
+    <navigator url="../business/business" redirect="true">商务合作</navigator>
 		<button size="mini">邀请好友</button>
 	</view>
-  <i-button type="primary" bind:click="handleClick">这是一个按钮</i-button>
+	<!-- <i-button type="primary" bind:click="handleClick">这是一个按钮</i-button> -->
 	<view>体力：5</view>
 	<view class="playArea">
 		游戏区

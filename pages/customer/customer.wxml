@@ -1,0 +1,7 @@
+<!--pages/customer/customer.wxml-->
+<text>兑换奖品，加群换拼图，更多奖品更多优惠，都可以加客服微信领取哦</text>
+
+<image src="https://tse4-mm.cn.bing.net/th/id/OIP.29lMqAs47OmB-l1FzwzozQHaHa?w=188&h=188&c=7&o=5&pid=1.7"></image>
+
+<view>长摁识别，或点击保存</view>
+<button type="primary">保存到本地</button>

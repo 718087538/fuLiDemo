@@ -4,7 +4,9 @@
     "pages/logs/logs",
     "pages/gift/gift",
     "pages/fragments/fragments",
-    "pages/pictureMarket/pictureMarket"
+    "pages/pictureMarket/pictureMarket",
+    "pages/customer/customer",
+    "pages/business/business"
   ],
   "window": {
     "backgroundTextStyle": "light",

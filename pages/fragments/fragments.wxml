@@ -1,6 +1,6 @@
 <!--pages/fragments/fragments.wxml-->
 <view class="shopBox">
-	<navigator url="../pictureMarket/pictureMarket" redirect="true">
+	<navigator url="../gift/gift" redirect="true">
 		<view class="shop">
 			奖品市场
 		</view>

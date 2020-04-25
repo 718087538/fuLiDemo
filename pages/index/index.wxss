@@ -1,4 +1,7 @@
 /**index.wxss**/
+.swiper-item image{
+  width: 100%;
+}
 .nav{
   display: flex;
 }
