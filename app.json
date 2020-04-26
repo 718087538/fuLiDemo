@@ -6,7 +6,10 @@
     "pages/fragments/fragments",
     "pages/pictureMarket/pictureMarket",
     "pages/customer/customer",
-    "pages/business/business"
+    "pages/business/business",
+    "pages/index/event",
+    "pages/my/my",
+    "pages/my/getGift"
   ],
   "window": {
     "backgroundTextStyle": "light",

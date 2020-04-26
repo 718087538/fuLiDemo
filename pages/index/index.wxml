@@ -21,19 +21,53 @@
 		<button size="mini">邀请好友</button>
 	</view>
 	<!-- <i-button type="primary" bind:click="handleClick">这是一个按钮</i-button> -->
-	<view>体力：5</view>
-	<text>游戏倒计时{{djs_data}}，游戏得分</text>
+	<view>体力：{{energy}}</view>
+	<text>游戏倒计时{{djs_data}}，游戏得分{{results}}</text>
 	<view class="playArea">
 		<view class="table">
 			<view class="tr">
-					<image  data-num="0" bindtap="play" src="{{imgs[0].src}}"></image>
-					<image  data-num="1" bindtap="play" src="{{imgs[1].src}}"></image>
-					<image  data-num="2" bindtap="play" src="{{imgs[2].src}}"></image>
-					<image  data-num="3" bindtap="play" src="{{imgs[3].src}}"></image>
+				<image data-num="0" bindtap="play" src="{{imgs[0].src}}"></image>
+				<image data-num="1" bindtap="play" src="{{imgs[1].src}}"></image>
+				<image data-num="2" bindtap="play" src="{{imgs[2].src}}"></image>
+				<image data-num="3" bindtap="play" src="{{imgs[3].src}}"></image>
+			</view>
+			<view class="tr">
+				<image data-num="4" bindtap="play" src="{{imgs[4].src}}"></image>
+				<image data-num="5" bindtap="play" src="{{imgs[5].src}}"></image>
+				<image data-num="6" bindtap="play" src="{{imgs[6].src}}"></image>
+				<image data-num="7" bindtap="play" src="{{imgs[7].src}}"></image>
+			</view>
+			<view class="tr">
+				<image data-num="8" bindtap="play" src="{{imgs[8].src}}"></image>
+				<image data-num="9" bindtap="play" src="{{imgs[9].src}}"></image>
+				<image data-num="10" bindtap="play" src="{{imgs[10].src}}"></image>
+				<image data-num="11" bindtap="play" src="{{imgs[11].src}}"></image>
+			</view>
+			<view class="tr">
+				<image data-num="12" bindtap="play" src="{{imgs[12].src}}"></image>
+				<image data-num="13" bindtap="play" src="{{imgs[13].src}}"></image>
+				<image data-num="14" bindtap="play" src="{{imgs[14].src}}"></image>
+				<image data-num="15" bindtap="play" src="{{imgs[15].src}}"></image>
 			</view>
 		</view>
 	</view>
 	<i-button type="primary" bind:click="startGame">开始游戏</i-button>
-	<!-- <i-button type="warning" bind:click="endGame">结束游戏</i-button> -->
 
+	<!-- <i-button type="warning" bind:click="endGame">结束游戏</i-button> -->
+	<i-toast id="toast" />
+</view>
+<view class="stand"></view>
+<view class="bottomNav">
+	<view class="item">
+		<i-icon type="homepage" size="28" color="#00FF00" />
+		<view>首页</view>
+	</view>
+	<navigator class="item" url="event">
+		<i-icon type="createtask" size="28" color="#80848f" />
+		<view>通知</view>
+	</navigator>
+	<navigator class="item" url="/pages/my/my">
+		<i-icon type="group" size="28" color="#80848f" />
+		<view>我的</view>
+	</navigator>
 </view>

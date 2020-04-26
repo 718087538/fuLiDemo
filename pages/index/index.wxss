@@ -1,11 +1,24 @@
 /**index.wxss**/
+.bottomNav{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+}
+.bottomNav .item{
+  text-align: center;
+}
 .table .tr  image{
-  width: 70px;
-  height: 70px;
-  margin-right: 2px;
+  width: 140rpx;
+  height: 140rpx;
+  margin-right: 4rpx;
 
 }
-
+.stand{
+  height: 100rpx;
+}
 .swiper-item image{
   width: 100%;
 }
@@ -13,11 +26,10 @@
   display: flex;
 }
 .nav navigator{
-  border: 1px solid red;
-  margin: 0 6px;
+  border: 1rpx solid red;
+  margin: 0 6rpx;
 }
 .playArea{
-  background-color: aquamarine;
-  margin: 30px auto 0;
-  
+  margin: 10rpx auto 0;
+  width: 578rpx;
 }

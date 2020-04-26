@@ -1,0 +1,22 @@
+<!--pages/my/my.wxml-->
+<navigator url="getGift">查看如何登记奖品？</navigator>
+<view class="caption-wrap">
+	<i-collapse name="{{name}}" accordion>
+		<i-collapse-item title="待登记奖品" name="name1">
+			<view slot="content">
+				待登记奖品
+			</view>
+		</i-collapse-item>
+		<i-collapse-item title="待发货" name="name2" accordion>
+			<view slot="content" i-class-content="green-text">
+				待发货
+			</view>
+		</i-collapse-item>
+		<i-collapse-item title="已发货" name="name3" accordion>
+			<view slot="content" i-class-content="green-text">
+				已发货
+			</view>
+		</i-collapse-item>
+	</i-collapse>
+</view>
+

@@ -48,6 +48,7 @@
 
 .bigImgBox .shadow2 {
   left: 50%;
+  background-color: rgb(212, 212, 86, 0);
 }
 .bigImgBox .shadow3 {
   top: 33%;
@@ -56,9 +57,13 @@
 .bigImgBox .shadow4 {
   left: 50%;
   top: 33%;
+  background-color: rgb(212, 212, 86, 0);
+
 }
 .bigImgBox .shadow5 {
   top: 66%;
+  background-color: rgb(212, 212, 86, 0);
+
 }
 .bigImgBox .shadow6 {
   left: 50%;

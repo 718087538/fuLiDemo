@@ -16,6 +16,7 @@
 	<view class="shadow shadow5"></view>
 	<view class="shadow shadow6"></view>
 </view>
+<i-button bind:click="handleClick" type="primary" size="small">立即合成</i-button>
 <view class="page-section-spacing">
 	<scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
 		<view id="demo1" data-num="1" bindtap="sel" class="scroll-view-item_H demo-text-1">拼图01 数量：01
