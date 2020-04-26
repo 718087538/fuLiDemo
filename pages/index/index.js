@@ -126,6 +126,25 @@ Page({
   //   console.log("调用游戏结束");
   //   clearTimeout(djs_id);
   // },
+  play(e) {
+    var n = e.target.dataset.num;
+
+    //获取图片的名称,判断是否打中地鼠
+    var name = this.data.imgs[n].src.substr(14, 1);
+    if (name == 1) {
+      //切换为打中状态
+      this.setData({
+        ['imgs[' + n + '].src']: "../../static/02.jpg",
+      })
+      //打中后还原
+      var that = this;
+      var play_id = setTimeout(function () {
+        that.setData({
+          ['imgs[' + n + '].src']: "../../static/00.jpg",
+        })
+      }, 500);
+    }
+  },
   changeIndicatorDots() {
     this.setData({
       indicatorDots: !this.data.indicatorDots

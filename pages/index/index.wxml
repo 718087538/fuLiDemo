@@ -26,10 +26,10 @@
 	<view class="playArea">
 		<view class="table">
 			<view class="tr">
-					<image src="{{imgs[0].src}}"></image>
-					<image src="{{imgs[1].src}}"></image>
-					<image src="{{imgs[2].src}}"></image>
-					<image src="{{imgs[3].src}}"></image>
+					<image  data-num="0" bindtap="play" src="{{imgs[0].src}}"></image>
+					<image  data-num="1" bindtap="play" src="{{imgs[1].src}}"></image>
+					<image  data-num="2" bindtap="play" src="{{imgs[2].src}}"></image>
+					<image  data-num="3" bindtap="play" src="{{imgs[3].src}}"></image>
 			</view>
 		</view>
 	</view>
