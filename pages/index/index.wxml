@@ -26,10 +26,10 @@
 	<view class="playArea">
 		<view class="table">
 			<view class="tr">
-					<image src="{{img1}}"></image>
-					<image src="{{img1}}"></image>
-					<image src="{{img1}}"></image>
-					<image src="{{img1}}"></image>
+					<image src="{{imgs[0].src}}"></image>
+					<image src="{{imgs[1].src}}"></image>
+					<image src="{{imgs[2].src}}"></image>
+					<image src="{{imgs[3].src}}"></image>
 			</view>
 		</view>
 	</view>

@@ -12,7 +12,19 @@ Page({
 
   data: {
     djs_data: 0,
-    img1: "../../static/00.jpg",
+    imgs: [{
+        src: "../../static/00.jpg"
+      },
+      {
+        src: "../../static/00.jpg"
+      },
+      {
+        src: "../../static/00.jpg"
+      },
+      {
+        src: "../../static/00.jpg"
+      },
+    ],
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -35,9 +47,39 @@ Page({
     //执行倒计时方法
     this.djs();
     //执行地鼠出现的方法
-    // mouse_show();
+    this.mouse_show();
 
   },
+  mouse_show() {
+    //生成随机的数组下标
+    var i = parseInt(Math.random() * 4);
+    console.log(i);
+    //随机改变图片
+    this.setData({
+      ['imgs[' + i + '].src']: "../../static/01.jpg",
+    })
+    //复原当前位置
+    var that = this;
+    //倒计时的计时器
+    var tl_id = setTimeout(function () {
+      that.mouse_hide(i);
+    }, 1000);
+    //出现另一只地鼠
+    // jg_id = setTimeout("mouse_show()", jg_time * 1000);
+  },
+
+  //地鼠消失，没打中
+  mouse_hide(i) {
+    this.setData({
+      ['imgs[' + i + '].src']: "../../static/00.jpg",
+    })
+  },
+
+
+
+
+
+  //游戏倒计时
   djs() {
     //实时记录游戏时间
     var game_time = new Date();
@@ -54,7 +96,6 @@ Page({
     var that = this;
     //倒计时的计时器
     var djs_id = setTimeout(function () {
-      console.log('1s后执行');
       that.djs();
     }, 1000);
 
