@@ -25,6 +25,8 @@ Page({
         src: "../../static/00.jpg"
       },
     ],
+    tl_id: "", //隐藏地鼠定时器
+    tl_id: "", //显示地鼠定时器
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -39,8 +41,6 @@ Page({
 
   //开始游戏
   startGame() {
-
-    console.log("开始游戏", this.qj);
     sc_time = 10; //游戏时长10s
     //记录游戏开始时间
     start_Time = new Date();
@@ -61,11 +61,26 @@ Page({
     //复原当前位置
     var that = this;
     //倒计时的计时器
-    var tl_id = setTimeout(function () {
-      that.mouse_hide(i);
-    }, 1000);
+
+    this.setData({
+      tl_id: setTimeout(function () {
+        that.mouse_hide(i);
+      }, 1000)
+    })
+
+
     //出现另一只地鼠
-    // jg_id = setTimeout("mouse_show()", jg_time * 1000);
+    this.setData({
+      jg_id: setTimeout(function () {
+        that.mouse_show(i);
+      }, 1000)
+    })
+
+
+    //出现另一只地鼠
+    // var jg_id = setTimeout(function () {
+    //   that.mouse_show(i);
+    // },  1000);
   },
 
   //地鼠消失，没打中
@@ -74,11 +89,6 @@ Page({
       ['imgs[' + i + '].src']: "../../static/00.jpg",
     })
   },
-
-
-
-
-
   //游戏倒计时
   djs() {
     //实时记录游戏时间
@@ -91,6 +101,10 @@ Page({
     if (djs_data < 1) {
       console.log("游戏结束了");
       clearTimeout(djs_id);
+      clearTimeout(this.data.tl_id);
+      clearTimeout(this.data.jg_id);
+      //地鼠清场
+      this.qingchang();
       return;
     }
     var that = this;
@@ -99,6 +113,13 @@ Page({
       that.djs();
     }, 1000);
 
+  },
+  qingchang() {
+    for (var i = 0; i < 4; i++) {
+      this.setData({
+        ['imgs[' + i + '].src']: "../../static/00.jpg",
+      })
+    }
   },
   //结束游戏
   // endGame() {
