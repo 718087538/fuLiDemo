@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+let start_Time, djs_data, sc_time, test;
 Page({
   onShareAppMessage() {
     return {
@@ -10,8 +10,9 @@ Page({
     }
   },
 
-
   data: {
+    djs_data: 0,
+    img1: "../../static/00.jpg",
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -23,6 +24,46 @@ Page({
     interval: 2000,
     duration: 500
   },
+
+  //开始游戏
+  startGame() {
+
+    console.log("开始游戏", this.qj);
+    sc_time = 10; //游戏时长10s
+    //记录游戏开始时间
+    start_Time = new Date();
+    //执行倒计时方法
+    this.djs();
+    //执行地鼠出现的方法
+    // mouse_show();
+
+  },
+  djs() {
+    //实时记录游戏时间
+    var game_time = new Date();
+    //计算并显示倒计时
+    djs_data = sc_time - parseInt((game_time - start_Time) / 1000);
+    this.setData({
+      djs_data: djs_data
+    })
+    if (djs_data < 1) {
+      console.log("游戏结束了");
+      clearTimeout(djs_id);
+      return;
+    }
+    var that = this;
+    //倒计时的计时器
+    var djs_id = setTimeout(function () {
+      console.log('1s后执行');
+      that.djs();
+    }, 1000);
+
+  },
+  //结束游戏
+  // endGame() {
+  //   console.log("调用游戏结束");
+  //   clearTimeout(djs_id);
+  // },
   changeIndicatorDots() {
     this.setData({
       indicatorDots: !this.data.indicatorDots
@@ -47,45 +88,21 @@ Page({
     })
   },
   //事件处理函数
-  bindViewTap: function() {
+  bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
-  },
-  getUserInfo: function(e) {
+  onLoad: function () {},
+  getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  globalData: {
+    qj: 123
   }
 })
