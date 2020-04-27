@@ -17,7 +17,7 @@ Page({
 
   data: {
     djs_data: 0,
-    energy:5,//体力要动态获取
+    energy: 5, //体力要动态获取
     imgs: [{
         src: "../../static/00.jpg"
       },
@@ -73,7 +73,7 @@ Page({
     userInfo: {},
     results: 0, //打地鼠成绩
     beforeI: "", //存储上一次的i,避免出现在相同位置时出现bug
-    playOver:true,//是否玩完了这局
+    playOver: true, //是否玩完了这局
     current: 'homepage',
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -84,24 +84,26 @@ Page({
     interval: 2000,
     duration: 500
   },
-  handleChange ({ detail }) {
+  handleChange({
+    detail
+  }) {
     this.setData({
-        current: detail.key
+      current: detail.key
     });
-},
+  },
   //开始游戏
   startGame() {
-    if(!this.data.playOver){
+    if (!this.data.playOver) {
       console.log("游戏中")
       return false;
     }
-    if(this.data.energy<=0){
+    if (this.data.energy <= 0) {
       this.noEnery();
       return false;
     }
     this.setData({
-      playOver: false,//设置游戏中
-      energy: this.data.energy - 1,//要发送到服务器保存
+      playOver: false, //设置游戏中
+      energy: this.data.energy - 1, //要发送到服务器保存
     })
     sc_time = 10; //游戏时长10s
     //记录游戏开始时间
@@ -234,7 +236,7 @@ Page({
       content: '游戏结束，获得至尊碎片'
     });
     this.setData({
-      playOver: true//设置游戏完成
+      playOver: true //设置游戏完成
     })
   },
   noEnery() {
@@ -248,7 +250,23 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {},
+  globalData: {
+    appid: '1wqas2342dasaqwe2323424ac23qwe', //appid需自己提供，此处的appid我随机编写
+    secret: 'e0dassdadef2424234209bwqqweqw123ccqwa', //secret需自己提供，此处的secret我随机编写
+
+  },
+  onLoad: function () {
+    wx.login({
+
+      success: function (res) {
+
+        console.log('loginCode:', res)
+
+      }
+
+    });
+  },
+ 
   getUserInfo: function (e) {
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -256,7 +274,7 @@ Page({
       hasUserInfo: true
     })
   },
-  globalData: {
-    qj: 123
-  }
+  // globalData: {
+  //   qj: 123
+  // }
 })
