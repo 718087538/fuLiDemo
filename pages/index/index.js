@@ -77,12 +77,13 @@ Page({
     current: 'homepage',
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
+    background: [{ src: "../../static/banner/b1.jpg"}, { src: "../../static/banner/b2.jpg"}, { src: "../../static/banner/b3.jpg"}],
+    giftList: [{ src: "../../static/banner/b1.jpg"}, { src: "../../static/banner/b2.jpg"}, { src: "../../static/banner/b3.jpg"}],
     indicatorDots: true,
     vertical: false,
-    autoplay: false,
+    autoplay: true,
     interval: 2000,
-    duration: 500
+    duration: 1000
   },
   handleChange({
     detail

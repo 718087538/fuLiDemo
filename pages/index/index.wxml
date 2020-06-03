@@ -2,25 +2,35 @@
 <view class="container">
 	<view class="page-body">
 		<view class="page-section page-section-spacing swiper">
-			<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+			<swiper circular="true" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
 				<block wx:for="{{background}}" wx:key="*this">
 					<swiper-item>
 						<view class="swiper-item {{item}}">
-							<image src="http://img5.imgtn.bdimg.com/it/u=1040739115,3225906616&fm=26&gp=0.jpg"></image>
+							<image src="{{item.src}}"></image>
 						</view>
 					</swiper-item>
 				</block>
 			</swiper>
 		</view>
 	</view>
-	<view class="nav">
-		<!-- <navigator url="../pictureMarket/pictureMarket"  redirect="true">奖品市场</navigator>  -->
+	<view class="middleBanner">
+		<image src="../../static/banner/banner_min.png"></image>
+	</view>
+
+	<view class="giftShow">
+		<view class="giftIt" wx:for="{{giftList}}" wx:key="*this">
+			<image src="{{item.src}}"></image>
+			<text class="title">高级卫生纸</text>
+			<navigator class="goinfo">查看详情</navigator>
+		</view>
+	</view>
+
+	<!-- <view class="nav">
 		<navigator url="../gift/gift" redirect="true">活动广场</navigator>
 		<navigator url="../customer/customer" redirect="true">找客服</navigator>
 		<navigator url="../business/business" redirect="true">商务合作</navigator>
 		<button size="mini">邀请好友</button>
 	</view>
-	<!-- <i-button type="primary" bind:click="handleClick">这是一个按钮</i-button> -->
 	<view>体力：{{energy}}</view>
 	<text>游戏倒计时{{djs_data}}，游戏得分{{results}}</text>
 	<view class="playArea">
@@ -51,7 +61,7 @@
 			</view>
 		</view>
 	</view>
-	<i-button type="primary" bind:click="startGame">开始游戏</i-button>
+	<i-button type="primary" bind:click="startGame">开始游戏</i-button> -->
 
 	<!-- <i-button type="warning" bind:click="endGame">结束游戏</i-button> -->
 	<i-toast id="toast" />
