@@ -78,7 +78,7 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     background: [{ src: "../../static/banner/b1.jpg"}, { src: "../../static/banner/b2.jpg"}, { src: "../../static/banner/b3.jpg"}],
-    giftList: [{ src: "../../static/banner/b1.jpg"}, { src: "../../static/banner/b2.jpg"}, { src: "../../static/banner/b3.jpg"}],
+    giftList: [{ src: "../../static/banner/b1.jpg"},{ src: "../../static/banner/b1.jpg"}, { src: "../../static/banner/b2.jpg"}, { src: "../../static/banner/b3.jpg"}],
     indicatorDots: true,
     vertical: false,
     autoplay: true,

@@ -21,7 +21,7 @@
 		<view class="giftIt" wx:for="{{giftList}}" wx:key="*this">
 			<image src="{{item.src}}"></image>
 			<text class="title">高级卫生纸</text>
-			<navigator class="goinfo">查看详情</navigator>
+			<navigator class="goinfo" url="../giftInfo/index">查看详情</navigator>
 		</view>
 	</view>
 
@@ -67,7 +67,7 @@
 	<i-toast id="toast" />
 </view>
 <view class="stand"></view>
-<view class="bottomNav">
+<!-- <view class="bottomNav">
 	<view class="item">
 		<i-icon type="homepage" size="28" color="#00FF00" />
 		<view>首页</view>
@@ -80,4 +80,4 @@
 		<i-icon type="group" size="28" color="#80848f" />
 		<view>我的</view>
 	</navigator>
-</view>
+</view> -->

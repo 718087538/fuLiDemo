@@ -9,14 +9,26 @@
     "pages/business/business",
     "pages/index/event",
     "pages/my/my",
-    "pages/my/getGift"
+    "pages/my/getGift",
+    "pages/giftInfo/index"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTitleText": "WeChat"
   },
-  "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "tabBar": {
+    "list": [
+      {
+        "iconPath": "image/icon_API.png",
+        "selectedIconPath": "image/icon_API_HL.png",
+        "pagePath": "pages/index/index",
+        "text": "组件"
+      },
+      {
+        "iconPath": "image/icon_API.png",
+        "selectedIconPath": "image/icon_API_HL.png",
+        "pagePath": "pages/index/event",
+        "text": "通知"
+      }
+    ]
+  }
 }
