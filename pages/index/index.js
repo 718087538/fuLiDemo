@@ -257,15 +257,25 @@ Page({
 
   },
   onLoad: function () {
-    wx.login({
-
-      success: function (res) {
-
-        console.log('loginCode:', res)
-
+    var that = this;//把this对象复制到临时变量that
+    const wxreq = wx.request({
+      url: 'http://api.orderour.com/api/admin/upGoods',
+      success: function (res){
+        console.log(res.data);
+        // this.userData = res.data; //无效不能实时的渲染到页面
+        that.setData({ giftList: res.data.data });//和页面进行绑定可以动态的渲染到页面
+      },
+      fail: function (res){
+        console.log(res.data);
+        this.userData = "数据获取失败";
       }
-
-    });
+    })
+    //获取uuid和code等信息
+    // wx.login({
+    //   success: function (res) {
+    //     console.log('loginCode:', res)
+    //   }
+    // });
   },
  
   getUserInfo: function (e) {

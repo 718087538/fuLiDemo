@@ -19,9 +19,9 @@
 
 	<view class="giftShow">
 		<view class="giftIt" wx:for="{{giftList}}" wx:key="*this">
-			<image src="{{item.src}}"></image>
-			<text class="title">高级卫生纸</text>
-			<navigator class="goinfo" url="../giftInfo/index">查看详情</navigator>
+			<image src="{{item.goodsImg}}"></image>
+			<text class="title">{{item.title}}</text>
+			<navigator class="goinfo" url="../giftInfo/index?goodsId={{item._id}}">查看详情</navigator>
 		</view>
 	</view>
 

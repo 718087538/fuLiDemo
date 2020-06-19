@@ -1,1 +1,9 @@
 /* pages/giftInfo/index.wxss */
+.eventList{
+}
+.eventList image{
+  width: 100%;
+}
+.box{
+  padding: 20rpx;
+}

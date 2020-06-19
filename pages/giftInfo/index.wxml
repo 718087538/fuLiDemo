@@ -1,7 +1,8 @@
 <!--pages/giftInfo/index.wxml-->
-
-<view class="eventList" wx:for="{{eventList}}" wx:key="index">
-	<text>{{item.title}}</text>
-  <view class="date">2019/05/15</view> 
-	<image src="{{item.src}}" wx:for="{{item.srcList}}" wx:key="index"></image>
+<view class="box">
+<view class="eventList" wx:for="{{imgList}}" wx:key="index">
+	<!-- <text>{{item.title}}</text> -->
+  <!-- <view class="date">2019/05/15</view>  -->
+	<image src="{{item}}"></image>
+</view>
 </view>
