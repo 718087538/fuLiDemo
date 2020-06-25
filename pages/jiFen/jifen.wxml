@@ -1,0 +1,50 @@
+<!--pages/jiFen/jifen.wxml-->
+<view class="container">
+	<view class="nav">
+		<!-- <navigator url="../gift/gift" redirect="true">活动广场</navigator>
+		<navigator url="../customer/customer" redirect="true">找客服</navigator>
+		<navigator url="../business/business" redirect="true">商务合作</navigator>
+		<button size="mini">邀请好友</button> -->
+	</view>
+	<view class="playInfo">
+     <text> 体力：{{energy}} </text>
+     <text>时间{{djs_data}}</text>
+     <text>得分{{results}}</text>
+     </view>
+	<view class="playArea">
+		<view class="table">
+			<view class="tr">
+				<image data-num="0" bindtap="play" src="{{imgs[0].src}}"></image>
+				<image data-num="1" bindtap="play" src="{{imgs[1].src}}"></image>
+				<image data-num="2" bindtap="play" src="{{imgs[2].src}}"></image>
+				<image data-num="3" bindtap="play" src="{{imgs[3].src}}"></image>
+			</view>
+			<view class="tr">
+				<image data-num="4" bindtap="play" src="{{imgs[4].src}}"></image>
+				<image data-num="5" bindtap="play" src="{{imgs[5].src}}"></image>
+				<image data-num="6" bindtap="play" src="{{imgs[6].src}}"></image>
+				<image data-num="7" bindtap="play" src="{{imgs[7].src}}"></image>
+			</view>
+			<view class="tr">
+				<image data-num="8" bindtap="play" src="{{imgs[8].src}}"></image>
+				<image data-num="9" bindtap="play" src="{{imgs[9].src}}"></image>
+				<image data-num="10" bindtap="play" src="{{imgs[10].src}}"></image>
+				<image data-num="11" bindtap="play" src="{{imgs[11].src}}"></image>
+			</view>
+			<view class="tr">
+				<image data-num="12" bindtap="play" src="{{imgs[12].src}}"></image>
+				<image data-num="13" bindtap="play" src="{{imgs[13].src}}"></image>
+				<image data-num="14" bindtap="play" src="{{imgs[14].src}}"></image>
+				<image data-num="15" bindtap="play" src="{{imgs[15].src}}"></image>
+			</view>
+		</view>
+	</view>
+	<i-button type="primary" bind:click="startGame">开始</i-button>
+  <view class="adBg">
+    <image src="../../static/playBottom.jpg"></image>
+  </view>
+	<!-- <i-button type="warning" bind:click="endGame">结束游戏</i-button> -->
+	<i-toast id="toast" />
+</view>
+<view class="stand"></view>
+

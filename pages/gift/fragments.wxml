@@ -1,0 +1,32 @@
+<!--pages/gift/fragments.wxml-->
+
+<view class="shopBox">
+	<!-- <navigator url="../gift/gift" redirect="true">
+		<view class="shop">
+			奖品市场
+		</view>
+	</navigator> -->
+</view>
+<!-- <view class="title">活动截止时间：2天10小时</view> -->
+<view class="bigImgBox">
+	<image src="{{gift.imgSrc}}"></image>
+	<view class="shadow {{gift.picList[0].pic<1?'shadow0':''}}"></view>
+	<view class="shadow {{gift.picList[1].pic<1?'shadow1':''}}"></view>
+	<view class="shadow {{gift.picList[2].pic<1?'shadow2':''}}"></view>
+	<view class="shadow {{gift.picList[3].pic<1?'shadow3':''}}"></view>
+	<view class="shadow {{gift.picList[4].pic<1?'shadow4':''}}"></view>
+	<view class="shadow {{gift.picList[5].pic<1?'shadow5':''}}"></view>
+</view>
+<i-button bind:click="synthetic" type="primary" size="small">立即合成</i-button>
+<view class="picBox">
+	<scroll-view class="rowBox" scroll-x="true" bindscroll="scroll" style="width: 100%">
+		<view id="demo{{index+1}}" data-num="{{index+1}}" bindtap="sel" class="demo  demo-text-1" wx:for="{{gift.picList}}" wx:key="index">
+      <image class="bg" src="{{gift.imgSrc}}"></image>
+      <view class="num">{{item.pic}}</view>
+		</view>
+	</scroll-view>
+</view>
+<i-modal title="" visible="{{ showShare }}" actions="{{ showShareList }}" bind:click="goShare">
+   <i-button  open-type='share' type="primary" size="small">送给朋友</i-button>
+</i-modal>
+<i-toast id="toast" />

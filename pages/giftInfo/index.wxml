@@ -1,4 +1,5 @@
 <!--pages/giftInfo/index.wxml-->
+<!-- 这里是商品的详细展示 -->
 <view class="box">
 <view class="eventList" wx:for="{{imgList}}" wx:key="index">
 	<!-- <text>{{item.title}}</text> -->

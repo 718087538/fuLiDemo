@@ -2,29 +2,32 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/gift/gift",
-    "pages/fragments/fragments",
-    "pages/pictureMarket/pictureMarket",
-    "pages/customer/customer",
-    "pages/business/business",
     "pages/index/event",
-    "pages/my/my",
-    "pages/my/getGift",
-    "pages/giftInfo/index"
+    "pages/giftInfo/index",
+    "pages/jiFen/jifen",
+    "pages/gift/giftList",
+    "pages/gift/fragments"
   ],
   "window": {
-    "navigationBarTitleText": "WeChat"
+    "navigationBarTitleText": "WeChat",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "color":"#515151",
-    "selectedColor":"#4381df",
+    "color": "#515151",
+    "selectedColor": "#4381df",
     "list": [
       {
         "iconPath": "image/home.png",
         "selectedIconPath": "image/home_sel.png",
         "pagePath": "pages/index/index",
         "text": "组件"
-     
+      },
+      {
+        "iconPath": "image/gift.png",
+        "selectedIconPath": "image/gift_sel.png",
+        "pagePath": "pages/gift/giftList",
+        "text": "奖品列表"
       },
       {
         "iconPath": "image/notice.png",

@@ -1,0 +1,10 @@
+<!--pages/gift/giftList.wxml-->
+
+<i-cell-group>
+    <i-cell is-link url="/pages/gift/fragments?giftId={{item._id}}&uid=11111111111&imgSrc={{item.imgSrc}}"  wx:for="{{marketList}}" wx:key="unique">
+    <view class="li">
+      <image src="{{item.imgSrc}}"></image>
+      <view class="title">{{item.giftName}}</view>
+      </view>
+    </i-cell>
+</i-cell-group>

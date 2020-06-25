@@ -1,6 +1,7 @@
 /* pages/index/event.wxss */
 .eventList{
   padding:0 20rpx;
+  color: #333;
 }
 .date{
   font-size: 30rpx;

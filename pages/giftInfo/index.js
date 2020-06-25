@@ -50,7 +50,7 @@ Page({
     console.log(options)
     var that = this;//把this对象复制到临时变量that
     const wxreq = wx.request({
-      url: 'http://api.orderour.com/api/admin/upGoodsList',
+      url: 'https://api.orderour.com/api/admin/upGoodsList',
       data:{
         goodsId:options.goodsId,
       },

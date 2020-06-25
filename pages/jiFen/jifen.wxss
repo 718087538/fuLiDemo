@@ -1,11 +1,27 @@
+/* pages/jiFen/jifen.wxss */
 /**index.wxss**/
+.adBg{
+  padding: 60rpx  20rpx 0;
+  height: 200rpx;
+}
+.adBg image{
+  border-radius: 10rpx;
+  width: 100%;
+  height: 200rpx;
+}
 .giftShow {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 0 30rpx;
 }
-
+.playInfo{
+  display: flex;
+  margin: 20rpx 0 30rpx;
+  color: #333;
+  font-size: 40rpx;
+  justify-content: space-around;
+}
 .giftShow .giftIt {
   width: 300rpx;
   height: 300rpx;
@@ -47,12 +63,8 @@
   height: 150rpx;
   margin: 40rpx auto 0;
 }
-.middleBanner .a{
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-.middleBanner .a image {
+
+.middleBanner image {
   border-radius: 10rpx;
   width: 100%;
   height: 100%;
@@ -75,7 +87,7 @@
   width: 140rpx;
   height: 140rpx;
   margin-right: 4rpx;
-
+  border-radius: 10rpx;
 }
 
 .stand {

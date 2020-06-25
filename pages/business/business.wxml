@@ -1,8 +1,0 @@
-<!--pages/business/business.wxml-->
-<!--pages/customer/customer.wxml-->
-<text>如果您也有商品需要推广做试用，可以联系小编哦，邮箱是11111111@qq.com</text>
-<text>或添加微信咨询</text>
-<image src="https://tse4-mm.cn.bing.net/th/id/OIP.29lMqAs47OmB-l1FzwzozQHaHa?w=188&h=188&c=7&o=5&pid=1.7"></image>
-
-<view>长摁识别，或点击保存</view>
-<button type="primary">保存到本地</button>

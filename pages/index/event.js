@@ -15,7 +15,7 @@ Page({
   onLoad: function (options) {
     var that = this;//把this对象复制到临时变量that
     const wxreq = wx.request({
-      url: 'http://api.orderour.com/api/wxClient/notice',
+      url: 'https://api.orderour.com/api/wxClient/notice',
       success: function (res){
         console.log(res.data);
         // this.userData = res.data; //无效不能实时的渲染到页面

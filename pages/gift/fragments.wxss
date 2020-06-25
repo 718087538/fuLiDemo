@@ -1,0 +1,117 @@
+/* pages/gift/fragments.wxss */
+.picBox{
+  height: 150rpx;
+}
+.rowBox{
+  height: 100%;
+  white-space: nowrap;
+}
+.demo{
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 150rpx;
+  border-radius: 10rpx;
+  margin: 0 10rpx;
+}
+.demo .bg{
+  width: 300rpx;
+  height: 450rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.demo .num{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: rgb(31, 135, 231);
+  font-weight: bold;
+}
+#demo2 .bg{
+  top: 0;
+  left: -150rpx;
+}
+#demo3 .bg{
+  top: -150rpx;
+  left: 0;
+}
+#demo4 .bg{
+  top: -150rpx;
+  left: -150rpx;
+}
+#demo5 .bg{
+  top: -300rpx;
+  left: 0rpx;
+}
+#demo6 .bg{
+  top: -300rpx;
+  left: -150rpx;
+}
+.gift{
+  position: absolute;
+  width: 50px;
+  height: 30px;
+  top: -30px;  
+  left: 20px;
+  background-color: red;
+  display: none;
+  z-index: 10;
+}
+.show{
+  display: block;
+}
+/* 下面是大图奖品的页面 */
+.bigImgBox {
+  width: 300rpx;
+  height: 450rpx;
+  position: relative;
+  margin: 0 auto;
+}
+.title{
+  text-align: center;
+}
+.shopBox{
+  display: flex;
+  justify-content:flex-end ;
+}
+.shop{
+  width: 80px;
+  height: 80px;
+  background-color: brown;
+}
+.bigImgBox image {
+  width: 100%;
+  height: 100%;
+}
+
+.bigImgBox .shadow {
+  width: 50%;
+  height: 33.333%;
+  position: absolute;
+  top: 0;
+  left: 0;
+ border:1rpx solid rgba(112, 112, 62, 0.4);
+}
+.bigImgBox .shadow0 {
+  background-color: rgba(112, 112, 62, 0.4);
+}
+.bigImgBox .shadow1 {
+  left: 50%; background-color: rgba(112, 112, 62, 0.4);
+}
+.bigImgBox .shadow2 {
+  top: 33%; background-color: rgba(112, 112, 62, 0.4);
+}
+.bigImgBox .shadow3 {
+  left: 50%;
+  top: 33%; background-color: rgba(112, 112, 62, 0.4);
+}
+.bigImgBox .shadow4 {
+  top: 66%; background-color: rgba(112, 112, 62, 0.4);
+}
+.bigImgBox .shadow5 {
+  left: 50%;
+  top: 66%; background-color: rgba(112, 112, 62, 0.4);
+}
