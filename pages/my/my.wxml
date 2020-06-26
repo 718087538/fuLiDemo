@@ -1,0 +1,31 @@
+<!--pages/my/my.wxml-->
+<view class="myInfo">
+<image class="bg" src="../../static/my/my_banner_bg.png"></image>
+  <image class="headImg" src="{{headSrc}}"></image>
+  <view class="name">微信昵称</view>
+</view>
+
+<i-tabs current="{{ current }}" bindchange="handleChange">
+    <i-tab key="tab1" title="选项1">
+    <view>11</view>
+    <view>11</view>
+    <view>11</view>
+    <view>11</view>
+    <view>11</view>
+    <view>11</view>
+    <view>11</view>
+    <view>11</view>
+    <view>11</view>
+    </i-tab>
+    <i-tab key="tab2" title="选项2">
+     <view>1222</view>
+     <view>1222</view>
+     <view>1222</view>
+     <view>1222</view>
+     <view>1222</view>
+     <view>1222</view>
+     <view>1222</view>
+     <view>1222</view>
+     </i-tab>
+    <i-tab key="tab3" title="选项3"></i-tab>
+</i-tabs>

@@ -6,7 +6,8 @@
     "pages/giftInfo/index",
     "pages/jiFen/jifen",
     "pages/gift/giftList",
-    "pages/gift/fragments"
+    "pages/gift/fragments",
+    "pages/my/my"
   ],
   "window": {
     "navigationBarTitleText": "WeChat",
@@ -34,6 +35,12 @@
         "selectedIconPath": "image/notice_sel.png",
         "pagePath": "pages/index/event",
         "text": "通知"
+      },
+      {
+        "iconPath": "image/my.png",
+        "selectedIconPath": "image/my_sel.png",
+        "pagePath": "pages/my/my",
+        "text": "我的"
       }
     ]
   },
