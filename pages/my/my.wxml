@@ -2,30 +2,64 @@
 <view class="myInfo">
 <image class="bg" src="../../static/my/my_banner_bg.png"></image>
   <image class="headImg" src="{{headSrc}}"></image>
-  <view class="name">微信昵称</view>
+  <view class="name">
+  <view>微信昵称</view>
+  <view>13400000001</view>
+  </view>
+   <i-button bind:click="changeAddress" type="success" inline size="mini">收获地址</i-button>
 </view>
 
-<i-tabs current="{{ current }}" bindchange="handleChange">
-    <i-tab key="tab1" title="选项1">
-    <view>11</view>
-    <view>11</view>
-    <view>11</view>
-    <view>11</view>
-    <view>11</view>
-    <view>11</view>
-    <view>11</view>
-    <view>11</view>
-    <view>11</view>
-    </i-tab>
-    <i-tab key="tab2" title="选项2">
-     <view>1222</view>
-     <view>1222</view>
-     <view>1222</view>
-     <view>1222</view>
-     <view>1222</view>
-     <view>1222</view>
-     <view>1222</view>
-     <view>1222</view>
-     </i-tab>
-    <i-tab key="tab3" title="选项3"></i-tab>
-</i-tabs>
+<van-tabs active="{{ active }}" bind:change="onChange"  swipeable sticky>
+  <van-tab title="待领取">
+  <i-cell-group>
+    <i-cell   url="/pages/dashboard/index">
+      <view class="li">
+      <image src="../../static/banner/b1.jpg"></image>
+      <view class="title">111</view>
+      <i-button bind:click="getGift" type="primary">领取</i-button>
+      </view>
+    </i-cell>
+    <!-- <i-cell   url="/pages/dashboard/index">
+      <view class="li">
+      <image src="../../static/banner/b1.jpg"></image>
+      <view class="title">111</view>
+      <view>数量：X1</view>
+      </view>
+    </i-cell> -->
+  </i-cell-group>
+  </van-tab>
+  <van-tab title="待发货">
+    <i-cell   url="/pages/dashboard/index">
+      <view class="li">
+      <image src="../../static/banner/b1.jpg"></image>
+      <view class="title">111</view>
+       <view class="waitSend">待发货</view>
+      </view>
+    </i-cell>
+  </van-tab>
+  <van-tab title="已发货">
+     <i-cell   url="/pages/dashboard/index">
+      <view class="li">
+      <i-card class="card" title="精选好物" extra="X1" thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
+        <view slot="content">快递公司：韵达快递</view>
+        <view slot="footer">快递单号：3246345654341
+        <i-button i-class="copyOrderBtn" bind:click="copyOrderBtn" type="success" inline size="default">复制</i-button>
+        </view>
+      </i-card>
+      </view> 
+    </i-cell>
+ </van-tab>
+  <van-tab title="已签收">
+    <i-cell   url="/pages/dashboard/index">
+      <view class="li">
+      </view>
+        <view class="noOrder">
+          <image class="noOrderImg" src="../../static/my/no_order.png"></image>
+        <i-load-more tip="暂无数据" loading="{{ false }}" />
+  </view>
+    </i-cell>
+
+  </van-tab>
+</van-tabs>
+
+<i-toast id="toast" />

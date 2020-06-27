@@ -1,4 +1,5 @@
 // pages/my/my.js
+const { $Toast } = require('../../dist/base/index');
 Page({
 
   /**
@@ -6,21 +7,35 @@ Page({
    */
   data: {
     headSrc:"../../static/defaultHead.jpg",
-    current: 'tab1',
-    current_scroll: 'tab1'
+    active: 3,
   },
 
-  handleChange ({ detail }) {
-    this.setData({
-        current: detail.key
-    });
-},
 
-handleChangeScroll ({ detail }) {
-    this.setData({
-        current_scroll: detail.key
-    });
-},
+  onChange(event) {
+    // wx.showToast({
+    //   title: `切换到标签 ${event.detail.name}`,
+    //   icon: 'none',
+    // });
+  },
+  changeAddress(){
+    $Toast({
+      content: '暂未开发!'
+  });
+  },
+  //已合成，要领取商品
+  getGift(){
+    console.log("领取商品")
+    $Toast({
+      content: '恭喜您,领取成功!',
+      type: 'success'
+  });
+  },
+  copyOrderBtn(){
+    $Toast({
+      content: '已复制到剪贴板',
+      type: 'success'
+  });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

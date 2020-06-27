@@ -1,15 +1,25 @@
 //app.js
+const WXAPI = require('./wxapi/main')
 App({
+   APPID : '***',
+   AppSecret:'*****',
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
     // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        let code = res.code;
+        console.log("code",code);
+        WXAPI.login({code:res.code}).then(res=>{
+          console.log("resss",res)
+          //把openiD和session_key缓存在本地
+          wx.setStorageSync('openid', res.openid);
+          wx.setStorageSync('session_key', res.session_key);
+        })
       }
     })
     // 获取用户信息
@@ -19,6 +29,7 @@ App({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
+              console.lon("登录信息",res)
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
 

@@ -9,6 +9,7 @@
     "pages/gift/fragments",
     "pages/my/my"
   ],
+
   "window": {
     "navigationBarTitleText": "WeChat",
     "navigationBarBackgroundColor": "#ffffff",

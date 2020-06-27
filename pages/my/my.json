@@ -1,7 +1,16 @@
 {
   "usingComponents": {
     "i-tabs": "../../dist/tabs/index",
-    "i-tab": "../../dist/tab/index"
+    "i-tab": "../../dist/tab/index",
+    "i-cell-group": "../../dist/cell-group/index",
+    "i-toast": "../../dist/toast/index",
+    "i-cell": "../../dist/cell/index",
+    "i-button": "../../dist/button/index",
+    "van-tab": "../../miniprogram_npm/vant-weapp/tab/index",
+    "van-tabs": "../../miniprogram_npm/vant-weapp/tabs/index",
+    "i-card": "../../dist/card/index",
+    "i-load-more": "../../dist/load-more/index"
+
   },
   "navigationBarTitleText": "我的"
 }
