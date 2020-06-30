@@ -1,0 +1,30 @@
+<!--pages/my/adressList.wxml-->
+<view class="addressArea">
+  <view class="line1">
+    <view>收件人：站长是</view>
+    <view class="phone">124512662</view>
+  </view>
+  <view class="line2">
+  收货地址：
+  广东省
+  广州市
+  番禺区
+  某某公园某某公园
+  </view>
+  <image class="rightIcon" src="../../static/my/right.png"></image>
+</view> 
+
+<view class="goodsBox">
+<van-card
+  num="1"
+  price="0.00"
+  desc="描述信息"
+  title="商品标题"
+  thumb="{{ imageURL }}"
+/>
+<van-cell-group>
+  <van-cell title="运费" value="免运费" />
+</van-cell-group>
+</view>
+
+<i-button i-class="getBtn" bind:click="handleClick" type="primary">立即领取</i-button>

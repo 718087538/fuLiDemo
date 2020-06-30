@@ -1,41 +1,18 @@
-// pages/my/my.js
-const { $Toast } = require('../../dist/base/index');
+// pages/my/adressList.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    headSrc:"../../static/defaultHead.jpg",
-    active: 3,
+    imageURL:"http://img4.imgtn.bdimg.com/it/u=2853553659,1775735885&fm=26&gp=0.jpg"
   },
 
-
-
-  changeAddress(){
-    $Toast({
-      content: '暂未开发!'
-  });
-  },
-  //已合成，要领取商品
-  getGift(){
-    console.log("领取商品")
-    $Toast({
-      content: '恭喜您,领取成功!',
-      type: 'success'
-  });
-  },
-  copyOrderBtn(){
-    $Toast({
-      content: '已复制到剪贴板',
-      type: 'success'
-  });
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options);
   },
 
   /**

@@ -60,4 +60,6 @@ module.exports = {
   // getDetail: (data) => request('/goods/detail','get', data),
   test:(data) => request('/','get','data'),//测试的域名
   login:data => request('/wxClient/login','get',data),//登录的操作
+  changeGood:data => request('/wxClient/changeGood','post',data),//合成商品的操作
+  getGood:data => request('/wxClient/changeGood','get',data),//请求待领取的商品
 }

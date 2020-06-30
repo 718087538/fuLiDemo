@@ -7,9 +7,10 @@
     "pages/jiFen/jifen",
     "pages/gift/giftList",
     "pages/gift/fragments",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/my/giftStatus",
+    "pages/my/adressList"
   ],
-
   "window": {
     "navigationBarTitleText": "WeChat",
     "navigationBarBackgroundColor": "#ffffff",

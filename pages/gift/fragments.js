@@ -1,5 +1,5 @@
 // pages/gift/fragments.js
-
+const WXAPI = require('../../wxapi/main')
 const { $Toast } = require('../../dist/base/index');
 const order = ['demo1', 'demo2', 'demo3']
 Page({
@@ -56,11 +56,22 @@ Page({
   },
   //合成奖品的操作
   synthetic(){
+    //到时候canGet 改成判断每个碎片数量大于1
     if(this.data.gift.canGet === 1){
-      $Toast({
-        content: '合成成功，前往 "我的" 页面领奖',
-        type: 'success'
-    });
+      WXAPI.changeGood({giftId:this.data.gift.giftId,uid:wx.getStorageSync('openid')}).then(res=>{
+        console.log("changeGoodRES",res)
+      if(res.code === 200){
+        $Toast({
+          content: '合成成功，前往 "我的" 页面领奖',
+          type: 'success'
+      });
+      }else if(res.code === 201){
+        $Toast({
+          content: '拼图不足',
+          type: 'warning'
+      });
+      }
+    })
     }else{
       $Toast({
         content: '拼图不足',
@@ -117,16 +128,17 @@ Page({
     console.log(options)
     var that = this;//把this对象复制到临时变量that
     const wxreq = wx.request({
-      url: `https://api.orderour.com/api/wxClient/giftInfo?uid=${options.uid}&_id=${options.giftId}`,
+      url: `http://127.0.0.1:7001/api/wxClient/giftInfo?uid=${wx.getStorageSync('openid')}&giftId=${options.giftId}`,
       success: function (res){
         console.log(res.data.data);
         if(res.data.data === null){
+          console.log("no gift progress")
           //证明没有该奖品的记录，所以碎片应为0
           let giftProgress = {
-            uid:options.uid,
+            uid:wx.getStorageSync('openid'),
             giftId:options.giftId,
             picList:[
-              {pic:1},
+              {pic:0},
               {pic:0},
               {pic:0},
               {pic:0},
@@ -137,6 +149,27 @@ Page({
             imgSrc:options.imgSrc,
           }
         that.setData({ gift:giftProgress});//和页面进行绑定可以动态的渲染到页面
+        }else if(res.data.data){
+          console.log("拼图进度=====>",res.data.data);
+          let resData = res.data.data;
+          let giftPro ={
+            uid:wx.getStorageSync('openid'),
+            giftId:options.giftId,
+            picList:[
+              {pic:resData.pic1},
+              {pic:resData.pic2},
+              {pic:resData.pic3},
+              {pic:resData.pic4},
+              {pic:resData.pic5},
+              {pic:resData.pic6}
+            ],
+            canGet:resData.canGet,
+            imgSrc:options.imgSrc
+          } 
+        that.setData({ gift:giftPro});//和页面进行绑定可以动态的渲染到页面
+
+
+
         }
         // this.userData = res.data; //无效不能实时的渲染到页面
         // that.setData({ imgList: res.data.data[0].imgArray});//和页面进行绑定可以动态的渲染到页面

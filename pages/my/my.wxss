@@ -27,38 +27,3 @@
   color: #333;
   flex:1
 }
-.li{
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-.li image{
-  width: 100rpx;
-  height: 100rpx;
-}
-.li .title{
-  margin-left: 20rpx;
-  flex:1;
-}
-.li .num{
-  color: #515151;
-}
-.li .waitSend{
-  color: #888;
-}
-.li .card{
-  width: 100%;
-}
-.li .copyOrderBtn{
-  width:100rpx;
-  height:60rpx;
-  line-height: 60rpx;
-  text-align: center;
-  padding: 0;
-}
-.noOrder .noOrderImg{
-  display: block;
-  width: 100rpx;
-  height: 100rpx;
-  margin: 60rpx auto 30rpx;
-}

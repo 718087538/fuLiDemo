@@ -93,7 +93,6 @@
   position: absolute;
   top: 0;
   left: 0;
- border:1rpx solid rgba(112, 112, 62, 0.4);
 }
 .bigImgBox .shadow0 {
   background-color: rgba(112, 112, 62, 0.4);

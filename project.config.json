@@ -120,6 +120,20 @@
 					"id": -1,
 					"name": "pages/my/my",
 					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/giftStatus",
+					"pathName": "pages/my/giftStatus",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/adressList",
+					"pathName": "pages/my/adressList",
 					"scene": null
 				}
 			]

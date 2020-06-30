@@ -1,0 +1,36 @@
+/* pages/my/adressList.wxss */
+.addressArea{
+  padding: 20rpx 100rpx 20rpx 20rpx;
+  color: #333;
+  position: relative;
+  border-bottom:4rpx solid rgb(214, 212, 212);
+}
+.addressArea .line1{
+  display: flex;
+  font-size: 30rpx;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+  align-items: center;
+}
+.line1 .phone{
+  font-size: 28rpx;
+  color: #555;
+}
+.line2{
+  font-size: 28rpx;
+}
+.rightIcon{
+  position: absolute;
+  right: 30rpx;
+  top: 60rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.getBtn{
+  height: 130rpx !important;
+  position: fixed  !important;
+  line-height: 130rpx  !important;
+  font-size: 30rpx  !important;
+  bottom: 0  !important;
+}

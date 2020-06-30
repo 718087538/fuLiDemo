@@ -6,9 +6,6 @@ Page({
    */
   data: {
     marketList: [
-      {src:"../../static/banner/b1.jpg",title:"精选好物"},
-      {src:"../../static/banner/b2.jpg",title:"精选好物"},
-      {src:"../../static/banner/b3.jpg",title:"精选好物"},
     ]
   },
 

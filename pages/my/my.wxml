@@ -8,58 +8,20 @@
   </view>
    <i-button bind:click="changeAddress" type="success" inline size="mini">收获地址</i-button>
 </view>
-
-<van-tabs active="{{ active }}" bind:change="onChange"  swipeable sticky>
-  <van-tab title="待领取">
-  <i-cell-group>
-    <i-cell   url="/pages/dashboard/index">
-      <view class="li">
-      <image src="../../static/banner/b1.jpg"></image>
-      <view class="title">111</view>
-      <i-button bind:click="getGift" type="primary">领取</i-button>
-      </view>
-    </i-cell>
-    <!-- <i-cell   url="/pages/dashboard/index">
-      <view class="li">
-      <image src="../../static/banner/b1.jpg"></image>
-      <view class="title">111</view>
-      <view>数量：X1</view>
-      </view>
-    </i-cell> -->
-  </i-cell-group>
-  </van-tab>
-  <van-tab title="待发货">
-    <i-cell   url="/pages/dashboard/index">
-      <view class="li">
-      <image src="../../static/banner/b1.jpg"></image>
-      <view class="title">111</view>
-       <view class="waitSend">待发货</view>
-      </view>
-    </i-cell>
-  </van-tab>
-  <van-tab title="已发货">
-     <i-cell   url="/pages/dashboard/index">
-      <view class="li">
-      <i-card class="card" title="精选好物" extra="X1" thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
-        <view slot="content">快递公司：韵达快递</view>
-        <view slot="footer">快递单号：3246345654341
-        <i-button i-class="copyOrderBtn" bind:click="copyOrderBtn" type="success" inline size="default">复制</i-button>
-        </view>
-      </i-card>
-      </view> 
-    </i-cell>
- </van-tab>
-  <van-tab title="已签收">
-    <i-cell   url="/pages/dashboard/index">
-      <view class="li">
-      </view>
-        <view class="noOrder">
-          <image class="noOrderImg" src="../../static/my/no_order.png"></image>
-        <i-load-more tip="暂无数据" loading="{{ false }}" />
-  </view>
-    </i-cell>
-
-  </van-tab>
-</van-tabs>
-
+<navigator url="giftStatus?active=0">
+<i-button  type="success" inline >
+待领取
+</i-button></navigator>
+<navigator url="giftStatus?active=1">
+<i-button  type="success" inline >
+待发货
+</i-button></navigator>
+<navigator url="giftStatus?active=2">
+<i-button  type="success" inline >
+已发货
+</i-button></navigator>
+<navigator url="giftStatus?active=3">
+<i-button  type="success" inline >
+已签收
+</i-button></navigator>
 <i-toast id="toast" />
