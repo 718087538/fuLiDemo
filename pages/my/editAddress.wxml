@@ -1,0 +1,20 @@
+<!--pages/my/editAddress.wxml-->
+<i-panel title="基础用法">
+	<i-input model:value="{{ value1 }}" title="收货人" autofocus placeholder="姓名" />
+	<i-input model:value="{{ value2 }}" type="number" title="联系方式" placeholder="手机号" />
+	<i-input model:value="{{ value3 }}" title="省市区" disabled   bindtap="selArea"  />
+	<i-input model:value="{{ value4 }}" type="textarea" title="详细地址" placeholder="请输入详细地址(最多50字)" maxlength="50" />
+</i-panel>
+<i-cell-group >
+    <i-cell title="设为默认地址"  i-class='switch' >
+        <switch slot="footer" checked="{{setDefault}}"   bindtap="changeStatus"/>
+    </i-cell>
+</i-cell-group>
+<van-area class="selArea" area-list="{{ areaList }}" wx:if="{{showArea}}" value="110101" bind:confirm="confirm" bind:cancel="cancel"/>
+
+<view class="btnBox">
+	<i-button i-class="getBtn" bind:click="submit" type="primary">确定</i-button>
+</view>
+
+
+<i-toast id="toast" />

@@ -3,7 +3,7 @@
     "van-cell": "../../miniprogram_npm/vant-weapp/cell/index",
     "van-cell-group": "../../miniprogram_npm/vant-weapp/cell-group/index",
     "i-button": "../../dist/button/index",
-    "i-divider": "../../dist/divider/index"
+    "van-card": "../../miniprogram_npm/vant-weapp/card/index"
   },
   "navigationBarTitleText": "确认地址"
 }

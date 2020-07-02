@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "i-input": "../../dist/input/index",
+    "van-area": "../../miniprogram_npm/vant-weapp/area/index",
+    "i-cell-group": "../../dist/cell-group/index",
+    "i-cell": "../../dist/cell/index",
+    "i-toast": "../../dist/toast/index",
+    "i-button": "../../dist/button/index"
+  }
+}

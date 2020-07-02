@@ -62,4 +62,6 @@ module.exports = {
   login:data => request('/wxClient/login','get',data),//登录的操作
   changeGood:data => request('/wxClient/changeGood','post',data),//合成商品的操作
   getGood:data => request('/wxClient/changeGood','get',data),//请求待领取的商品
+  getAddress:data => request('/wxClient/addAdress','get',data),//请求收获地址
+  addAddress:data => request('/wxClient/addAdress','post',data),//新增收获地址
 }

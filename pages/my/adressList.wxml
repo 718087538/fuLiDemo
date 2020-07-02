@@ -1,30 +1,25 @@
 <!--pages/my/adressList.wxml-->
-<view class="addressArea">
-  <view class="line1">
-    <view>收件人：站长是</view>
-    <view class="phone">124512662</view>
-  </view>
-  <view class="line2">
-  收货地址：
-  广东省
-  广州市
-  番禺区
-  某某公园某某公园
-  </view>
-  <image class="rightIcon" src="../../static/my/right.png"></image>
-</view> 
+<view class="addressArea" wx:for="{{addressList}}" wx:key="*this">
 
-<view class="goodsBox">
-<van-card
-  num="1"
-  price="0.00"
-  desc="描述信息"
-  title="商品标题"
-  thumb="{{ imageURL }}"
-/>
-<van-cell-group>
-  <van-cell title="运费" value="免运费" />
-</van-cell-group>
+	<view class="line1">
+		<view>收件人：{{item.name}}</view>
+		<view class="phone">{{item.receivephone}}</view>
+	</view>
+	<view class="line2">
+		收货地址：
+		{{item.provinces}}
+		{{item.city}}
+		{{item.county}}
+		{{item.info}}
+	</view>
+	<navigator url="/pages/my/editAddress">
+		<image class="rightIcon" src="../../static/my/edit.png"></image>
+	</navigator>
 </view>
+<i-divider wx:if="{{addressList.length == 0}}" content="请新增收货地址"></i-divider>
 
-<i-button i-class="getBtn" bind:click="handleClick" type="primary">立即领取</i-button>
+<view class="btnBox">
+	<navigator url="editAddress">
+		<i-button i-class="getBtn" bind:click="handleClick" type="primary">新增地址</i-button>
+	</navigator>
+</view>

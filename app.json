@@ -9,7 +9,9 @@
     "pages/gift/fragments",
     "pages/my/my",
     "pages/my/giftStatus",
-    "pages/my/adressList"
+    "pages/my/adressList",
+    "pages/my/sureOrder",
+    "pages/my/editAddress"
   ],
   "window": {
     "navigationBarTitleText": "WeChat",

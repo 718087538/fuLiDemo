@@ -1,11 +1,10 @@
+/* pages/my/sureOrder.wxss */
 /* pages/my/adressList.wxss */
 .addressArea{
   padding: 20rpx 100rpx 20rpx 20rpx;
   color: #333;
   position: relative;
-  margin: 0 20rpx;
-  display: block;
-  border-bottom:2rpx solid rgb(214, 212, 212);
+  /* border-bottom:4rpx solid rgb(214, 212, 212); */
 }
 .addressArea .line1{
   display: flex;
@@ -36,4 +35,10 @@
   line-height: 130rpx;
   font-size: 30rpx  !important;
   bottom: 30rpx ;
+}
+.noAddress{
+  height: 130rpx;
+  line-height: 130rpx;
+  font-size: 30rpx;
+  color: #444;
 }
