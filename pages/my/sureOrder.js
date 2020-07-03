@@ -1,36 +1,51 @@
 // pages/my/sureOrder.js
-const WXAPI = require('../../wxapi/main')
+const WXAPI = require('../../wxapi/main');
+const {
+  $Toast
+} = require('../../dist/base/index');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imageURL:"http://img4.imgtn.bdimg.com/it/u=2853553659,1775735885&fm=26&gp=0.jpg",
-    address:{
-      name:"",
-      phone:'',
-      info:''
+    imageURL: "http://img4.imgtn.bdimg.com/it/u=2853553659,1775735885&fm=26&gp=0.jpg",
+    address: {
+      name: "",
+      phone: '',
+      info: ''
     },
-    goods:{
+    goods: {
 
     }
   },
-  nowGet:function(){
-    console.log(this.data.goods)
+  nowGet: function () {
+    console.log(this.data.goods.giftId)
+    
     //这里需要继续做
     WXAPI.nowGet({
       openId: wx.getStorageSync('openid'),
-      giftId:this.data.giftId,
-      getCode:this.data.goods.getCode,
-      name:this.data.address.name,
-      receivephone:this.data.address.receivephone, 
-      provinces:this.data.address.provinces, 
-      city:this.data.address.city, 
-      county:this.data.address.county, 
-      info:this.data.address.info
+      giftId: this.data.goods.giftId,
+      getCode: this.data.goods.getCode,
+      name: this.data.address.name,
+      receivephone: this.data.address.receivephone,
+      provinces: this.data.address.provinces,
+      city: this.data.address.city,
+      county: this.data.address.county,
+      info: this.data.address.info
     }).then(res => {
       console.log("领取商品的结果", res)
+      if (res.code == 200) {
+        $Toast({
+          content: '领取成功',
+          type: 'success',
+        });
+        setTimeout(() => {
+          wx.switchTab({
+            url: '/pages/my/my',
+          })
+        }, 700);
+      }
     })
   },
   /**
@@ -38,30 +53,53 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
-    WXAPI.getAddress({
-      openId: wx.getStorageSync('openid')
-    }).then(res => {
-      console.log("收货地址", res.data)
-      for(let i of res.data){
-        if(i.isDefalut === 1){
-          this.setData({
-            address:i
-          })
-          break
-        }
-      }
-    })
-
-       //请求待领取的商品
-       WXAPI.getGood({
-        uid: wx.getStorageSync('openid'),
-        giftId:options.giftId
+    //如果传了selAddressId 代表是选择了地址，然后回来订单确认界面，则请求单个地址
+    if (options.selAddressId) {
+      WXAPI.getAddress({
+        openId: wx.getStorageSync('openid'),
+        addressId: options.selAddressId
       }).then(res => {
-        console.log("changeGoodRES", res.data)
+        console.log("单个收货地址", res.data)
         this.setData({
-          goods:res.data[0]
+          address: res.data[0]
         })
       })
+    } else {
+      WXAPI.getAddress({
+        openId: wx.getStorageSync('openid')
+      }).then(res => {
+        for (let i of res.data) {
+          if (i.isDefalut === 1) {
+            this.setData({
+              address: i
+            })
+            break
+          }
+        }
+        //如果循环了一圈也没发现默认地址，则拿第一个地址展示
+        if (this.data.address.info == '') {
+          this.setData({
+            address: res.data[0]
+          })
+        }
+      })
+    }
+
+
+    //请求待领取的商品
+    wx.setStorageSync('giftId', options.giftId);
+    wx.setStorageSync('getCode', options.getCode);
+    console.log("设置缓存getCode", wx.getStorageSync('getCode'))
+    WXAPI.getGood({
+      uid: wx.getStorageSync('openid'),
+      giftId: wx.getStorageSync('giftId'),
+      getCode: wx.getStorageSync('getCode'),
+    }).then(res => {
+      console.log("changeGoodRES", res.data)
+      this.setData({
+        goods: res.data[0]
+      })
+    })
   },
 
   /**

@@ -64,5 +64,6 @@ module.exports = {
   getGood:data => request('/wxClient/changeGood','get',data),//请求待领取的商品
   getAddress:data => request('/wxClient/addAdress','get',data),//请求收获地址
   addAddress:data => request('/wxClient/addAdress','post',data),//添加收货地址
-  nowGet:data => request('/wxClient/nowGetGood','post',data),//添加收货地址
+  nowGet:data => request('/wxClient/nowGetGood','post',data),//我的，合成商品
+  delAddress:data => request('/wxClient/addAdress','delete',data)//删除一条收货地址
 }

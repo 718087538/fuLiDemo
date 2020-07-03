@@ -27,3 +27,7 @@
   color: #333;
   flex:1
 }
+.navBox{
+  display: flex;
+  justify-content: space-around;
+}

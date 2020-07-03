@@ -1,3 +1,4 @@
+<!--pages/my/manAddress.wxml-->
 <!--pages/my/adressList.wxml-->
 <view class="addressArea" wx:for="{{addressList}}" wx:key="*this">
 <navigator url="/pages/my/sureOrder?selAddressId={{item._id}}">

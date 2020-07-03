@@ -11,7 +11,8 @@
     "pages/my/giftStatus",
     "pages/my/adressList",
     "pages/my/sureOrder",
-    "pages/my/editAddress"
+    "pages/my/editAddress",
+    "pages/my/manAddress"
   ],
   "window": {
     "navigationBarTitleText": "WeChat",

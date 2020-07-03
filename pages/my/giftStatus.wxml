@@ -9,7 +9,8 @@
         <image src="../../static/banner/b1.jpg"></image>
         <view class="title">{{item.goodsInfo[0].giftName}}</view>
         <!-- <i-button bind:click="getGift" data-giftid="{{item.giftId}}" type="primary">领取</i-button> -->
-        <navigator url="/pages/my/sureOrder?giftId={{item.giftId}}">
+        <navigator url="/pages/my/sureOrder?giftId={{item.giftId}}&getCode={{item.getCode}}">
+          <view>{{item.getCode}}</view>
           <i-button  type="primary">领取</i-button>
         </navigator>
       </view>

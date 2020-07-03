@@ -29,3 +29,5 @@
 <view class="btnBox">
 	<i-button i-class="getBtn" bind:click="nowGet" type="primary">立即领取</i-button>
 </view>
+
+<i-toast id="toast" />

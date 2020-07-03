@@ -18,7 +18,19 @@ Page({
     showArea: false, //是否显示地址选择栏目
     ssq: [], //已选择的省市区
     setDefault: false,
+    visible2: false,
+    addressId:'',
     areaList: area.default.area
+  },
+  handleOpen2() {
+    this.setData({
+      visible2: true
+    });
+  },
+  handleClose2() {
+    this.setData({
+      visible2: false
+    });
   },
   submit: function () {
     //   $Toast({
@@ -67,29 +79,29 @@ Page({
     let newAddress = {
       openId: wx.getStorageSync('openid'),
       phone: '',
-      name: 'asdasd',
+      name: '孙悟空3',
       receivephone: '15989161010',
-      provinces: '省份',
-      city:  '省份',
-      county:  '省份',
-      info:  '省份',
+      provinces: '广东省',
+      city: '广州市',
+      county: '从化区',
+      info: '从化人民公园',
       isDefalut: 1
     }
     WXAPI.addAddress(
       newAddress
     ).then(res => {
       console.log("收货地址回应", res)
-      if(res.code ==200){
+      if (res.code == 200) {
         $Toast({
           content: '保存成功',
           type: 'success',
         });
-    
+
         setTimeout(() => {
           wx.navigateTo({
             url: '/pages/my/adressList',
           })
-        }, 700);
+        },600);
       }
       // this.setData({
       //   addressList: res.data
@@ -99,6 +111,31 @@ Page({
 
 
 
+  },
+  //确定删除地址
+  sureDel: function (){
+    console.log(this.data.addressId)
+    let req = {
+      id:this.data.addressId
+    }
+    WXAPI.delAddress(req).then(res => {
+      if (res.code == 200) {
+        $Toast({
+          content: '删除成功',
+          type: 'success',
+        });
+        setTimeout(() => {
+          wx.navigateTo({
+            url: '/pages/my/adressList',
+          })
+        }, 600);
+      }
+    })
+  },
+  delAddress: function () {
+    this.setData({
+      visible2: true
+    });
   },
   changeStatus: function () {
     this.setData({
@@ -131,7 +168,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options.addressId)
+    this.setData({
+      addressId:options.addressId
+    })
   },
 
   /**

@@ -9,7 +9,7 @@
   position: fixed;
   line-height: 130rpx;
   font-size: 30rpx  !important;
-  bottom: 30rpx ;
+  bottom: 110rpx ;
 }
 
 .selArea{

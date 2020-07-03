@@ -12,9 +12,15 @@
 </i-cell-group>
 <van-area class="selArea" area-list="{{ areaList }}" wx:if="{{showArea}}" value="110101" bind:confirm="confirm" bind:cancel="cancel"/>
 
+<i-modal visible="{{ visible2 }}" bind:ok="sureDel" bind:cancel="handleClose2">
+    <view>是否删除地址？</view>
+</i-modal>
 <view class="btnBox">
 	<i-button i-class="getBtn" bind:click="submit" type="primary">确定</i-button>
+	<i-button i-class="getBtn" bind:click="delAddress" type="error ">删除地址</i-button>
+
 </view>
 
 
 <i-toast id="toast" />
+<i-message id="message" />

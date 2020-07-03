@@ -12,6 +12,7 @@
 		收获地址
 	</i-button>
 </navigator>
+<view class="navBox">
 
 <navigator url="giftStatus?active=0">
 	<i-button type="success" inline>
@@ -33,4 +34,6 @@
 		已签收
 	</i-button>
 </navigator>
+
+</view>
 <i-toast id="toast" />

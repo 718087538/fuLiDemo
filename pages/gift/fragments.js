@@ -125,12 +125,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    console.log("options",options)
     var that = this;//把this对象复制到临时变量that
     const wxreq = wx.request({
       url: `http://127.0.0.1:7001/api/wxClient/giftInfo?uid=${wx.getStorageSync('openid')}&giftId=${options.giftId}`,
       success: function (res){
-        console.log(res.data.data);
+        console.log("拼图进度========>",res);
         if(res.data.data === null){
           console.log("no gift progress")
           //证明没有该奖品的记录，所以碎片应为0
