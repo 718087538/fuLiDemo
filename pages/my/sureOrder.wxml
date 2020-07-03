@@ -5,11 +5,11 @@
 
 		<view class="line1"  wx:if="{{address.info != ''}}">
 			<view>收货人：{{address.name}}</view>
-			<view class="phone">联系方式：{{address.phone}}</view>
+			<view class="phone">联系方式：{{address.receivephone}}</view>
 		</view>
 		<view class="line2"  wx:if="{{address.info != ''}}">
 			收货地址：
-		{{address.info}}
+		{{address.provinces}}{{address.city}}{{address.county}}{{address.info}}
 		</view>
 		<view class="noAddress" wx:if="{{address.info == ''}}">请新增收获地址</view>
 		<image class="rightIcon" src="../../static/my/right.png"></image>
@@ -18,12 +18,14 @@
 </navigator>
 
 <view class="goodsBox">
-	<van-card num="1" price="0.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" />
+	<van-card num="1" price="0.00" desc="{{goods.goodsInfo[0].describe}}" title="{{goods.goodsInfo[0].giftName}}" thumb="{{ goods.goodsInfo[0].imgSrc}}" />
 	<van-cell-group>
 		<van-cell title="运费" value="免运费" />
 	</van-cell-group>
 </view>
+<view>
 
+</view>
 <view class="btnBox">
-	<i-button i-class="getBtn" bind:click="handleClick" type="primary">立即领取</i-button>
+	<i-button i-class="getBtn" bind:click="nowGet" type="primary">立即领取</i-button>
 </view>

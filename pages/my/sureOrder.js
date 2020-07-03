@@ -11,9 +11,28 @@ Page({
       name:"",
       phone:'',
       info:''
+    },
+    goods:{
+
     }
   },
-
+  nowGet:function(){
+    console.log(this.data.goods)
+    //这里需要继续做
+    WXAPI.nowGet({
+      openId: wx.getStorageSync('openid'),
+      giftId:this.data.giftId,
+      getCode:this.data.goods.getCode,
+      name:this.data.address.name,
+      receivephone:this.data.address.receivephone, 
+      provinces:this.data.address.provinces, 
+      city:this.data.address.city, 
+      county:this.data.address.county, 
+      info:this.data.address.info
+    }).then(res => {
+      console.log("领取商品的结果", res)
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -23,10 +42,26 @@ Page({
       openId: wx.getStorageSync('openid')
     }).then(res => {
       console.log("收货地址", res.data)
-      // this.setData({
-      //   waitGetList:res.data
-      // })
+      for(let i of res.data){
+        if(i.isDefalut === 1){
+          this.setData({
+            address:i
+          })
+          break
+        }
+      }
     })
+
+       //请求待领取的商品
+       WXAPI.getGood({
+        uid: wx.getStorageSync('openid'),
+        giftId:options.giftId
+      }).then(res => {
+        console.log("changeGoodRES", res.data)
+        this.setData({
+          goods:res.data[0]
+        })
+      })
   },
 
   /**
