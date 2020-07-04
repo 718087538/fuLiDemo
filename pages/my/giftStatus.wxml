@@ -33,7 +33,7 @@
         <!-- <view slot="content">快递公司：韵达快递</view> -->
         <view slot="footer">快递单号：{{item.orderId}}
         <i-button i-class="copyOrderBtn" bind:click="copyOrderBtn" type="success" inline size="default">复制</i-button>
-         <i-button i-class="copyOrderBtn sureOrder" data-id="{{item._id}}" bind:click="sureOrder" type="success" inline size="default">确认收货</i-button>
+         <i-button i-class="copyOrderBtn sureOrder" data-id="{{item._id}}" bind:click="sureReceveOrder" type="success" inline size="default">确认收货</i-button>
         </view>
       </i-card>
       </view> 

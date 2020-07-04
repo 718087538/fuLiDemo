@@ -36,10 +36,17 @@ Page({
     }).then(res => {
       console.log("领取商品的结果", res)
       if (res.code == 200) {
+        wx.removeStorage({
+          key: 'fromPage',
+          success (res) {
+            console.log('删除缓存成功');
+          }
+        })
         $Toast({
           content: '领取成功',
           type: 'success',
         });
+
         setTimeout(() => {
           wx.switchTab({
             url: '/pages/my/my',

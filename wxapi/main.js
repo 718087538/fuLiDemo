@@ -69,4 +69,5 @@ module.exports = {
   updateAddress:data => request('/wxClient/addAdress','put',data),//更新收货地址
   waitSend:data => request('/wxClient/waitSend','get',data),//
   sureOrder:data => request('/wxClient/sureOrder','put',data),//确认收货
+  getNotice:data => request('/admin/addHomeNotice','get',data),//获取已发布的通知
 }

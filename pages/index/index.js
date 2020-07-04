@@ -5,6 +5,11 @@ const {
   $Toast
 } = require('../../dist/base/index');
 let start_Time, djs_data, sc_time, test;
+
+const WXAPI = require('../../wxapi/main')
+
+
+
 Page({
 
 
@@ -27,7 +32,9 @@ Page({
     vertical: false,
     autoplay: true,
     interval: 2000,
-    duration: 1000
+    duration: 1000,
+    noticeList:[],//首页通知的列表
+    playNoticeSpeed:1600,//通知滚动速度，根据数量来计算，2.5s *n 
   },
   handleChange({
     detail
@@ -70,6 +77,21 @@ Page({
 
   },
   onLoad: function () {
+    WXAPI.getNotice(
+      {
+        isUse:1
+      }
+    ).then(res => {
+      console.log("tongzhi ", res)
+      if (res.code == 200) {
+      }
+      this.setData({
+        noticeList: res.data,
+        // playNoticeSpeed:res.data.length * 2500
+      })
+    })
+
+
     var that = this;//把this对象复制到临时变量that
     const wxreq = wx.request({
       url: 'https://api.orderour.com/api/admin/upGoods',
@@ -89,6 +111,8 @@ Page({
     //     console.log('loginCode:', res)
     //   }
     // });
+
+
   },
  
   getUserInfo: function (e) {

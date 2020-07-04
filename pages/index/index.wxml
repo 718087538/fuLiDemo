@@ -13,6 +13,9 @@
 			</swiper>
 		</view>
 	</view>
+<i-notice-bar icon="systemprompt" loop speed="{{playNoticeSpeed}}">
+		<view  class="notice"  wx:for="{{noticeList}}" wx:key="index">通知{{index+1}}：{{item.content}}；</view>
+</i-notice-bar>
 	<view class="middleBanner">
 	<navigator class="a" url="../jiFen/jifen">
 		<image src="../../static/banner/banner_min.png"></image>

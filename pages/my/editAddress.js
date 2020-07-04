@@ -43,7 +43,7 @@ Page({
         content: '请输入手机号',
       });
       return false;
-    } else if (this.data.ssq.length == 0) {
+    } else if (this.data.value3 == "") {
       $Toast({
         content: '请选择省市区',
       });
@@ -120,7 +120,7 @@ Page({
         content: '请输入手机号',
       });
       return false;
-    } else if (this.data.ssq.length == 0) {
+    } else if (this.data.value3 == "") {
       $Toast({
         content: '请选择省市区',
       });
@@ -248,6 +248,11 @@ Page({
         value2: datas.receivephone,
         value3: `${datas.provinces},${datas.city},${datas.county}`,
         value4: datas.info,
+        ssq:[
+          {name:datas.provinces},
+          {name:datas.city},
+          {name:datas.county},
+        ]
       })
     })
     this.setData({

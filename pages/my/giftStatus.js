@@ -30,7 +30,7 @@ Page({
       }
     })
   },
-  sureOrder(e) {
+  sureReceveOrder(e) {
     console.log(e.currentTarget.dataset.id)
     let id = e.currentTarget.dataset.id;
     WXAPI.sureOrder({
@@ -43,6 +43,7 @@ Page({
           type: 'success',
         });
       }
+      this.sureOrder();
       this.setData({
         active: 3,
       })
@@ -64,10 +65,10 @@ Page({
     } else if (event.detail.index == 3) {
       this.sureOrder();
     }
-    wx.showToast({
-      title: `切换到标签 ${event.detail.index}`,
-      icon: 'none',
-    });
+    // wx.showToast({
+    //   title: `切换到标签 ${event.detail.index}`,
+    //   icon: 'none',
+    // });
   },
   /**
    * 生命周期函数--监听页面加载
