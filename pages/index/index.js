@@ -21,20 +21,35 @@ Page({
   },
 
   data: {
+    swiperList:[],
     motto: 'Hello World',
     userInfo: {},
     current: 'homepage',
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    background: [{ src: "../../static/banner/b1.jpg"}, { src: "../../static/banner/b2.jpg"}, { src: "../../static/banner/b3.jpg"}],
-    giftList: [{ src: "../../static/banner/b1.jpg"},{ src: "../../static/banner/b1.jpg"}, { src: "../../static/banner/b2.jpg"}, { src: "../../static/banner/b3.jpg"}],
+    background: [{
+      src: "../../static/banner/b1.jpg"
+    }, {
+      src: "../../static/banner/b2.jpg"
+    }, {
+      src: "../../static/banner/b3.jpg"
+    }],
+    giftList: [{
+      src: "../../static/banner/b1.jpg"
+    }, {
+      src: "../../static/banner/b1.jpg"
+    }, {
+      src: "../../static/banner/b2.jpg"
+    }, {
+      src: "../../static/banner/b3.jpg"
+    }],
     indicatorDots: true,
     vertical: false,
     autoplay: true,
     interval: 2000,
     duration: 1000,
-    noticeList:[],//首页通知的列表
-    playNoticeSpeed:1600,//通知滚动速度，根据数量来计算，2.5s *n 
+    noticeList: [], //首页通知的列表
+    playNoticeSpeed: 1600, //通知滚动速度，根据数量来计算，2.5s *n 
   },
   handleChange({
     detail
@@ -76,31 +91,40 @@ Page({
     secret: 'e0dassdadef2424234209bwqqweqw123ccqwa', //secret需自己提供，此处的secret我随机编写
 
   },
+  getSwiper: function () {
+    WXAPI.getSwiper({}).then(res => {
+      console.log("轮播图", res)
+      this.setData({
+        swiperList:res.data
+      })
+    })
+  },
   onLoad: function () {
-    WXAPI.getNotice(
-      {
-        isUse:1
-      }
-    ).then(res => {
+    
+    WXAPI.getNotice({
+      isUse: 1
+    }).then(res => {
       console.log("tongzhi ", res)
-      if (res.code == 200) {
-      }
+      if (res.code == 200) {}
       this.setData({
         noticeList: res.data,
         // playNoticeSpeed:res.data.length * 2500
       })
     })
 
+    this.getSwiper();
 
-    var that = this;//把this对象复制到临时变量that
+    var that = this; //把this对象复制到临时变量that
     const wxreq = wx.request({
       url: 'https://api.orderour.com/api/admin/upGoods',
-      success: function (res){
+      success: function (res) {
         console.log(res.data);
         // this.userData = res.data; //无效不能实时的渲染到页面
-        that.setData({ giftList: res.data.data });//和页面进行绑定可以动态的渲染到页面
+        that.setData({
+          giftList: res.data.data
+        }); //和页面进行绑定可以动态的渲染到页面
       },
-      fail: function (res){
+      fail: function (res) {
         console.log(res.data);
         this.userData = "数据获取失败";
       }
@@ -114,7 +138,7 @@ Page({
 
 
   },
- 
+
   getUserInfo: function (e) {
     app.globalData.userInfo = e.detail.userInfo
     this.setData({

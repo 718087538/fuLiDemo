@@ -128,7 +128,7 @@ Page({
     console.log("options",options)
     var that = this;//把this对象复制到临时变量that
     const wxreq = wx.request({
-      url: `http://127.0.0.1:7001/api/wxClient/giftInfo?uid=${wx.getStorageSync('openid')}&giftId=${options.giftId}`,
+      url: `https://api.orderour.com/api/wxClient/giftInfo?uid=${wx.getStorageSync('openid')}&giftId=${options.giftId}`,
       success: function (res){
         console.log("拼图进度========>",res);
         if(res.data.data === null){
