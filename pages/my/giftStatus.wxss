@@ -4,6 +4,7 @@
   width: 100%;
   display: flex;
   align-items: center;
+  margin: 10rpx 0;
 }
 .li image{
   width: 100rpx;
@@ -34,4 +35,7 @@
   width: 100rpx;
   height: 100rpx;
   margin: 60rpx auto 30rpx;
+}
+.sureOrder{
+  width:150rpx !important;
 }

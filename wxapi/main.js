@@ -1,8 +1,8 @@
 // 小程序开发api接口统一配置
 // 如果你的域名是： https://www.baidu.com/cn 那么这里只要填写 cn
 let subDomain = '/api'  // 子域名,没有就等于''
-const API_BASE_URL = 'http://127.0.0.1:7001'  // 主域名 本地
-// const API_BASE_URL = 'https://orderour.com'  // 主域名 服务器
+// const API_BASE_URL = 'http://127.0.0.1:7001'  // 主域名 本地
+const API_BASE_URL = 'https://api.orderour.com'  // 主域名 服务器
  
  
 const request = (url, method, data) => {
@@ -65,5 +65,8 @@ module.exports = {
   getAddress:data => request('/wxClient/addAdress','get',data),//请求收获地址
   addAddress:data => request('/wxClient/addAdress','post',data),//添加收货地址
   nowGet:data => request('/wxClient/nowGetGood','post',data),//我的，合成商品
-  delAddress:data => request('/wxClient/addAdress','delete',data)//删除一条收货地址
+  delAddress:data => request('/wxClient/addAdress','delete',data),//删除一条收货地址
+  updateAddress:data => request('/wxClient/addAdress','put',data),//更新收货地址
+  waitSend:data => request('/wxClient/waitSend','get',data),//
+  sureOrder:data => request('/wxClient/sureOrder','put',data),//确认收货
 }

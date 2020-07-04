@@ -1,7 +1,7 @@
 <!--pages/my/manAddress.wxml-->
 <!--pages/my/adressList.wxml-->
 <view class="addressArea" wx:for="{{addressList}}" wx:key="*this">
-<navigator url="/pages/my/sureOrder?selAddressId={{item._id}}">
+
 	<view class="line1">
 		<view>收件人：{{item.name}}</view>
 		<view class="phone">{{item.receivephone}}</view>
@@ -13,7 +13,6 @@
 		{{item.county}}
 		{{item.info}}
 	</view>
-	</navigator>
 	<navigator url="/pages/my/editAddress?addressId={{item._id}}">
 		<image class="rightIcon" src="../../static/my/edit.png"></image>
 	</navigator>

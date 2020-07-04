@@ -7,7 +7,7 @@
 		<view>13400000001</view>
 	</view>
 </view>
-<navigator url="adressList?fromPage=my">
+<navigator url="manAddress?fromPage=my">
 	<i-button type="success" inline>
 		收获地址
 	</i-button>

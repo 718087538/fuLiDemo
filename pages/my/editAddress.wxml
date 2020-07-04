@@ -16,7 +16,8 @@
     <view>是否删除地址？</view>
 </i-modal>
 <view class="btnBox">
-	<i-button i-class="getBtn" bind:click="submit" type="primary">确定</i-button>
+	<i-button i-class="getBtn" wx:if="{{addressId ==''}}" bind:click="submit" type="primary">确定</i-button>
+		<i-button i-class="getBtn" wx:if="{{addressId !=''}}" bind:click="save" type="primary">保存</i-button>
 	<i-button i-class="getBtn" bind:click="delAddress" type="error ">删除地址</i-button>
 
 </view>
