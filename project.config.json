@@ -171,8 +171,13 @@
 				},
 				{
 					"id": -1,
+<<<<<<< HEAD
 					"name": "pages/jiFen/jifen",
 					"pathName": "pages/jiFen/jifen",
+=======
+					"name": "pages/my/suggeston",
+					"pathName": "pages/my/suggeston",
+>>>>>>> e9a18f677c29c141512a94c9edf423041b06d76e
 					"scene": null
 				}
 			]

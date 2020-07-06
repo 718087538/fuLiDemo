@@ -75,6 +75,6 @@ module.exports = {
   lowEnergy:data => request('/wxClient/getEnergy','put',data),
   getFragment:data => request('/wxClient/fragment','get',data),//请求分配碎片
   getScore:data => request('/admin/score','get',data),//请求获得碎片最少应当分数
-
+  addSuggestion:data => request('/wxClient/suggestion','post',data),//提交意见
 
 }

@@ -1,0 +1,18 @@
+<!--pages/my/suggeston.wxml-->
+<textarea class="suggestionText" value="{{ content }}"  bindinput="onChange" data-prop="content"    placeholder="请填写">
+
+</textarea>
+<view class='inputBox'>
+	<i-panel title="基础用法">
+		<!-- <i-input  model:value="{{ value1 }}"  title="您的联系方式" placeholder="手机号/微信/QQ/Email" maxlength="20" /> -->
+		<i-input model:value="{{ callMe }}" title="您的联系方式"  placeholder="手机号/微信/QQ/Email" />
+	
+	</i-panel>
+	</view>
+<!-- <view>{{name}}</view> -->
+
+<!-- <input value="{{ name }}" bind:change="onChange" data-prop="name" placeholder="请输入手机号" type="number" ></input> -->
+
+	<i-button bind:click="submit" type="success">立即提交</i-button>
+
+<i-toast id="toast" />

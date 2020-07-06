@@ -1,39 +1,54 @@
 <!--pages/my/my.wxml-->
 <view class="myInfo">
 	<image class="bg" src="../../static/my/my_banner_bg.png"></image>
-	<image class="headImg" src="{{headSrc}}"></image>
+	<!-- <image class="headImg" src="{{headSrc}}"></image> -->
+	<view class="headImgBox">
+		<open-data class="headImg" type="userAvatarUrl"></open-data>
+
+	</view>
 	<view class="name">
-		<view>微信昵称</view>
-		<view>13400000001</view>
+		<!-- <view>微信昵称</view> -->
+		<open-data type="userNickName" lang="zh_CN"></open-data>
+		<!-- <view>13400000001</view> -->
 	</view>
 </view>
-<navigator url="manAddress?fromPage=my">
-	<i-button type="success" inline>
-		收获地址
-	</i-button>
-</navigator>
+
 <view class="navBox">
+	<navigator class="navItem" url="giftStatus?active=0">
+		<image src="../../static/my/status1.png"></image>
+		<view>待领取</view>
+	</navigator>
+	<navigator class="navItem" url="giftStatus?active=1">
+		<image src="../../static/my/status2.png"></image>
+		<view>待发货</view>
+	</navigator>
+	<navigator class="navItem" url="giftStatus?active=2">
+		<image src="../../static/my/status3.png"></image>
+		<view>待收获</view>
+	</navigator>
+	<navigator class="navItem" url="giftStatus?active=3">
+		<image src="../../static/my/status4.png"></image>
+		<view>已签收</view>
+	</navigator>
 
-<navigator url="giftStatus?active=0">
-	<i-button type="success" inline>
-		待领取
-	</i-button>
-</navigator>
-<navigator url="giftStatus?active=1">
-	<i-button type="success" inline>
-		待发货
-	</i-button>
-</navigator>
-<navigator url="giftStatus?active=2">
-	<i-button type="success" inline>
-		已发货
-	</i-button>
-</navigator>
-<navigator url="giftStatus?active=3">
-	<i-button type="success" inline>
-		已签收
-	</i-button>
-</navigator>
+</view>
+<view class="navList">
+	<navigator class="navItem" url="manAddress?fromPage=my">
+		<image src="../../static/my/status5.png"></image>
 
+		<view>收货地址</view>
+
+	</navigator>
+
+	<navigator class="navItem" url="suggeston">
+		<image src="../../static/my/status6.png"></image>
+		<view>意见反馈</view>
+	</navigator>
+	<navigator class="navItem" >
+
+	</navigator>
+	<navigator class="navItem" >
+
+	</navigator>
 </view>
 <i-toast id="toast" />

@@ -12,7 +12,8 @@
     "pages/my/adressList",
     "pages/my/sureOrder",
     "pages/my/editAddress",
-    "pages/my/manAddress"
+    "pages/my/manAddress",
+    "pages/my/suggeston"
   ],
   "window": {
     "navigationBarTitleText": "WeChat",

@@ -1,4 +1,10 @@
 /* pages/my/my.wxss */
+.headImgBox{
+  border-radius: 50%;
+  overflow: hidden;
+  width: 130rpx;
+  height: 130rpx;
+}
 .myInfo{
   margin: 10rpx 20rpx;
   height: 360rpx;
@@ -29,5 +35,40 @@
 }
 .navBox{
   display: flex;
+  font-size: 14px;
+  height: 60px;
+  padding: 6px 0 4rpx;
+  margin: 0 20rpx;
+  border-radius: 20rpx;
+  background: rgb(227, 230, 228);
   justify-content: space-around;
+  color: #333;
+}
+.navBox image{
+  width: 70rpx;
+  height: 70rpx;
+}
+.navItem{
+  width: 90rpx;
+  height: 90rpx;
+  text-align: center;
+}
+.navList {
+  display: flex;
+  font-size: 14px;
+  justify-content: space-around;
+  height: 60px;
+  padding: 6px 0 4rpx;
+  margin: 20rpx;
+  border-radius: 20rpx;
+  color: #333;
+}
+.navList image{
+    width: 70rpx;
+    height: 70rpx;
+  }
+.navList .navItem{
+  width: 140rpx;
+  height: 90rpx;
+  text-align: center;
 }
