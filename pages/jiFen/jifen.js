@@ -1,5 +1,9 @@
 // pages/jiFen/jifen.js
-const { $Toast } = require('../../dist/base/index');
+const {
+  $Toast
+} = require('../../dist/base/index');
+const WXAPI = require('../../wxapi/main')
+
 let start_Time, djs_data, sc_time, test;
 Page({
 
@@ -8,7 +12,7 @@ Page({
    */
   data: {
     djs_data: 0,
-    energy: 5, //体力要动态获取
+    energy: 0, //体力要动态获取
     imgs: [{
         src: "../../static/00.jpg"
       },
@@ -63,13 +67,28 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     results: 0, //打地鼠成绩
+    latest: 8, //最少达到指定分数才能获得碎片，后台可控
     beforeI: "", //存储上一次的i,避免出现在相同位置时出现bug
     playOver: true, //是否玩完了这局
     current: 'homepage',
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    background: [{ src: "../../static/banner/b1.jpg"}, { src: "../../static/banner/b2.jpg"}, { src: "../../static/banner/b3.jpg"}],
-    giftList: [{ src: "../../static/banner/b1.jpg"},{ src: "../../static/banner/b1.jpg"}, { src: "../../static/banner/b2.jpg"}, { src: "../../static/banner/b3.jpg"}],
+    background: [{
+      src: "../../static/banner/b1.jpg"
+    }, {
+      src: "../../static/banner/b2.jpg"
+    }, {
+      src: "../../static/banner/b3.jpg"
+    }],
+    giftList: [{
+      src: "../../static/banner/b1.jpg"
+    }, {
+      src: "../../static/banner/b1.jpg"
+    }, {
+      src: "../../static/banner/b2.jpg"
+    }, {
+      src: "../../static/banner/b3.jpg"
+    }],
     indicatorDots: true,
     vertical: false,
     autoplay: true,
@@ -91,19 +110,41 @@ Page({
       current: detail.key
     });
   },
+
   //开始游戏
   startGame() {
     if (!this.data.playOver) {
       console.log("游戏中")
       return false;
     }
-    if (this.data.energy <= 0) {
-      this.noEnery();
+    if (this.data.energy > 0) {
+      WXAPI.lowEnergy({
+        openId: wx.getStorageSync('openid'),
+        dos: 'decrease'
+      }).then(res => {
+        console.log("减体力成功", res)
+        if (res.code == 200) {
+          this.setData({
+            energy: this.data.energy - 1
+          })
+        } else if (res.code == 201) {
+          console.log("体力不足=========")
+        }
+      })
+    } else if (this.data.energy == 0) {
+      $Toast({
+        content: '体力不足'
+      });
       return false;
     }
+
+    // if (this.data.energy <= 0) {
+    //   this.noEnery();
+    //   return false;
+    // }
     this.setData({
       playOver: false, //设置游戏中
-      energy: this.data.energy - 1, //要发送到服务器保存
+      // energy: this.data.energy - 1, //要发送到服务器保存
     })
     sc_time = 10; //游戏时长10s
     //记录游戏开始时间
@@ -232,12 +273,49 @@ Page({
     })
   },
   gameOver() {
-    //false代表游戏没完成，进行中
-    if(!this.data.playOver){
-      $Toast({
-        content: '时间到了'
-      });
+
+    if (this.data.results >= this.data.latest) {
+      //请求分配碎片
+      WXAPI.getFragment({
+        uid: wx.getStorageSync('openid')
+      }).then(res => {
+        console.log("分配碎片结果", res)
+        let picName;
+        switch (res.data.picName) {
+          case 'pic1':
+            picName = "碎片1";
+            break;
+          case 'pic2':
+            picName = "碎片2";
+            break;
+          case 'pic3':
+            picName = "碎片3";
+            break;
+          case 'pic4':
+            picName = "碎片4";
+            break;
+          case 'pic5':
+            picName = "碎片5";
+            break;
+          case 'pic6':
+            picName = "碎片6";
+            break;
+        };
+        if (res.code == 200) {
+          $Toast({
+            content: `恭喜获得${res.data.giftName}${picName}`
+          });
+        }
+      })
+    } else {
+      //false代表游戏没完成，进行中
+      if (!this.data.playOver) {
+        $Toast({
+          content: '好遗憾，分数不足无碎片'
+        });
+      }
     }
+
     this.setData({
       playOver: true //设置游戏完成
     })
@@ -256,18 +334,39 @@ Page({
   globalData: {
     appid: '1wqas2342dasaqwe2323424ac23qwe', //appid需自己提供，此处的appid我随机编写
     secret: 'e0dassdadef2424234209bwqqweqw123ccqwa', //secret需自己提供，此处的secret我随机编写
-
   },
   onLoad: function () {
-    var that = this;//把this对象复制到临时变量that
+    //获取体力
+    WXAPI.getEnergy({
+      openId: wx.getStorageSync('openid')
+    }).then(res => {
+      console.log("体力", res.data)
+      this.setData({
+        energy: res.data
+      })
+    });
+    WXAPI.getScore({
+    
+    }).then(res => {
+      console.log("最少赢得", res.data)
+      this.setData({
+        latest: res.data.score
+      })
+    });
+
+
+
+    var that = this; //把this对象复制到临时变量that
     const wxreq = wx.request({
       url: 'https://api.orderour.com/api/admin/upGoods',
-      success: function (res){
+      success: function (res) {
         console.log(res.data);
         // this.userData = res.data; //无效不能实时的渲染到页面
-        that.setData({ giftList: res.data.data });//和页面进行绑定可以动态的渲染到页面
+        that.setData({
+          giftList: res.data.data
+        }); //和页面进行绑定可以动态的渲染到页面
       },
-      fail: function (res){
+      fail: function (res) {
         console.log(res.data);
         this.userData = "数据获取失败";
       }
@@ -279,7 +378,7 @@ Page({
     //   }
     // });
   },
- 
+
   getUserInfo: function (e) {
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -287,7 +386,7 @@ Page({
       hasUserInfo: true
     })
   },
-  onUnload:function(){
+  onUnload: function () {
     // 生命周期函数--监听页面卸载
     //退出本页面，设置为play结束
     // this.gameOver();

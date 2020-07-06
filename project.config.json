@@ -166,6 +166,13 @@
 					"id": -1,
 					"name": "pages/my/editAddress",
 					"pathName": "pages/my/editAddress",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/jiFen/jifen",
+					"pathName": "pages/jiFen/jifen",
 					"scene": null
 				}
 			]
