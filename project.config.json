@@ -166,6 +166,13 @@
 					"id": -1,
 					"name": "pages/my/editAddress",
 					"pathName": "pages/my/editAddress",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/suggeston",
+					"pathName": "pages/my/suggeston",
 					"scene": null
 				}
 			]

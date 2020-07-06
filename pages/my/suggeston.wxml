@@ -1,0 +1,14 @@
+<!--pages/my/suggeston.wxml-->
+<textarea class="suggestionText" placeholder="请填写">
+
+</textarea>
+<view class='inputBox'>
+	<i-panel title="基础用法">
+		<i-input  value="{{ value3 }}" type="textarea" title="您的联系方式" placeholder="手机号 / 微信 / QQ /Email" maxlength="50" />
+	</i-panel>
+	</view>
+
+
+	<i-button bind:click="submit" type="success">立即提交</i-button>
+
+<i-toast id="toast" />
