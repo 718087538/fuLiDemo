@@ -18,7 +18,7 @@
 </i-notice-bar>
 	<view class="middleBanner">
 	<navigator class="a" url="../jiFen/jifen">
-		<image src="../../static/banner/banner_min.png"></image>
+		<image src="{{comeBtnBg}}"></image>
 	</navigator>
 	</view>
 

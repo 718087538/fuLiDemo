@@ -50,6 +50,7 @@ Page({
     duration: 1000,
     noticeList: '欢迎光临', //首页通知
     playNoticeSpeed: 2000, //通知滚动速度，根据数量来计算，2.5s *n 
+    comeBtnBg:'../../static/banner/b1.jpg'
   },
   handleChange({
     detail
@@ -89,7 +90,6 @@ Page({
   globalData: {
     appid: '1wqas2342dasaqwe2323424ac23qwe', //appid需自己提供，此处的appid我随机编写
     secret: 'e0dassdadef2424234209bwqqweqw123ccqwa', //secret需自己提供，此处的secret我随机编写
-
   },
   getSwiper: function () {
     WXAPI.getSwiper({}).then(res => {
@@ -115,6 +115,16 @@ Page({
         })
       }
     })
+    WXAPI.getComeBtn({
+      isWx: 1
+    }).then(res => {
+      console.log("comebtn ", res)
+      if (res.code == 200) {
+        this.setData({
+          comeBtnBg:res.data[0].imgSrc
+        })
+      }
+    })
 
     this.getSwiper();
 
@@ -133,6 +143,9 @@ Page({
         this.userData = "数据获取失败";
       }
     })
+
+
+
     //获取uuid和code等信息
     // wx.login({
     //   success: function (res) {

@@ -28,19 +28,19 @@
         "iconPath": "image/home.png",
         "selectedIconPath": "image/home_sel.png",
         "pagePath": "pages/index/index",
-        "text": "组件"
+        "text": "奖品架"
       },
       {
         "iconPath": "image/gift.png",
         "selectedIconPath": "image/gift_sel.png",
         "pagePath": "pages/gift/giftList",
-        "text": "奖品列表"
+        "text": "我的奖品"
       },
       {
         "iconPath": "image/notice.png",
         "selectedIconPath": "image/notice_sel.png",
         "pagePath": "pages/index/event",
-        "text": "通知"
+        "text": "商家通知"
       },
       {
         "iconPath": "image/my.png",
