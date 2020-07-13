@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"enhance": false,
 		"postcss": true,
@@ -20,15 +20,15 @@
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
 		},
+		"useIsolateContext": true,
 		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false,
-		"compileHotReLoad": false,
-		"useIsolateContext": true
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.0.4",
@@ -171,13 +171,8 @@
 				},
 				{
 					"id": -1,
-<<<<<<< HEAD
-					"name": "pages/jiFen/jifen",
-					"pathName": "pages/jiFen/jifen",
-=======
 					"name": "pages/my/suggeston",
 					"pathName": "pages/my/suggeston",
->>>>>>> e9a18f677c29c141512a94c9edf423041b06d76e
 					"scene": null
 				}
 			]

@@ -48,8 +48,8 @@ Page({
     autoplay: true,
     interval: 2000,
     duration: 1000,
-    noticeList: [], //首页通知的列表
-    playNoticeSpeed: 1600, //通知滚动速度，根据数量来计算，2.5s *n 
+    noticeList: '欢迎光临', //首页通知
+    playNoticeSpeed: 2000, //通知滚动速度，根据数量来计算，2.5s *n 
   },
   handleChange({
     detail
@@ -104,12 +104,16 @@ Page({
     WXAPI.getNotice({
       isUse: 1
     }).then(res => {
-      console.log("tongzhi ", res)
-      if (res.code == 200) {}
-      this.setData({
-        noticeList: res.data,
-        // playNoticeSpeed:res.data.length * 2500
-      })
+      console.log("tongzhi ", res.data)
+      if (res.code == 200) {
+        let toString = '';
+        for ( let i of res.data){
+          toString+= i.content;
+        }
+        this.setData({
+          noticeList:toString
+        })
+      }
     })
 
     this.getSwiper();

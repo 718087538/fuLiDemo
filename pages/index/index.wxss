@@ -1,7 +1,7 @@
 /**index.wxss**/
-.notice{
+/* .notice{
   display: inline-block;
-}
+} */
 .giftShow {
   display: flex;
   flex-wrap: wrap;
