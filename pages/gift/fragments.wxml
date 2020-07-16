@@ -17,7 +17,8 @@
 	<view class="shadow {{gift.picList[4].pic<1?'shadow4':''}}"></view>
 	<view class="shadow {{gift.picList[5].pic<1?'shadow5':''}}"></view>
 </view>
-<i-button bind:click="synthetic" type="primary" size="small">立即合成</i-button>
+<i-button  wx:if="{{!over}}"  bind:click="synthetic" type="primary" size="small">立即合成</i-button>
+<i-button wx:if="{{over}}" disabled  type="primary" size="small">活动已结束</i-button>
 <view class="picBox">
 	<scroll-view class="rowBox" scroll-x="true" bindscroll="scroll" style="width: 100%">
 		<view id="demo{{index+1}}" data-num="{{index+1}}" bindtap="sel" class="demo  demo-text-1" wx:for="{{gift.picList}}" wx:key="index">

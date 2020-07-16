@@ -5,8 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    marketList: [
-    ]
+    current: 'tab1',
+    current_scroll: 'tab1',
+    marketList: [],
+    startList: [], //已开始列表
+    readyStartList: [], //即将开始列表
+    overList: [], //已过期列表
   },
 
   /**
@@ -14,19 +18,71 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+
+    let nowDate = new Date();
+    let startList = []; //已开始列表
+    let readyStartList = []; //即将开始列表
+    let overList = []; //已过期列表
+
     const wxreq = wx.request({
-      url: 'https://api.orderour.com/api/wxClient/gift?type=wx',
-      success: function (res){
+      url: 'http://127.0.0.1:7001/api/wxClient/gift?type=wx',
+      success: function (res) {
         console.log(res.data);
-        that.setData({ marketList: res.data.data });//和页面进行绑定可以动态的渲染到页面
+        for (let i of res.data.data) {
+          let startDate = new Date(i.startDate);
+          let overDate = new Date(i.overDate);
+          console.log("对比结果", nowDate < startDate.getTime())
+          if (nowDate < startDate.getTime()) {
+            //未开始
+            console.log("未开始", i)
+            let index = readyStartList.length
+            readyStartList[index] = i;
+            console.log(readyStartList);
+          } else if (
+            nowDate > startDate.getTime() &&
+            nowDate < overDate.getTime()
+          ) {
+            //已开始
+          
+            let index = startList.length
+            startList[index] = i;
+          } else if (nowDate > overDate.getTime()) {
+            //已结束
+            let index = overList.length
+            overList[index] = i;
+         
+          }
+        }
+        that.setData({
+          startList,
+          readyStartList,
+          overList,
+        });
+
+        console.log("进行中", startList)
       },
-      fail: function (res){
+      fail: function (res) {
         console.log(res.data);
         // this.userData = "数据获取失败";
       }
     })
   },
+  handleChange({
+    detail
+  }) {
+    this.setData({
+      current: detail.key
+    });
+  },
 
+
+  handleChangeScroll({
+    detail
+  }) {
+    this.setData({
+      current_scroll: detail.key
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -75,5 +131,5 @@ Page({
   onShareAppMessage: function () {
 
   }
-  
+
 })

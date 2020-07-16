@@ -47,6 +47,7 @@ Page({
     uid:"",
     giftId:"",
     picNum:"",
+    over:false,//奖品是否结束
     showShareList: [
       {
           name: '取消'
@@ -125,7 +126,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("options",options)
+    console.log("options",options);
+    if(options.over){
+      this.setData({
+        over:true
+      })
+    }
+   
     var that = this;//把this对象复制到临时变量that
     const wxreq = wx.request({
       url: `https://api.orderour.com/api/wxClient/giftInfo?uid=${wx.getStorageSync('openid')}&giftId=${options.giftId}`,

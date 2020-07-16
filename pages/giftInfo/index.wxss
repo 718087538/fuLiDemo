@@ -1,9 +1,63 @@
 /* pages/giftInfo/index.wxss */
-.eventList{
+.eventList {
+  border: none;
+  width: auto;
+
 }
-.eventList image{
-  width: 100%;
+
+.eventList image {
+  width: auto;
+  display:block;
+  vertical-align:middle;
+  object-fit: cover
 }
-.box{
+
+.box {
   padding: 20rpx;
+}
+
+.goGet {
+  width: 180rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+  position: fixed;
+  bottom: 160rpx;
+  right: 50rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  background-color: rgb(145, 175, 240);
+  -webkit-animation-name: scaleDraw;
+  /*关键帧名称*/
+  -webkit-animation-timing-function: ease-in-out;
+  /*动画的速度曲线*/
+  -webkit-animation-iteration-count: infinite;
+  /*动画播放的次数*/
+  -webkit-animation-duration: 5s;
+  /*动画所花费的时间*/
+
+}
+
+
+@keyframes scaleDraw {
+
+  /*定义关键帧、scaleDrew是需要绑定到选择器的关键帧名称*/
+  0% {
+    transform: scale(1);
+    /*开始为原始大小*/
+  }
+
+  25% {
+    transform: scale(1.2);
+    /*放大1.1倍*/
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  75% {
+    transform: scale(1.2);
+  }
 }

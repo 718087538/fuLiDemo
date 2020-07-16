@@ -1,7 +1,31 @@
 <!--pages/gift/giftList.wxml-->
+<i-tabs current="{{ current }}" color="#467ed4" bindchange="handleChange">
+    <i-tab key="tab1" title="进行中"></i-tab>
+    <i-tab key="tab2" title="即将上架"></i-tab>
+    <i-tab key="tab3" title="已结束"></i-tab>
+</i-tabs>
+<i-cell-group wx:if="{{current == 'tab1'}}">
+    <i-cell is-link url="/pages/gift/fragments?giftId={{item._id}}&imgSrc={{item.imgSrc}}"  wx:for="{{startList}}" wx:key="index">
+    <view class="li">
+      <image src="{{item.imgSrc}}"></image>
+      <view class="title">{{item.giftName}}</view>
+      </view>
+    </i-cell>
+</i-cell-group>
 
-<i-cell-group>
-    <i-cell is-link url="/pages/gift/fragments?giftId={{item._id}}&imgSrc={{item.imgSrc}}"  wx:for="{{marketList}}" wx:key="index">
+
+<i-cell-group wx:if="{{current == 'tab2'}}">
+    <i-cell is-link url="/pages/gift/fragments?giftId={{item._id}}&imgSrc={{item.imgSrc}}"  wx:for="{{readyStartList}}" wx:key="index">
+    <view class="li">
+      <image src="{{item.imgSrc}}"></image>
+      <view class="title">{{item.giftName}}</view>
+      </view>
+    </i-cell>
+</i-cell-group>
+
+
+<i-cell-group wx:if="{{current == 'tab3'}}">
+    <i-cell is-link url="/pages/gift/fragments?giftId={{item._id}}&imgSrc={{item.imgSrc}}&over=true"  wx:for="{{overList}}" wx:key="index">
     <view class="li">
       <image src="{{item.imgSrc}}"></image>
       <view class="title">{{item.giftName}}</view>

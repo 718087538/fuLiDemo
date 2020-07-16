@@ -65,8 +65,8 @@
 }
 /* 下面是大图奖品的页面 */
 .bigImgBox {
-  width: 300rpx;
-  height: 450rpx;
+  width: 520rpx;
+  height: 740rpx;
   position: relative;
   margin: 0 auto;
 }
