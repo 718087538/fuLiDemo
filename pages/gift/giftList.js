@@ -1,4 +1,8 @@
 // pages/gift/giftList.js
+
+
+const WXAPI = require('../../wxapi/main')
+
 Page({
 
   /**
@@ -11,61 +15,104 @@ Page({
     startList: [], //已开始列表
     readyStartList: [], //即将开始列表
     overList: [], //已过期列表
+    targetTime1: 0,
+    myFormat1: ['天', '时', '分', '秒'],
+    status: '进行中...',
+    clearTimer: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+  
+
+
+
     var that = this;
 
     let nowDate = new Date();
     let startList = []; //已开始列表
     let readyStartList = []; //即将开始列表
     let overList = []; //已过期列表
+    WXAPI.getGiftList({
+      type: wx
+    }).then(res => {
+      console.log("统一接口11111", res.data);
+      for (let i of res.data) {
+        let startDate = new Date(i.startDate);
+        let overDate = new Date(i.overDate);
+        i.targetTime = new Date(i.startDate).getTime()
+        console.log("对比结果", nowDate < startDate.getTime())
+        if (nowDate < startDate.getTime()) {
+          //未开始
+          console.log("未开始", i)
+          let index = readyStartList.length
+          readyStartList[index] = i;
+          console.log(readyStartList);
+        } else if (
+          nowDate > startDate.getTime() &&
+          nowDate < overDate.getTime()
+        ) {
+          //已开始
+          let index = startList.length
+          startList[index] = i;
+        } else if (nowDate > overDate.getTime()) {
+          //已结束
+          let index = overList.length
+          overList[index] = i;
 
-    const wxreq = wx.request({
-      url: 'http://127.0.0.1:7001/api/wxClient/gift?type=wx',
-      success: function (res) {
-        console.log(res.data);
-        for (let i of res.data.data) {
-          let startDate = new Date(i.startDate);
-          let overDate = new Date(i.overDate);
-          console.log("对比结果", nowDate < startDate.getTime())
-          if (nowDate < startDate.getTime()) {
-            //未开始
-            console.log("未开始", i)
-            let index = readyStartList.length
-            readyStartList[index] = i;
-            console.log(readyStartList);
-          } else if (
-            nowDate > startDate.getTime() &&
-            nowDate < overDate.getTime()
-          ) {
-            //已开始
-          
-            let index = startList.length
-            startList[index] = i;
-          } else if (nowDate > overDate.getTime()) {
-            //已结束
-            let index = overList.length
-            overList[index] = i;
-         
-          }
         }
-        that.setData({
-          startList,
-          readyStartList,
-          overList,
-        });
-
-        console.log("进行中", startList)
-      },
-      fail: function (res) {
-        console.log(res.data);
-        // this.userData = "数据获取失败";
       }
+      that.setData({
+        startList,
+        readyStartList,
+        overList,
+      });
     })
+    // const wxreq = wx.request({
+    //   url: 'https://api.orderour.com/api/wxClient/gift?type=wx',
+    //   success: function (res) {
+    //     console.log("全部接口",res.data);
+    //     for (let i of res.data.data) {
+    //       let startDate = new Date(i.startDate);
+    //       let overDate = new Date(i.overDate);
+    //       console.log("对比结果", nowDate < startDate.getTime())
+    //       if (nowDate < startDate.getTime()) {
+    //         //未开始
+    //         console.log("未开始", i)
+    //         let index = readyStartList.length
+    //         readyStartList[index] = i;
+    //         console.log(readyStartList);
+    //       } else if (
+    //         nowDate > startDate.getTime() &&
+    //         nowDate < overDate.getTime()
+    //       ) {
+    //         //已开始
+
+    //         let index = startList.length
+    //         startList[index] = i;
+    //       } else if (nowDate > overDate.getTime()) {
+    //         //已结束
+    //         let index = overList.length
+    //         overList[index] = i;
+
+    //       }
+    //     }
+    //     that.setData({
+    //       startList,
+    //       readyStartList,
+    //       overList,
+    //     });
+
+    //     console.log("进行中", startList)
+    //   },
+    //   fail: function (res) {
+    //     console.log(res.data);
+    //     // this.userData = "数据获取失败";
+    //   }
+    // })
   },
   handleChange({
     detail

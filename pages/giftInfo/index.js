@@ -5,48 +5,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-  //   imgList: [{
-  //     title: "今天的发货单，展示出来给大家看，如果展示出来给大家看，如果展示出来给大家看，如果",
-  //     srcList: [{
-  //         src: "http://img5.imgtn.bdimg.com/it/u=1040739115,3225906616&fm=26&gp=0.jpg"
-  //       },
-  //       {
-  //         src: "http://img5.imgtn.bdimg.com/it/u=1040739115,3225906616&fm=26&gp=0.jpg"
-  //       },
-  //       {
-  //         src: "http://img5.imgtn.bdimg.com/it/u=1040739115,3225906616&fm=26&gp=0.jpg"
-  //       },
-  //     ]
-  //   },
-  //   {
-  //     title: "今天的发货单，展示出来给大家看，如果展示出来给大家看，如果展示出来给大家看，如果",
-  //     srcList: [{
-  //       src: "http://img5.imgtn.bdimg.com/it/u=1040739115,3225906616&fm=26&gp=0.jpg"
-  //     }, ]
-  //   },
-  //   {
-  //     title: "今天的发货单，展示出来给大家看，如果展示出来给大家看，如果展示出来给大家看，如果",
-  //     srcList: [{
-  //         src: "http://img5.imgtn.bdimg.com/it/u=1040739115,3225906616&fm=26&gp=0.jpg"
-  //       },
-  //       {
-  //         src: "http://img5.imgtn.bdimg.com/it/u=1040739115,3225906616&fm=26&gp=0.jpg"
-  //       },
-  //       {
-  //         src: "http://img5.imgtn.bdimg.com/it/u=1040739115,3225906616&fm=26&gp=0.jpg"
-  //       },
-  //     ]
-  //   },
-  // ]
-  imgList:[
-
-  ]
+  imgList:[],
+  readStart:false,//是否是未上架的。
+  startTime:'',//准备开始活动的时间
+  targetTime1: 0,
+  myFormat1: ['天', '时', '分', '秒'],
+  status: '进行中...',
+  clearTimer: false
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(options.read == 'true'){
+      this.setData({
+        readStart:true,
+        startTime:options.startTime
+      })
+    }
     console.log(options)
     var that = this;//把this对象复制到临时变量that
     const wxreq = wx.request({

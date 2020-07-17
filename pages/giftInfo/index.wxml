@@ -1,6 +1,16 @@
 <!--pages/giftInfo/index.wxml-->
 <!-- 这里是商品的详细展示 -->
 <view class="box">
+<view wx:if="{{readStart}}" class="readStartTime" style="background-image: url('../../static/goods/timeBg.png')">
+  <text class="type-title">距开始：</text>
+      <i-count-down
+        class="timeCss"
+            target="{{startTime}}"
+            show-day="{{true}}"
+            format="{{myFormat1}}"
+            clear-timer="{{clearTimer}}"
+      ></i-count-down>
+</view>
 <view class="eventList" wx:for="{{imgList}}" wx:key="index">
 	<!-- <text>{{item.title}}</text> -->
   <!-- <view class="date">2019/05/15</view>  -->
@@ -8,7 +18,7 @@
 </view>
 </view>
 
-<view class="goGet">
+<view class="goGet" wx:if="{{!readStart}}">
 	<navigator url="../../pages/jiFen/jifen">
 	我要领取
 	</navigator>

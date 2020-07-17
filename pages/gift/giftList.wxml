@@ -8,17 +8,33 @@
     <i-cell is-link url="/pages/gift/fragments?giftId={{item._id}}&imgSrc={{item.imgSrc}}"  wx:for="{{startList}}" wx:key="index">
     <view class="li">
       <image src="{{item.imgSrc}}"></image>
-      <view class="title">{{item.giftName}}</view>
+      <view class="title">  <view class="theTitle">
+        {{item.giftName}}
+        </view></view>
       </view>
     </i-cell>
 </i-cell-group>
 
 
 <i-cell-group wx:if="{{current == 'tab2'}}">
-    <i-cell is-link url="/pages/gift/fragments?giftId={{item._id}}&imgSrc={{item.imgSrc}}"  wx:for="{{readyStartList}}" wx:key="index">
+    <i-cell is-link url="/pages/giftInfo/index?goodsId={{item.linkGoodId}}&read=true&startTime={{item.targetTime}}"  wx:for="{{readyStartList}}" wx:key="index">
     <view class="li">
       <image src="{{item.imgSrc}}"></image>
-      <view class="title">{{item.giftName}}</view>
+      <view class="title">
+        <view class="theTitle">
+        {{item.giftName}}
+        </view>
+      <view class="waitTime">
+       <text class="type-title">距开始：</text>
+      <i-count-down
+        class="timeCss"
+            target="{{item.targetTime}}"
+            show-day="{{true}}"
+            format="{{myFormat1}}"
+            clear-timer="{{clearTimer}}"
+      ></i-count-down>
+    </view>
+      </view>
       </view>
     </i-cell>
 </i-cell-group>
@@ -28,7 +44,9 @@
     <i-cell is-link url="/pages/gift/fragments?giftId={{item._id}}&imgSrc={{item.imgSrc}}&over=true"  wx:for="{{overList}}" wx:key="index">
     <view class="li">
       <image src="{{item.imgSrc}}"></image>
-      <view class="title">{{item.giftName}}</view>
+      <view class="title">  <view class="theTitle">
+        {{item.giftName}}
+        </view></view>
       </view>
     </i-cell>
 </i-cell-group>

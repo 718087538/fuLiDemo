@@ -77,4 +77,5 @@ module.exports = {
   getScore:data => request('/admin/score','get',data),//请求获得碎片最少应当分数
   addSuggestion:data => request('/wxClient/suggestion','post',data),//提交意见
   getComeBtn:data => request('/admin/comeBtn','get',data),//浇水入口背景
+  getGiftList:data => request('/wxClient/gift','get',data),//奖品列表
 }

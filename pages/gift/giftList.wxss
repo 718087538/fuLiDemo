@@ -2,6 +2,7 @@
 .li{
   width: 100%;
   display: flex;
+  overflow: hidden;
   align-items: center;
 }
 .li image{
@@ -10,5 +11,33 @@
 }
 .li .title{
   margin-left: 20rpx;
+  flex: 1;
+}
+.li .title .theTitle{
+  overflow: hidden;
+
+text-overflow: ellipsis;
+
+display: -webkit-box;
+
+-webkit-line-clamp: 2;
+
+overflow:hidden;
+
+/*! autoprefixer: off */
+
+-webkit-box-orient: vertical;
+
+}
+.li .waitTime{
+  font-size: 26rpx;
+  display: flex;
+  height: 60rpx;
+  line-height: 60rpx;
+  align-items: center;
+}
+.li .timeCss{
+  color: rgb(212, 85, 85) !important;
+  height: 177rpx;
 
 }

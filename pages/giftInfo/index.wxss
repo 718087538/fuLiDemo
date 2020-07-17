@@ -4,7 +4,25 @@
   width: auto;
 
 }
+.readStartTime{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+ background-repeat: no-repeat;
+ background-size: 100% 100%;
+ margin: 0rpx 0 30rpx;
+ border-radius: 10rpx;
 
+ background-position: 0 0;
+}
+.type-title{
+  color: rgb(228, 224, 224);
+}
+.timeCss{
+  color: #fff !important;
+  height: 145rpx;
+}
 .eventList image {
   width: auto;
   display:block;
