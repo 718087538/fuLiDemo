@@ -23,12 +23,23 @@
 	</view>
 
 	<view class="giftShow">
-		<view class="giftIt" wx:for="{{giftList}}" wx:key="*this">
+		<view  wx:for="{{giftList}}" wx:key="*this">
+			<navigator class="giftIt"  url="../giftInfo/index?goodsId={{item._id}}">
 			<image src="{{item.goodsImg}}"></image>
-			<text class="title">{{item.title}}</text>
-			<navigator class="goinfo" url="../giftInfo/index?goodsId={{item._id}}">查看详情</navigator>
+			<view class="right">
+				<view class="title">{{item.title}}</view>
+				<view class="price">
+					<text>￥:0.00</text>
+					<text>数量：12</text>
+				</view>
+			</view></navigator>
 		</view>
 	</view>
 	<i-toast id="toast" />
+</view>
+<view class="goGet" wx:if="{{read}}">
+	<navigator url="/pages/index/read">
+	{{showTitle}}
+	</navigator>
 </view>
 <view class="stand"></view>

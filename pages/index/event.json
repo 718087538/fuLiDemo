@@ -2,5 +2,5 @@
   "usingComponents": {
     "i-icon": "../../dist/icon/index"
   },
-  "navigationBarTitleText": "通知"
+  "navigationBarTitleText": "商家通知"
 }

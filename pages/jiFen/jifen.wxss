@@ -1,113 +1,81 @@
 /* pages/jiFen/jifen.wxss */
 /**index.wxss**/
-.adBg{
-  padding: 60rpx  20rpx 0;
-  height: 200rpx;
+.container{
+  overflow: hidden;
+  background: url("https://api.orderour.com/public/image/gift/gift-8ot5kd3mnkdg3r7os.jpg");
+  background-position: 0 0;
+  background-size: 100% 100%;
+  width: 750rpx;
+  height: 100vh;
 }
-.adBg image{
-  border-radius: 10rpx;
-  width: 100%;
-  height: 200rpx;
-}
-.giftShow {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 0 30rpx;
+.tree{
+  display: block;
+  width: 380rpx;
+  height: 420rpx;
+  margin: 350rpx auto 0;
 }
 .playInfo{
-  display: flex;
-  margin: 20rpx 0 30rpx;
   color: #333;
-  font-size: 40rpx;
-  justify-content: space-around;
-}
-.giftShow .giftIt {
-  width: 300rpx;
-  height: 300rpx;
-  margin-top: 30rpx;
-  background-color: rgb(247, 247, 247);
-  text-align: center;
-  border-radius: 10rpx;
-}
-
-.giftShow .giftIt .title {
-  font-weight: bold;
-  font-size: 32rpx;
-  margin-top: 30rpx;
-}
-.giftShow .giftIt .goinfo{
-  background-color: rgb(67, 129, 223);
- width: 250rpx;
- height: 50rpx;
- margin: 10rpx auto 0;
- border-radius: 30rpx;
- padding: 10rpx 0;
-
- color: #fff;
-
-}
-
-.giftShow .giftIt image {
-  width: 130rpx;
-  height: 130rpx;
-  border-radius: 8rpx;
-  /* border-radius: 50%; */
-
-  margin: 10rpx auto;
-  display: block;
-}
-
-.middleBanner {
-  width: 690rpx;
-  height: 150rpx;
-  margin: 40rpx auto 0;
-}
-
-.middleBanner image {
-  border-radius: 10rpx;
-  width: 100%;
-  height: 100%;
-}
-
-.bottomNav {
   position: fixed;
-  width: 100%;
-  bottom: 0;
-  display: flex;
-  justify-content: space-around;
-  background-color: #fff;
+  right: 20rpx;
+  z-index: 10;
+}
+.jiaoShuiBtn{
+  width: 150rpx;
+  height: 150rpx;
+  /* -webkit-animation: translate-style 2s linear infinite; */
+  border-radius: 80rpx;
+}
+.doing{
+  -webkit-animation: translate-style 1.2s linear;
 }
 
-.bottomNav .item {
+@-webkit-keyframes translate-style {
+  0% {
+      transform: translateX(0);
+  }
+  /* 33% {
+      transform: translate(-200rpx,0);
+  } */
+  60% {
+      transform: translate(-200rpx,-450rpx) rotate(-45deg);
+  }
+  80% {
+    transform: translate(-340rpx,-450rpx) rotate(-45deg);
+  }
+  100% {
+    transform: translate(-120rpx,-450rpx) rotate(-45deg);
+  }
+}
+view{
+  color: rgb(155, 56, 56);
+}
+.porgressBox{
+  
+  display: flex;
+  align-items: center;
+}
+/* //进度条，加水滴 */
+#progress{
+  width: 500rpx;
+  height: 25rpx;
+  border:1px solid #ccc;
+  border-radius: 30rpx;
+  overflow: hidden;
+}          
+#progress view {
+  width: 100%;
+  height: 100%;       
+  background: #7db9e8 ;    
   text-align: center;
+  color:#fff;
+  animation:load 10s ease-in infinite;
 }
-
-.table .tr image {
-  width: 140rpx;
-  height: 140rpx;
-  margin-right: 4rpx;
-  border-radius: 10rpx;
-}
-
-.stand {
-  height: 100rpx;
-}
-
-.swiper-item image {
-  width: 100%;
-}
-
-.nav {
-  display: flex;
-}
-
-.nav navigator {
-  border: 1rpx solid red;
-  margin: 0 6rpx;
-}
-
-.playArea {
-  margin: 10rpx auto 0;
-  width: 578rpx;
+@keyframes load{
+  0%{
+      width: 0%;
+  }
+  100%{
+      width:100%;
+  }
 }

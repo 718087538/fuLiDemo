@@ -3,25 +3,35 @@
   display: inline-block;
 } */
 .giftShow {
-  display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 0 30rpx;
 }
 
 .giftShow .giftIt {
-  width: 300rpx;
-  height: 300rpx;
+  width:100%;
   margin-top: 30rpx;
+  padding: 0 10rpx;
   background-color: rgb(247, 247, 247);
-  text-align: center;
   border-radius: 10rpx;
+  display: flex;
+}
+.giftIt .right{
+  flex:1;
+  padding-left:10px
+}
+.giftIt .right .price{
+  font-size: 16px;
 }
 
 .giftShow .giftIt .title {
-  font-weight: bold;
   font-size: 32rpx;
   margin-top: 30rpx;
+  overflow:hidden; 
+text-overflow:ellipsis;
+display:-webkit-box; 
+-webkit-box-orient:vertical;
+-webkit-line-clamp:2; 
 }
 .giftShow .giftIt .goinfo{
   background-color: rgb(67, 129, 223);
@@ -30,17 +40,14 @@
  margin: 10rpx auto 0;
  border-radius: 30rpx;
  padding: 10rpx 0;
-
  color: #fff;
-
 }
 
 .giftShow .giftIt image {
-  width: 130rpx;
-  height: 130rpx;
+  display: block;
+  width: 150rpx;
+  height: 150rpx;
   border-radius: 8rpx;
-  /* border-radius: 50%; */
-
   margin: 10rpx auto;
   display: block;
 }
@@ -105,4 +112,52 @@
 .playArea {
   margin: 10rpx auto 0;
   width: 578rpx;
+}
+
+
+
+.goGet {
+  width: 180rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  position: fixed;
+  bottom: 100rpx;
+  right: 50rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  background-color: rgb(221, 131, 125);
+  -webkit-animation-name: scaleDraw;
+  /*关键帧名称*/
+  -webkit-animation-timing-function: ease-in-out;
+  /*动画的速度曲线*/
+  -webkit-animation-iteration-count: infinite;
+  /*动画播放的次数*/
+  -webkit-animation-duration: 5s;
+  /*动画所花费的时间*/
+
+}
+
+
+@keyframes scaleDraw {
+
+  /*定义关键帧、scaleDrew是需要绑定到选择器的关键帧名称*/
+  0% {
+    transform: scale(1);
+    /*开始为原始大小*/
+  }
+
+  25% {
+    transform: scale(1.2);
+    /*放大1.1倍*/
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  75% {
+    transform: scale(1.2);
+  }
 }

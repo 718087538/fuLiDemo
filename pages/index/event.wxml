@@ -1,10 +1,17 @@
 <!--pages/index/event.wxml-->
 
 
-<view class="eventList" wx:for="{{eventList}}" wx:key="index">
-	<text>{{item.title}}</text>
+<view class="eventList" wx:for="{{eventList}}" wx:key="{{i}}"  wx:for-index="outIndex">
+	<view class="info">
+		<image src="http://api.orderour.com/public/image/notice/notice-8ot5kdjpikcuqfoj9.jpg">
+		</image>
+		<view>奖品小镇</view>
+	</view>
+	<text class="title">{{item.title}}</text>
+	<view class="imgBox">
+		<image src="{{item}}" wx:for="{{item.noticeImg}}" bindtap="preview" wx:key="index" data-src="{{item}}" data-outindex="{{outIndex}}"></image>
+	</view>
   <view class="date">{{item.createDate}}</view> 
-	<image src="{{item}}" wx:for="{{item.noticeImg}}" wx:key="index"></image>
 </view>
 
 <!-- 

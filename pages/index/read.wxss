@@ -1,0 +1,6 @@
+/* pages/index/read.wxss */
+image{
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+}

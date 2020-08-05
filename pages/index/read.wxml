@@ -1,0 +1,5 @@
+<!--pages/index/read.wxml-->
+
+<!-- 这里是商品的详细展示 -->
+
+	<image src="{{helpImg}}"  mode="widthFix"></image>

@@ -93,9 +93,40 @@ Page({
     vertical: false,
     autoplay: true,
     interval: 2000,
-    duration: 1000
+    duration: 1000,
+    dojiaoshui:false,
+    getedPic: false,
   },
-
+  handleOpen1 () {
+    this.setData({
+        visible1: true
+    });
+},
+sureGet(){
+  this.setData({
+    getedPic:false
+  })
+},
+seeGood(){
+  this.setData({
+    getedPic:false
+  })
+},
+do(){
+  console.log(this.data.dojiaoshui)
+  if(this.data.dojiaoshui){
+    return false
+  }
+  this.setData({
+    dojiaoshui:true
+  })
+  setTimeout(()=>{
+    this.setData({
+      dojiaoshui:false,
+      getedPic:true
+    })
+  },1500)
+},
   onShareAppMessage() {
     return {
       title: '活动',

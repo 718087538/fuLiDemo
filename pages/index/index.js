@@ -50,7 +50,9 @@ Page({
     duration: 1000,
     noticeList: '欢迎光临', //首页通知
     playNoticeSpeed: 2000, //通知滚动速度，根据数量来计算，2.5s *n 
-    comeBtnBg:'../../static/banner/b1.jpg'
+    comeBtnBg:'../../static/banner/b1.jpg',
+    showRead:false,
+    showTitle:'新人必看'
   },
   handleChange({
     detail
@@ -99,8 +101,10 @@ Page({
       })
     })
   },
+  onShow: function () {
+    this.read();
+  },
   onLoad: function () {
-    
     WXAPI.getNotice({
       isUse: 1
     }).then(res => {
@@ -155,7 +159,20 @@ Page({
 
 
   },
-
+  read: function (e) {
+    WXAPI.getRead({
+      openId:wx.getStorageSync('openid')
+    }).then(res=>{
+      console.log("展示新人指导？",res);
+      if(res.data != false && res.code === 200){
+        this.setData({
+          read:true,
+          showTitle:res.data.showTitle
+        })
+      }
+    })
+  },
+ 
   getUserInfo: function (e) {
     app.globalData.userInfo = e.detail.userInfo
     this.setData({

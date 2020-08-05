@@ -1,7 +1,7 @@
 <!--pages/giftInfo/index.wxml-->
 <!-- 这里是商品的详细展示 -->
 <view class="box">
-<view wx:if="{{readStart}}" class="readStartTime" style="background-image: url('../../static/goods/timeBg.png')">
+<view wx:if="{{readStart}}" class="readStartTime" style="background-image: url('http://api.orderour.com/public/image/notice/notice-8ot5kdjpjkcruzqcj.jpg')">
   <text class="type-title">距开始：</text>
       <i-count-down
         class="timeCss"
@@ -20,6 +20,6 @@
 
 <view class="goGet" wx:if="{{!readStart}}">
 	<navigator url="../../pages/jiFen/jifen">
-	我要领取
+	浇水抽取
 	</navigator>
 </view>

@@ -2,6 +2,7 @@
   "usingComponents": {
     "i-button": "../../dist/button/index",
     "i-icon": "../../dist/icon/index",
+    "i-modal": "../../dist/modal/index",
     "i-toast": "../../dist/toast/index"
   },
   "navigationBarTitleText": "活动"

@@ -42,6 +42,12 @@ App({
           })
         }
       }
+    }),
+    WXAPI.register({
+      openId:wx.getStorageSync('openid'),
+      sex:3
+    }).then(res=>{
+      console.log("注册的信息",res)
     })
   },
   globalData: {

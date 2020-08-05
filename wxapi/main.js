@@ -59,6 +59,7 @@ module.exports = {
   // 详情接口
   // getDetail: (data) => request('/goods/detail','get', data),
   test:(data) => request('/','get','data'),//测试的域名
+  register:data => request('/wxClient/register','post',data),//注册的操作
   login:data => request('/wxClient/login','get',data),//登录的操作
   changeGood:data => request('/wxClient/changeGood','post',data),//合成商品的操作
   getGood:data => request('/wxClient/changeGood','get',data),//请求待领取的商品
@@ -78,4 +79,7 @@ module.exports = {
   addSuggestion:data => request('/wxClient/suggestion','post',data),//提交意见
   getComeBtn:data => request('/admin/comeBtn','get',data),//浇水入口背景
   getGiftList:data => request('/wxClient/gift','get',data),//奖品列表
+  getRead:data => request('/wxClient/read','get',data),//展示新人指导
+  putRead:data => request('/wxClient/read','put',data),//设置新人指导已读
+  getHelpImg:data => request('/admin/addImgHelp','get',data),//新人指导图片
 }

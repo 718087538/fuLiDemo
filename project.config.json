@@ -25,7 +25,7 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false,
 		"compileHotReLoad": false,
 		"useIsolateContext": true
@@ -173,6 +173,13 @@
 					"id": -1,
 					"name": "pages/my/suggeston",
 					"pathName": "pages/my/suggeston",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/jiFen/jifen",
+					"pathName": "pages/jiFen/jifen",
 					"scene": null
 				}
 			]
