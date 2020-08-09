@@ -1,32 +1,106 @@
 <!--pages/jiFen/jifen.wxml-->
 <view class="container">
-	<!-- <view class="nav"> -->
-		<!-- <navigator url="../gift/gift" redirect="true">活动广场</navigator>
-		<navigator url="../customer/customer" redirect="true">找客服</navigator>
-		<navigator url="../business/business" redirect="true">商务合作</navigator>
-		<button size="mini">邀请好友</button> -->
-	<!-- </view> -->
-	<view>我的水滴：10g</view>
-	<view class="porgressBox">
-		<view id="progress">
-		  <view class="jindu"></view> 
-		 </view>
-	<view>+1g</view>
+	<view class="myWater">我的水滴：  
+	<text class="energyNum">{{energy.energyNum}}</text>g
 	</view>
+<!-- 浇水效果 -->
+	<image  wx:if="{{shouYuDi}}"  class="tree jiaoshuiIng" src="../../static/jifen/jiao.gif"></image>
+		<!-- 大树 -->
 	<image class="tree" src="../../static/jifen/tree.png"></image>
-
-	<view class="playInfo">
+<van-cell title="展示弹出层" is-link bind:click="showPopup" />
+<!-- 领水滴 -->
+<view class="doBox getShuiDiBox">
+		<image class="getShuiDi" src="../../static/jifen/getShuiDi.jpg"  bindtap="getShuiDi"></image>
+</view>
+<!-- 浇水水壶 -->
+	<view class="doBox playInfo">
 		<image class="jiaoShuiBtn {{dojiaoshui==true?'doing':''}}" src="../../static/jifen/jiaoShui.jpg" bindtap="do"></image>
-     <view> 水滴：{{energy}}g </view>
-	
+     <view class="costNum"> 10g </view>
   </view>
-	<!-- <i-button type="primary" bind:click="startGame">开始</i-button> -->
-  <!-- <view class="adBg">
-    <image src="../../static/playBottom.jpg"></image>
-  </view> -->
 	<i-toast id="toast" />
 </view>
 
 <i-modal title="恭喜" visible="{{ getedPic }}" bind:ok="seeGood" bind:cancel="sureGet" cancel-text="查看" ok-text="领取">
     <view>获得大餐巾纸，碎片1</view>
 </i-modal>
+<van-popup
+  show="{{ show }}"
+	custom-class="showGet"
+  closeable="true"
+  close-icon="close"
+  position="bottom"
+  custom-style="height:55%"
+  bind:close="onClose"
+>
+	<view class="tip">连续签到领奖励</view>
+ 
+	<view class="line1">
+		<view class="day">
+				<view class="waterBgBox">
+					<image class="waterBg" src="../../static/jifen/water1.png"></image>
+					<view class="waterNum">10g</view>
+				</view>
+				<view wx:if="{{energy.continuousDay == 0 && energy.todayContinuous == false}}" class="btn" class="btn" data-type="continuous"  data-num="10" bindtap="addEnergy" > 领取</view>
+				<view wx:if="{{energy.continuousDay >= 1  }}" class="btn waitDay">已领</view>
+		</view>
+		<view class="day">
+				<view class="waterBgBox">
+					<image class="waterBg" src="../../static/jifen/water1.png"></image>
+					<view class="waterNum">20g</view>
+				</view>
+				<view  wx:if="{{energy.continuousDay == 1 && energy.todayContinuous == false}}" data-type="continuous"  data-num="10" bindtap="addEnergy" > 领取</view>
+				<view wx:if="{{energy.continuousDay >= 2  }}" class="btn waitDay">已领</view>
+				<view wx:if="{{energy.continuousDay <1 }}" class="btn waitDay">第2天</view>
+				<view wx:if="{{energy.continuousDay ==1  && energy.todayContinuous == true }}" class="btn waitDay">第2天</view>
+		</view>
+				<view class="day">
+				<view class="waterBgBox">
+					<image class="waterBg" src="../../static/jifen/water1.png"></image>
+					<view class="waterNum">20g</view>
+				</view>
+				<view  wx:if="{{energy.continuousDay == 2 && energy.todayContinuous == false}}" class="btn" data-type="continuous"  data-num="20" bindtap="addEnergy"> 领取</view>
+				<view wx:if="{{energy.continuousDay >= 3  }}" class="btn waitDay">已领</view>
+				<view wx:if="{{energy.continuousDay < 2 }}" class="btn waitDay">第3天</view>
+							<view wx:if="{{energy.continuousDay ==2  && energy.todayContinuous == true }}" class="btn waitDay">第3天</view>
+		</view>
+				<view class="day">
+				<view class="waterBgBox">
+					<image class="waterBg" src="../../static/jifen/water1.png"></image>
+					<view class="waterNum">20g</view>
+				</view>
+				<view  wx:if="{{energy.continuousDay == 3 && energy.todayContinuous == false}}" class="btn" data-type="continuous"  data-num="20" bindtap="addEnergy"> 领取</view>
+				<view wx:if="{{energy.continuousDay >= 4  }}" class="btn waitDay">已领</view>
+				<view wx:if="{{energy.continuousDay < 3 }}" class="btn waitDay">第4天</view>
+					<view wx:if="{{energy.continuousDay ==3  && energy.todayContinuous == true }}" class="btn waitDay">第4天</view>
+				</view>
+				<view class="day">
+				<view class="waterBgBox">
+					<image class="waterBg" src="../../static/jifen/water1.png"></image>
+					<view class="waterNum">30g</view>
+				</view>
+				<view  wx:if="{{energy.continuousDay == 4 && energy.todayContinuous == false}}" class="btn" data-type="continuous"  data-num="30" bindtap="addEnergy"> 领取</view>
+				<view wx:if="{{energy.continuousDay >= 5  }}" class="btn waitDay">已领</view>
+				<view wx:if="{{energy.continuousDay < 4  }}" class="btn waitDay">第5天</view>
+					<view wx:if="{{energy.continuousDay ==4  && energy.todayContinuous == true }}" class="btn waitDay">第5天</view>
+		</view>
+</view>
+<view class="line2">
+<image src="https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3697805660,4214243027&fm=26&gp=0.jpg"></image>
+<view class="centerText">
+	<view>签到送水滴</view>
+	<view>随机10~20g</view>
+</view>
+<i-button  wx:if="{{energy.todaySignIn ==false  }}" type="primary" data-type="signIn"  data-num="10" bindtap="addEnergy">签到</i-button>
+<i-button  wx:if="{{energy.todaySignIn ==true  }}"  >已领</i-button>
+</view>
+<view class="line2 line3">
+<image src="https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1473723578,1605607703&fm=26&gp=0.jpg"></image>
+<view class="centerText">
+	<view>邀请分享</view>
+	<view>奖励10g，每日2次</view>
+</view>
+<i-button  wx:if="{{energy.todaySignIn <2 }}"  open-type="share" type="primary">邀请</i-button>
+<i-button  wx:if="{{energy.todaySignIn >=2 }}" type="primary">完成</i-button>
+</view>
+
+</van-popup>

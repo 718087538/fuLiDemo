@@ -4,7 +4,6 @@
 	<!-- <image class="headImg" src="{{headSrc}}"></image> -->
 	<view class="headImgBox">
 		<open-data class="headImg" type="userAvatarUrl"></open-data>
-
 	</view>
 	<view class="name">
 		<!-- <view>微信昵称</view> -->

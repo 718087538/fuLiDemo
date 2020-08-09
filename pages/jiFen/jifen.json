@@ -3,6 +3,7 @@
     "i-button": "../../dist/button/index",
     "i-icon": "../../dist/icon/index",
     "i-modal": "../../dist/modal/index",
+    "van-popup": "../../miniprogram_npm/vant-weapp/popup/index",
     "i-toast": "../../dist/toast/index"
   },
   "navigationBarTitleText": "活动"

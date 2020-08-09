@@ -1,4 +1,101 @@
 /* pages/gift/fragments.wxss */
+.box {
+  width:560rpx;
+  height: 560rpx;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.box img {
+  width: 100%;
+  height: 100%;
+}
+.pic {
+  position: absolute;
+  top: 0;
+  background: rgba(36, 35, 35, 0.5);
+  border: 3rpx solid red;
+  box-sizing: border-box;
+  width: 33.33333%;
+  height: 33.33333%;
+}
+.pic .circleRight {
+  width: 20rpx;
+  height: 40rpx;
+  border: 4rpx solid red;
+  position: absolute;
+  right: -24rpx;
+  top: 70rpx;
+  background: rgba(36, 35, 35, 1);
+  z-index: 2;
+  border-left: 0;
+  border-radius: 0 60rpx 60rpx 0;
+}
+.circleBottom {
+  width: 40rpx;
+  height: 20rpx;
+  bottom: -24rpx;
+  position: absolute;
+  z-index: 2;
+  left: 30%;
+  border: 4rpx solid red;
+  background: rgba(36, 35, 35, 1);
+  border-top: 0;
+  border-radius: 0 0 60rpx 60rpx; /* 左上、右上、右下、左下 */
+}
+.circleTop {
+  width: 40rpx;
+  height: 20rpx;
+  top: -24rpx;
+  position: absolute;
+  left: 30%;
+  border: 4rpx solid red;
+  background: rgba(36, 35, 35, 1);
+  border-bottom: 0;
+  border-radius: 60rpx 60rpx 0 0; /* 左上、右上、右下、左下 */
+}
+.circleLeft {
+width: 20rpx;
+height: 40rpx;
+top: 70rpx;
+left: -24rpx;
+position: absolute;
+border-radius: 50rpx 0 0 50rpx;
+background: rgba(36, 35, 35, 1);
+border: 4rpx solid red;
+border-right: 0;
+
+}
+
+.pic2 {
+  left: 33.333333%;
+}
+.pic3 {
+  left: 66.666666%;
+}
+.pic4 {
+  top: 33.3333%;
+}
+.pic5 {
+  top: 33.3333%;
+  left: 33.333333%;
+}
+.pic6 {
+  top: 33.3333%;
+  left: 66.666666%;
+}
+.pic7 {
+  top: 66.666666%;
+}
+.pic8 {
+  top: 66.666666%;
+  left: 33.333333%;
+}
+.pic9 {
+  top: 66.666666%;
+  left: 66.666666%;
+}
+
 .picBox{
   height: 150rpx;
 }
@@ -16,7 +113,7 @@
   margin: 0 10rpx;
 }
 .demo .bg{
-  width: 300rpx;
+  width:450rpx;
   height: 450rpx;
   position: absolute;
   top: 0;
@@ -30,25 +127,45 @@
   color: rgb(31, 135, 231);
   font-weight: bold;
 }
+.demo .picName{
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: rgb(10, 75, 136);
+  font-size: 28rpx;
+}
 #demo2 .bg{
   top: 0;
   left: -150rpx;
 }
 #demo3 .bg{
-  top: -150rpx;
-  left: 0;
+  top: 0;
+  left: -300rpx;
 }
 #demo4 .bg{
   top: -150rpx;
-  left: -150rpx;
-}
-#demo5 .bg{
-  top: -300rpx;
   left: 0rpx;
 }
+#demo5 .bg{
+  top: -150rpx;
+  left: -150rpx;
+}
 #demo6 .bg{
+  top: -150rpx;
+  left: -300rpx;
+}
+#demo7 .bg{
+  top:-300rpx;
+  left: 0rpx;
+}
+#demo8 .bg{
   top: -300rpx;
   left: -150rpx;
+}
+#demo9 .bg{
+  top:-300rpx;
+  left: -300rpx;
 }
 .gift{
   position: absolute;
@@ -63,15 +180,19 @@
 .show{
   display: block;
 }
+.hiddenPic{
+  display: none;
+}
 /* 下面是大图奖品的页面 */
 .bigImgBox {
   width: 520rpx;
-  height: 740rpx;
+  height: 620rpx;
   position: relative;
   margin: 0 auto;
 }
 .title{
   text-align: center;
+  margin: 30rpx 0;
 }
 .shopBox{
   display: flex;

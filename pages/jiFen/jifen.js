@@ -12,152 +12,74 @@ Page({
    */
   data: {
     djs_data: 0,
-    energy: 0, //体力要动态获取
-    imgs: [{
-        src: "../../static/00.jpg"
-      },
-      {
-        src: "../../static/00.jpg"
-      },
-      {
-        src: "../../static/00.jpg"
-      },
-      {
-        src: "../../static/00.jpg"
-      },
-      {
-        src: "../../static/00.jpg"
-      },
-      {
-        src: "../../static/00.jpg"
-      },
-      {
-        src: "../../static/00.jpg"
-      },
-      {
-        src: "../../static/00.jpg"
-      },
-      {
-        src: "../../static/00.jpg"
-      },
-      {
-        src: "../../static/00.jpg"
-      },
-      {
-        src: "../../static/00.jpg"
-      },
-      {
-        src: "../../static/00.jpg"
-      },
-      {
-        src: "../../static/00.jpg"
-      },
-      {
-        src: "../../static/00.jpg"
-      },
-      {
-        src: "../../static/00.jpg"
-      },
-      {
-        src: "../../static/00.jpg"
-      },
-    ],
-    tl_id: "", //隐藏地鼠定时器
-    tl_id: "", //显示地鼠定时器
-    motto: 'Hello World',
-    userInfo: {},
-    results: 0, //打地鼠成绩
-    latest: 8, //最少达到指定分数才能获得碎片，后台可控
-    beforeI: "", //存储上一次的i,避免出现在相同位置时出现bug
-    playOver: true, //是否玩完了这局
-    current: 'homepage',
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    background: [{
-      src: "../../static/banner/b1.jpg"
-    }, {
-      src: "../../static/banner/b2.jpg"
-    }, {
-      src: "../../static/banner/b3.jpg"
-    }],
-    giftList: [{
-      src: "../../static/banner/b1.jpg"
-    }, {
-      src: "../../static/banner/b1.jpg"
-    }, {
-      src: "../../static/banner/b2.jpg"
-    }, {
-      src: "../../static/banner/b3.jpg"
-    }],
-    indicatorDots: true,
-    vertical: false,
-    autoplay: true,
-    interval: 2000,
-    duration: 1000,
-    dojiaoshui:false,
-    getedPic: false,
+    energy: 200, //体力要动态获取
+    show: false,
+    shouYuDi: false, //展示雨滴效果
+    dojiaoshui: false, //是否浇水动画进行中
   },
-  handleOpen1 () {
+  handleOpen1() {
     this.setData({
-        visible1: true
+      visible1: true
     });
-},
-sureGet(){
-  this.setData({
-    getedPic:false
-  })
-},
-seeGood(){
-  this.setData({
-    getedPic:false
-  })
-},
-do(){
-  console.log(this.data.dojiaoshui)
-  if(this.data.dojiaoshui){
-    return false
-  }
-  this.setData({
-    dojiaoshui:true
-  })
-  setTimeout(()=>{
+  },
+
+  getShuiDi() {
     this.setData({
-      dojiaoshui:false,
-      getedPic:true
+      show: true
+    });
+  },
+
+  onClose() {
+    this.setData({
+      show: false
+    });
+  },
+  sureGet() {
+    wx.navigateTo({
+      url: '/pages/gift/fragments?key=value',
     })
-  },1500)
-},
-  onShareAppMessage() {
-    return {
-      title: '活动',
-      path: `pages/jiFen/jifen`
-    }
-  },
-
-  handleChange({
-    detail
-  }) {
     this.setData({
-      current: detail.key
-    });
+      getedPic: false
+    })
   },
-
-  //开始游戏
-  startGame() {
-    if (!this.data.playOver) {
-      console.log("游戏中")
-      return false;
+  seeGood() {
+    this.setData({
+      getedPic: false
+    })
+  },
+  //浇水的操作
+  do() {
+    if (this.data.dojiaoshui) {
+      console.log("浇水中了")
+      return false
     }
-    if (this.data.energy > 0) {
+    //展示浇水的水滴动画
+    setTimeout(() => {
+      this.setData({
+        shouYuDi: true
+      })
+    }, 900)
+    //关闭浇水水滴动画
+    setTimeout(() => {
+      this.setData({
+        shouYuDi: false
+      })
+    }, 2200)
+    //判断是否有水滴可以浇水
+    if (this.data.energy.energyNum > 0) {
       WXAPI.lowEnergy({
         openId: wx.getStorageSync('openid'),
         dos: 'decrease'
       }).then(res => {
         console.log("减体力成功", res)
+        var str = 'energy.energyNum';
         if (res.code == 200) {
-          this.setData({
-            energy: this.data.energy - 1
-          })
+          setTimeout(() => {
+            this.setData({
+              [str]: this.data.energy.energyNum - 10,
+
+            })
+          }, 1200)
         } else if (res.code == 201) {
           console.log("体力不足=========")
         }
@@ -168,117 +90,116 @@ do(){
       });
       return false;
     }
-
-    // if (this.data.energy <= 0) {
-    //   this.noEnery();
-    //   return false;
-    // }
     this.setData({
-      playOver: false, //设置游戏中
-      // energy: this.data.energy - 1, //要发送到服务器保存
+      dojiaoshui: true,
     })
-    sc_time = 10; //游戏时长10s
-    //记录游戏开始时间
-    start_Time = new Date();
-    //执行倒计时方法
-    this.djs();
-    //执行地鼠出现的方法
-    this.mouse_show();
+    //展示浇水得到的碎片，取消浇水中的变量，让水壶克再次点击
+    setTimeout(() => {
+      this.setData({
+        dojiaoshui: false,
+        // getedPic: true
+      })
+    }, 2800)
   },
-  mouse_show() {
-    //生成随机的数组下标
-    var i = parseInt(Math.random() * 16);
-    if (i === this.data.beforeI) {
-      ++i;
-      //如果加完之后超出了，放到第一个位置
-      if (i === 16) {
-        i = 0
+
+  addEnergy(e) {
+    console.log(e.target.dataset);
+    WXAPI.lowEnergy({
+      openId: wx.getStorageSync('openid'),
+      dos: 'add',
+      num: e.target.dataset.num,
+      type: e.target.dataset.type
+    }).then(res => {
+      console.log("加体力成功", res)
+      var obj1 = 'energy.energyNum';
+      var obj2 = 'energy.todayContinuous';
+      var obj3 = 'energy.continuousDay';
+      var obj4 = 'energy.todaySignIn';
+      if (res.code == 200) {
+        if (res.data === "signIn") {
+          this.setData({
+            [obj1]: this.data.energy.energyNum + Number(e.target.dataset.num),
+            [obj4]: true,
+          })
+        } else {
+          this.setData({
+            [obj1]: this.data.energy.energyNum + Number(e.target.dataset.num),
+            [obj2]: true,
+            [obj3]: this.data.energy.continuousDay + 1,
+          })
+        }
+      } else if (res.code == 201) {
+        console.log("体力不足=========")
+      }
+    })
+  },
+
+  sharePeople(num,type){
+    WXAPI.lowEnergy({
+      openId: wx.getStorageSync('openid'),
+      dos: 'add',
+      num: e.target.dataset.num,
+      type: e.target.dataset.type
+    }).then(res => {
+      console.log("加体力成功", res)
+      var obj1 = 'energy.todaySignIn';
+      if (res.code == 200) {
+          this.setData({
+            [obj1]: this.data.energy.todaySignIn + 1,
+          })
+        }
+      })
+  },
+
+
+
+  // onShareAppMessage() {
+  //   return {
+  //     title: '0元包邮，家居百货',
+  //     path: `pages/index/index`
+  //   }
+  // },
+  onShareAppMessage(options) {
+    // 自定义分享内容
+    var shareObj = {
+      title: "0元包邮，家居百货", // 小程序的名称
+      path: '/pages/index/index', // 默认是当前页面，必须是以‘/’开头的完整路径
+      imgUrl: '', //自定义图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
+      success: function (res) {
+        // 转发成功之后的回调
+        console.log("分享成功了！")
+
+        if (res.errMsg == 'shareAppMessage:ok') {}
+      },
+      fail: function () {
+        console.log("分享失败！！！")
+        // 转发失败之后的回调
+        if (res.errMsg == 'shareAppMessage:fail cancel') {
+          // 用户取消转发
+        } else if (res.errMsg == 'shareAppMessage:fail') {
+          // 转发失败，其中 detail message 为详细失败信息
+        }
+      },
+      complete() {
+        // 转发结束之后的回调（转发成不成功都会执行）
       }
     }
-    this.setData({
-      beforeI: i
-    })
-
-    //随机改变图片
-    this.setData({
-      ['imgs[' + i + '].src']: "../../static/01.jpg",
-    })
-    //复原当前位置
-    var that = this;
-    //倒计时的计时器
-
-    this.setData({
-      tl_id: setTimeout(function () {
-        that.mouse_hide(i);
-      }, 1000)
-    })
-
-    //出现另一只地鼠
-    this.setData({
-      jg_id: setTimeout(function () {
-        that.mouse_show(i);
-      }, 1000)
-    })
+    // 来自页面内的按钮的转发
+    // if (options.from == 'button') {
+    //   console.log("来源于button");
+    //   // 此处可以修改 shareObj 中的内容
+    //   shareObj.path = '/pages/index/index?btn_name=' + eData.name;
+    // }
+    // 返回shareObj
+    // return shareObj;
   },
 
-  //地鼠消失
-  mouse_hide(i) {
+  handleChange({
+    detail
+  }) {
     this.setData({
-      ['imgs[' + i + '].src']: "../../static/00.jpg",
-    })
-  },
-  //游戏倒计时
-  djs() {
-    //实时记录游戏时间
-    var game_time = new Date();
-    //计算并显示倒计时
-    djs_data = sc_time - parseInt((game_time - start_Time) / 1000);
-    this.setData({
-      djs_data: djs_data
-    })
-    if (djs_data < 1) {
-      console.log("游戏结束了");
-      this.gameOver();
-      clearTimeout(djs_id);
-      clearTimeout(this.data.tl_id);
-      clearTimeout(this.data.jg_id);
-      //地鼠清场
-      this.qingchang();
-      return;
-    }
-    var that = this;
-    //倒计时的计时器
-    var djs_id = setTimeout(function () {
-      that.djs();
-    }, 1000);
-
-  },
-  qingchang() {
-    for (var i = 0; i < 16; i++) {
-      this.setData({
-        ['imgs[' + i + '].src']: "../../static/00.jpg",
-      })
-    }
-  },
-  play(e) {
-    var n = e.target.dataset.num;
-    //获取图片的名称,判断是否打中地鼠
-    var name = this.data.imgs[n].src.substr(14, 1);
-    if (name == 1) {
-      //切换为打中状态
-      this.setData({
-        ['imgs[' + n + '].src']: "../../static/02.jpg",
-        results: this.data.results + 1
-      })
-
-      //打中后还原
-      var that = this;
-      var play_id = setTimeout(function () {
-        that.setData({
-          ['imgs[' + n + '].src']: "../../static/00.jpg",
-        })
-      }, 500);
-    }
+      current: detail.key
+    });
   },
   changeIndicatorDots() {
     this.setData({
@@ -304,7 +225,6 @@ do(){
     })
   },
   gameOver() {
-
     if (this.data.results >= this.data.latest) {
       //请求分配碎片
       WXAPI.getFragment({
@@ -376,32 +296,21 @@ do(){
         energy: res.data
       })
     });
-    WXAPI.getScore({
-    
-    }).then(res => {
-      console.log("最少赢得", res.data)
-      this.setData({
-        latest: res.data.score
-      })
-    });
-
-
-
-    var that = this; //把this对象复制到临时变量that
-    const wxreq = wx.request({
-      url: 'https://api.orderour.com/api/admin/upGoods',
-      success: function (res) {
-        console.log(res.data);
-        // this.userData = res.data; //无效不能实时的渲染到页面
-        that.setData({
-          giftList: res.data.data
-        }); //和页面进行绑定可以动态的渲染到页面
-      },
-      fail: function (res) {
-        console.log(res.data);
-        this.userData = "数据获取失败";
-      }
-    })
+    // var that = this; //把this对象复制到临时变量that
+    // const wxreq = wx.request({
+    //   url: 'https://api.orderour.com/api/admin/upGoods',
+    //   success: function (res) {
+    //     console.log(res.data);
+    //     // this.userData = res.data; //无效不能实时的渲染到页面
+    //     that.setData({
+    //       giftList: res.data.data
+    //     }); //和页面进行绑定可以动态的渲染到页面
+    //   },
+    //   fail: function (res) {
+    //     console.log(res.data);
+    //     this.userData = "数据获取失败";
+    //   }
+    // })
     //获取uuid和code等信息
     // wx.login({
     //   success: function (res) {
