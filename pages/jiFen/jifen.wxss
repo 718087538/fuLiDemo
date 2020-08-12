@@ -8,6 +8,7 @@
   background-size: 100% 100%;
   width: 750rpx;
   height: 100vh;
+  position: relative;
 }
 .myWater{
   color: #fff;
@@ -23,19 +24,25 @@
   border-radius: 10rpx;
   font-size: 45rpx;
 }
-.tree{
+.treeBox{
+  width: 100%;
+  height:850rpx;
+  border: 1px solid red;
+  bottom: 0;
   position: absolute;
-  top: 350rpx;
   left: 50%;
   transform: translateX(-50%);
+}
+.tree{
+margin: 0 auto;
   display: block;
   width: 380rpx;
   height: 420rpx;
   /* margin: 350rpx auto 0; */
 }
 .doBox{
-  position: fixed;
-  bottom: 100rpx;
+  position: absolute;
+  bottom: 0rpx;
 }
 .jiaoshuiIng{
   width: 200rpx;
@@ -47,22 +54,25 @@
 }
 .playInfo{
   color: #333;
-  position: fixed;
-  right: 20rpx;
+  width: 230rpx;
+  height: 250rpx;
+  position: absolute;
+  bottom: 120rpx;
+  right: -10rpx;
   z-index: 10;
 }
 .playInfo .costNum{
-  width: 90rpx;
-  margin: 0 auto;
-  font-size: 34rpx;
+  position: absolute;
+  bottom: 50rpx;
+  width: 100%;
+  text-align: center;
+  font-size: 35rpx;
   color: #fff;
   text-align: center;
-  border-radius: 10rpx;
-  background-color: rgb(167, 167, 82);
 }
 .jiaoShuiBtn{
-  width: 150rpx;
-  height: 150rpx;
+  width: 100%;
+  height: 100%;
   /* -webkit-animation: translate-style 2s linear infinite; */
   border-radius: 80rpx;
 }
@@ -74,9 +84,22 @@
   border-radius: 50%;
   overflow: hidden;
 }
+.getShuiDiBox {
+  bottom: 150rpx;
+  width: 180rpx;
+  height: 180rpx;
+}
 .getShuiDiBox image{
   width: 100%;
   height: 100%;
+}
+.getShuiDiBox view{
+  position: absolute;
+  bottom: 30rpx;
+  font-size: 28rpx;
+  width: 100%;
+  text-align: center;
+  color: #fff;
 }
 .line1{
   display: flex;
@@ -163,13 +186,13 @@ position: relative;
       transform: translate(-200rpx,0);
   } */
   60% {
-      transform: translate(-200rpx,-450rpx) rotate(-45deg);
+      transform: translate(-200rpx,-650rpx) rotate(-45deg);
   }
   80% {
-    transform: translate(-340rpx,-450rpx) rotate(-45deg);
+    transform: translate(-340rpx,-650rpx) rotate(-45deg);
   }
   100% {
-    transform: translate(-120rpx,-450rpx) rotate(-45deg);
+    transform: translate(-120rpx,-650rpx) rotate(-45deg);
   }
 }
 view{

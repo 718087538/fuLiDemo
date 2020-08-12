@@ -2,9 +2,9 @@
 <view class="container">
 	<view class="page-body">
 		<view class="page-section page-section-spacing swiper">
-			<swiper circular="true" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+			<swiper indicator-active-color="#fff"  circular="true" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
 				<block wx:for="{{swiperList}}" wx:key="*this">
-					<swiper-item>
+					<swiper-item class="swiperItem">
 						<view class="swiper-item {{item}}">
 							<image src="{{item.imgSrc}}"></image>
 						</view>
@@ -21,17 +21,22 @@
 		<image src="{{comeBtnBg}}"></image>
 	</navigator>
 	</view>
-
 	<view class="giftShow">
 		<view  wx:for="{{giftList}}" wx:key="*this">
 			<navigator class="giftIt"  url="../giftInfo/index?goodsId={{item._id}}">
 			<image src="{{item.goodsImg}}"></image>
 			<view class="right">
 				<view class="title">{{item.title}}</view>
-				<view class="price">
-					<text>￥:0.00</text>
-					<text>数量：12</text>
+				<view class="priceBox">
+				<view class="tag">
+				<text>包邮到家</text>	<text>0元领</text>
 				</view>
+						<view class="price">
+						<text class="priceLogo">￥:<text  class="priceNum">0.00</text>	</text>	<text class="hasNum">仅剩:12件</text>
+						</view>
+				</view>
+				
+		
 			</view></navigator>
 		</view>
 	</view>

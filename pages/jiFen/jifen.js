@@ -16,6 +16,9 @@ Page({
     show: false,
     shouYuDi: false, //展示雨滴效果
     dojiaoshui: false, //是否浇水动画进行中
+    giftName:"",//本次获得的奖品名
+    picName:"",//本次获得的碎片名
+    giftId:"",//本次碎片得商品id，不一定对
   },
   handleOpen1() {
     this.setData({
@@ -35,20 +38,19 @@ Page({
     });
   },
   sureGet() {
-    wx.navigateTo({
-      url: '/pages/gift/fragments?key=value',
-    })
     this.setData({
       getedPic: false
     })
   },
   seeGood() {
-    this.setData({
-      getedPic: false
+    wx.navigateTo({
+      url: `/pages/gift/fragments?giftId=${this.data.giftId}`//实际路径要写全
     })
   },
   //浇水的操作
   do() {
+    this.gameOver();//抽碎片
+
     if (this.data.dojiaoshui) {
       console.log("浇水中了")
       return false
@@ -83,6 +85,7 @@ Page({
         } else if (res.code == 201) {
           console.log("体力不足=========")
         }
+        this.gameOver();//抽碎片
       })
     } else if (this.data.energy == 0) {
       $Toast({
@@ -97,11 +100,11 @@ Page({
     setTimeout(() => {
       this.setData({
         dojiaoshui: false,
-        // getedPic: true
+        getedPic: true
       })
     }, 2800)
   },
-
+//领体力
   addEnergy(e) {
     console.log(e.target.dataset);
     WXAPI.lowEnergy({
@@ -225,7 +228,7 @@ Page({
     })
   },
   gameOver() {
-    if (this.data.results >= this.data.latest) {
+    // if (this.data.results >= this.data.latest) {
       //请求分配碎片
       WXAPI.getFragment({
         uid: wx.getStorageSync('openid')
@@ -253,19 +256,24 @@ Page({
             break;
         };
         if (res.code == 200) {
-          $Toast({
-            content: `恭喜获得${res.data.giftName}${picName}`
-          });
+          this.setData({
+            giftName:res.data.giftName,
+            picName:picName,
+            giftId:res.data.uid
+          })
+          // $Toast({
+          //   content: `恭喜获得${res.data.giftName}${picName}`
+          // });
         }
       })
-    } else {
-      //false代表游戏没完成，进行中
-      if (!this.data.playOver) {
-        $Toast({
-          content: '好遗憾，分数不足无碎片'
-        });
-      }
-    }
+    // } else {
+    //   //false代表游戏没完成，进行中
+    //   if (!this.data.playOver) {
+    //     $Toast({
+    //       content: '好遗憾，分数不足无碎片'
+    //     });
+    //   }
+    // }
 
     this.setData({
       playOver: true //设置游戏完成

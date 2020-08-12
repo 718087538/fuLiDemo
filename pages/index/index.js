@@ -126,6 +126,7 @@ Page({
       if (res.code == 200) {
         this.setData({
           comeBtnBg:res.data[0].imgSrc
+          // comeBtnBg:'../../static/testBg.png'
         })
       }
     })

@@ -6,5 +6,5 @@
     "van-popup": "../../miniprogram_npm/vant-weapp/popup/index",
     "i-toast": "../../dist/toast/index"
   },
-  "navigationBarTitleText": "活动"
+  "navigationBarTitleText": "首页"
 }

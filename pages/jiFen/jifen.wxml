@@ -5,23 +5,26 @@
 	</view>
 <!-- 浇水效果 -->
 	<image  wx:if="{{shouYuDi}}"  class="tree jiaoshuiIng" src="../../static/jifen/jiao.gif"></image>
-		<!-- 大树 -->
-	<image class="tree" src="../../static/jifen/tree.png"></image>
+<view class="treeBox">
+<!-- 大树 -->
+<image class="tree" src="../../static/jifen/tree.png"></image>
 <van-cell title="展示弹出层" is-link bind:click="showPopup" />
 <!-- 领水滴 -->
 <view class="doBox getShuiDiBox">
-		<image class="getShuiDi" src="../../static/jifen/getShuiDi.jpg"  bindtap="getShuiDi"></image>
+		<image class="getShuiDi" src="../../static/jifen/07.png"  bindtap="getShuiDi"></image>
+		<view>领水滴</view>
 </view>
 <!-- 浇水水壶 -->
 	<view class="doBox playInfo">
-		<image class="jiaoShuiBtn {{dojiaoshui==true?'doing':''}}" src="../../static/jifen/jiaoShui.jpg" bindtap="do"></image>
+		<image class="jiaoShuiBtn {{dojiaoshui==true?'doing':''}}" src="../../static/jifen/05.png" bindtap="do"></image>
      <view class="costNum"> 10g </view>
   </view>
+</view>
 	<i-toast id="toast" />
 </view>
 
-<i-modal title="恭喜" visible="{{ getedPic }}" bind:ok="seeGood" bind:cancel="sureGet" cancel-text="查看" ok-text="领取">
-    <view>获得大餐巾纸，碎片1</view>
+<i-modal title="恭喜" visible="{{ getedPic }}" bind:ok="sureGet" bind:cancel="seeGood" cancel-text="查看" ok-text="领取">
+    <view>获得{{giftName}}，{{picName}}</view>
 </i-modal>
 <van-popup
   show="{{ show }}"
@@ -96,8 +99,8 @@
 <view class="line2 line3">
 <image src="https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1473723578,1605607703&fm=26&gp=0.jpg"></image>
 <view class="centerText">
-	<view>邀请分享</view>
-	<view>奖励10g，每日2次</view>
+	<view>邀请新人</view>
+	<view>邀请成功，奖励200g</view>
 </view>
 <i-button  wx:if="{{energy.todaySignIn <2 }}"  open-type="share" type="primary">邀请</i-button>
 <i-button  wx:if="{{energy.todaySignIn >=2 }}" type="primary">完成</i-button>

@@ -38,6 +38,7 @@ Page({
    */
   data: {
     gift:"",
+    imgSrc:"",//商品得图片
     imgSrc1: "../../static/banner/b3.jpg",
     name: "1111111",
     toView: 'green',
@@ -126,7 +127,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("options",options);
+    console.log("options------>",options);
     if(options.over){
       this.setData({
         over:true
@@ -138,7 +139,7 @@ Page({
       url: `https://api.orderour.com/api/wxClient/giftInfo?uid=${wx.getStorageSync('openid')}&giftId=${options.giftId}`,
       success: function (res){
         console.log("拼图进度========>",res);
-        if(res.data.data === null){
+        if(res.data === ""){
           console.log("no gift progress")
           //证明没有该奖品的记录，所以碎片应为0
           let giftProgress = {
@@ -156,9 +157,9 @@ Page({
             imgSrc:options.imgSrc,
           }
         that.setData({ gift:giftProgress});//和页面进行绑定可以动态的渲染到页面
-        }else if(res.data.data){
+        }else if(res.data.data.pro){
           console.log("拼图进度=====>",res.data.data);
-          let resData = res.data.data;
+          let resData = res.data.data.pro;
           let giftPro ={
             uid:wx.getStorageSync('openid'),
             giftId:options.giftId,
@@ -171,12 +172,9 @@ Page({
               {pic:resData.pic6}
             ],
             canGet:resData.canGet,
-            imgSrc:options.imgSrc
+            imgSrc:res.data.data.imgSrc
           } 
         that.setData({ gift:giftPro});//和页面进行绑定可以动态的渲染到页面
-
-
-
         }
         // this.userData = res.data; //无效不能实时的渲染到页面
         // that.setData({ imgList: res.data.data[0].imgArray});//和页面进行绑定可以动态的渲染到页面
