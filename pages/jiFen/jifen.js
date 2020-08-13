@@ -25,7 +25,11 @@ Page({
       visible1: true
     });
   },
-
+  closeGet(){
+    this.setData({
+      show: false
+    });
+  },
   getShuiDi() {
     this.setData({
       show: true
