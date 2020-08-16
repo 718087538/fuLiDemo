@@ -2,7 +2,7 @@
 <view class="container">
 	<view class="page-body">
 		<view class="page-section page-section-spacing swiper">
-			<swiper indicator-active-color="#fff"  circular="true" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+			<swiper class="swiperBox" indicator-active-color="#fff"  circular="true" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
 				<block wx:for="{{swiperList}}" wx:key="*this">
 					<swiper-item class="swiperItem">
 						<view class="swiper-item {{item}}">
