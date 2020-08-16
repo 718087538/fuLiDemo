@@ -115,8 +115,10 @@
 <view class="line2 line3">
 <image src="../../static/jifen/ac2.png"></image>
 <view class="centerText">
-	<view class="t1">邀请新人</view>
-	<view class="t2">邀请成功，奖励水滴200g</view>
+	<view class="t1">邀请朋友</view>
+	<view class="t2">邀请成功有几率加速哦~</view>
+
+	<!-- <view class="t2">邀请成功，奖励水滴200g</view> -->
 </view>
 <i-button  i-class="rightBtn"  wx:if="{{energy.todaySignIn <2 }}"  open-type="share" type="primary">邀请</i-button>
 <i-button  wx:if="{{energy.todaySignIn >=2 }}" type="primary">完成</i-button>

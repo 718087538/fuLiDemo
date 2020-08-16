@@ -151,6 +151,9 @@ Page({
               {pic:0},
               {pic:0},
               {pic:0},
+              {pic:0},
+              {pic:0},
+              {pic:0},
               {pic:0}
             ],
             canGet:0,
@@ -169,7 +172,10 @@ Page({
               {pic:resData.pic3},
               {pic:resData.pic4},
               {pic:resData.pic5},
-              {pic:resData.pic6}
+              {pic:resData.pic6},
+              {pic:resData.pic7},
+              {pic:resData.pic8},
+              {pic:resData.pic9},
             ],
             canGet:resData.canGet,
             imgSrc:res.data.data.imgSrc

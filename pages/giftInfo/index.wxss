@@ -45,7 +45,7 @@
   text-align: center;
   line-height: 80rpx;
   font-size: 36rpx;
-  background-color: rgb(145, 175, 240);
+  background-color: #d81e06;
   -webkit-animation-name: scaleDraw;
   /*关键帧名称*/
   -webkit-animation-timing-function: ease-in-out;

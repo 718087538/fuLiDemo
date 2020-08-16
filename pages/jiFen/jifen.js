@@ -16,16 +16,16 @@ Page({
     show: false,
     shouYuDi: false, //展示雨滴效果
     dojiaoshui: false, //是否浇水动画进行中
-    giftName:"",//本次获得的奖品名
-    picName:"",//本次获得的碎片名
-    giftId:"",//本次碎片得商品id，不一定对
+    giftName: "", //本次获得的奖品名
+    picName: "", //本次获得的碎片名
+    giftId: "", //本次碎片得商品id，不一定对
   },
   handleOpen1() {
     this.setData({
       visible1: true
     });
   },
-  closeGet(){
+  closeGet() {
     this.setData({
       show: false
     });
@@ -48,31 +48,33 @@ Page({
   },
   seeGood() {
     wx.navigateTo({
-      url: `/pages/gift/fragments?giftId=${this.data.giftId}`//实际路径要写全
+      url: `/pages/gift/fragments?giftId=${this.data.giftId}` //实际路径要写全
     })
   },
   //浇水的操作
   do() {
-    this.gameOver();//抽碎片
-
+    console.log("浇水")
     if (this.data.dojiaoshui) {
       console.log("浇水中了")
       return false
     }
-    //展示浇水的水滴动画
-    setTimeout(() => {
-      this.setData({
-        shouYuDi: true
-      })
-    }, 900)
-    //关闭浇水水滴动画
-    setTimeout(() => {
-      this.setData({
-        shouYuDi: false
-      })
-    }, 2200)
     //判断是否有水滴可以浇水
-    if (this.data.energy.energyNum > 0) {
+    if (this.data.energy.energyNum > 10) {
+      this.setData({
+        dojiaoshui: true,
+      })
+      //展示浇水的水滴动画
+      setTimeout(() => {
+        this.setData({
+          shouYuDi: true
+        })
+      }, 900)
+      //关闭浇水水滴动画
+      setTimeout(() => {
+        this.setData({
+          shouYuDi: false
+        })
+      }, 2200)
       WXAPI.lowEnergy({
         openId: wx.getStorageSync('openid'),
         dos: 'decrease'
@@ -80,35 +82,33 @@ Page({
         console.log("减体力成功", res)
         var str = 'energy.energyNum';
         if (res.code == 200) {
+          //展示浇水得到的碎片，取消浇水中的变量，让水壶克再次点击
+          setTimeout(() => {
+            this.setData({
+              dojiaoshui: false,
+              getedPic: true
+            })
+          }, 2800)
           setTimeout(() => {
             this.setData({
               [str]: this.data.energy.energyNum - 10,
-
             })
           }, 1200)
         } else if (res.code == 201) {
           console.log("体力不足=========")
         }
-        this.gameOver();//抽碎片
+        this.gameOver(); //抽碎片
       })
-    } else if (this.data.energy == 0) {
+    } else if (this.data.energy.energyNum <= 0) {
       $Toast({
         content: '体力不足'
       });
       return false;
     }
-    this.setData({
-      dojiaoshui: true,
-    })
-    //展示浇水得到的碎片，取消浇水中的变量，让水壶克再次点击
-    setTimeout(() => {
-      this.setData({
-        dojiaoshui: false,
-        getedPic: true
-      })
-    }, 2800)
+
+
   },
-//领体力
+  //领体力
   addEnergy(e) {
     console.log(e.target.dataset);
     WXAPI.lowEnergy({
@@ -141,7 +141,7 @@ Page({
     })
   },
 
-  sharePeople(num,type){
+  sharePeople(num, type) {
     WXAPI.lowEnergy({
       openId: wx.getStorageSync('openid'),
       dos: 'add',
@@ -151,11 +151,11 @@ Page({
       console.log("加体力成功", res)
       var obj1 = 'energy.todaySignIn';
       if (res.code == 200) {
-          this.setData({
-            [obj1]: this.data.energy.todaySignIn + 1,
-          })
-        }
-      })
+        this.setData({
+          [obj1]: this.data.energy.todaySignIn + 1,
+        })
+      }
+    })
   },
 
 
@@ -233,43 +233,52 @@ Page({
   },
   gameOver() {
     // if (this.data.results >= this.data.latest) {
-      //请求分配碎片
-      WXAPI.getFragment({
-        uid: wx.getStorageSync('openid')
-      }).then(res => {
-        console.log("分配碎片结果", res)
-        let picName;
-        switch (res.data.picName) {
-          case 'pic1':
-            picName = "碎片1";
+    //请求分配碎片
+    WXAPI.getFragment({
+      uid: wx.getStorageSync('openid')
+    }).then(res => {
+      console.log("分配碎片结果", res)
+      let picName;
+      switch (res.data.picName) {
+        case 'pic1':
+          picName = "碎片1";
+          break;
+        case 'pic2':
+          picName = "碎片2";
+          break;
+        case 'pic3':
+          picName = "碎片3";
+          break;
+        case 'pic4':
+          picName = "碎片4";
+          break;
+        case 'pic5':
+          picName = "碎片5";
+          break;
+        case 'pic6':
+          picName = "碎片6";
+          break;
+          case 'pic7':
+            picName = "碎片7";
             break;
-          case 'pic2':
-            picName = "碎片2";
+          case 'pic8':
+            picName = "碎片8";
             break;
-          case 'pic3':
-            picName = "碎片3";
+          case 'pic9':
+            picName = "碎片9";
             break;
-          case 'pic4':
-            picName = "碎片4";
-            break;
-          case 'pic5':
-            picName = "碎片5";
-            break;
-          case 'pic6':
-            picName = "碎片6";
-            break;
-        };
-        if (res.code == 200) {
-          this.setData({
-            giftName:res.data.giftName,
-            picName:picName,
-            giftId:res.data.uid
-          })
-          // $Toast({
-          //   content: `恭喜获得${res.data.giftName}${picName}`
-          // });
-        }
-      })
+      };
+      if (res.code == 200) {
+        this.setData({
+          giftName: res.data.giftName,
+          picName: picName,
+          giftId: res.data.uid
+        })
+        // $Toast({
+        //   content: `恭喜获得${res.data.giftName}${picName}`
+        // });
+      }
+    })
     // } else {
     //   //false代表游戏没完成，进行中
     //   if (!this.data.playOver) {
@@ -303,7 +312,7 @@ Page({
     WXAPI.getEnergy({
       openId: wx.getStorageSync('openid')
     }).then(res => {
-      console.log("体力", res.data)
+      console.log("体力", res)
       this.setData({
         energy: res.data
       })

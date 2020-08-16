@@ -261,11 +261,10 @@ line-height: 70rpx  !important;
     transform: translate(-120rpx,-650rpx) rotate(-45deg);
   }
 }
-view{
+/* view{
   color: rgb(155, 56, 56);
-}
+} */
 .porgressBox{
-  
   display: flex;
   align-items: center;
 }

@@ -167,7 +167,7 @@ display:-webkit-box;
   text-align: center;
   line-height: 80rpx;
   font-size: 36rpx;
-  background-color: rgb(221, 131, 125);
+  background-color: #d81e06;
   -webkit-animation-name: scaleDraw;
   /*关键帧名称*/
   -webkit-animation-timing-function: ease-in-out;
@@ -176,27 +176,22 @@ display:-webkit-box;
   /*动画播放的次数*/
   -webkit-animation-duration: 5s;
   /*动画所花费的时间*/
-
 }
 
 
 @keyframes scaleDraw {
-
   /*定义关键帧、scaleDrew是需要绑定到选择器的关键帧名称*/
   0% {
     transform: scale(1);
     /*开始为原始大小*/
   }
-
   25% {
     transform: scale(1.2);
     /*放大1.1倍*/
   }
-
   50% {
     transform: scale(1);
   }
-
   75% {
     transform: scale(1.2);
   }

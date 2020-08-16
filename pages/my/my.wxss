@@ -55,6 +55,7 @@
   width: 90rpx;
   height: 90rpx;
   text-align: center;
+  color: #3f3d4e;
 }
 .navList {
   display: flex;

@@ -32,7 +32,7 @@
 				<text>包邮到家</text>	<text>0元领</text>
 				</view>
 						<view class="price">
-						<text class="priceLogo">￥:<text  class="priceNum">0.00</text>	</text>	<text class="hasNum">仅剩:12件</text>
+						<text class="priceLogo">￥:<text  class="priceNum">0.00</text>	</text>	<text class="hasNum">仅剩:{{item.num}}件</text>
 						</view>
 				</view>
 				

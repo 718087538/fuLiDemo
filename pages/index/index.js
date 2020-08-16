@@ -5,14 +5,8 @@ const {
   $Toast
 } = require('../../dist/base/index');
 let start_Time, djs_data, sc_time, test;
-
 const WXAPI = require('../../wxapi/main')
-
-
-
 Page({
-
-
   onShareAppMessage() {
     return {
       title: '免费领好物',
@@ -27,22 +21,8 @@ Page({
     current: 'homepage',
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    background: [{
-      src: "../../static/banner/b1.jpg"
-    }, {
-      src: "../../static/banner/b2.jpg"
-    }, {
-      src: "../../static/banner/b3.jpg"
-    }],
-    giftList: [{
-      src: "../../static/banner/b1.jpg"
-    }, {
-      src: "../../static/banner/b1.jpg"
-    }, {
-      src: "../../static/banner/b2.jpg"
-    }, {
-      src: "../../static/banner/b3.jpg"
-    }],
+    background: [],
+    giftList: [],
     indicatorDots: true,
     vertical: false,
     autoplay: true,
@@ -138,7 +118,6 @@ Page({
       url: 'https://api.orderour.com/api/admin/upGoods',
       success: function (res) {
         console.log(res.data);
-        // this.userData = res.data; //无效不能实时的渲染到页面
         that.setData({
           giftList: res.data.data
         }); //和页面进行绑定可以动态的渲染到页面
