@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imageURL: "http://img4.imgtn.bdimg.com/it/u=2853553659,1775735885&fm=26&gp=0.jpg",
+    imageURL: "",
     address: {
       name: "",
       phone: '',
@@ -21,7 +21,6 @@ Page({
   },
   nowGet: function () {
     console.log(this.data.goods.giftId)
-    
     //这里需要继续做
     WXAPI.nowGet({
       openId: wx.getStorageSync('openid'),
@@ -92,10 +91,12 @@ Page({
       })
     }
 
-
     //请求待领取的商品
-    wx.setStorageSync('giftId', options.giftId);
-    wx.setStorageSync('getCode', options.getCode);
+    if(options.giftId){
+      wx.setStorageSync('giftId', options.giftId);
+      wx.setStorageSync('getCode', options.getCode);
+    }
+
     console.log("设置缓存getCode", wx.getStorageSync('getCode'))
     WXAPI.getGood({
       uid: wx.getStorageSync('openid'),

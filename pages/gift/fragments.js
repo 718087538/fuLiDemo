@@ -14,7 +14,6 @@ Page({
     })
   },
   sel: function (e) {
-    console.log("111", this.data.selNum);
     this.setData({
       showShare:true
     })
@@ -54,12 +53,11 @@ Page({
           name: '取消'
       }
   ],
- 
   },
   //合成奖品的操作
   synthetic(){
     //到时候canGet 改成判断每个碎片数量大于1
-    if(this.data.gift.canGet === 1){
+    if(this.data.gift.canGet){
       WXAPI.changeGood({giftId:this.data.gift.giftId,uid:wx.getStorageSync('openid')}).then(res=>{
         console.log("changeGoodRES",res)
       if(res.code === 200){
@@ -95,7 +93,7 @@ Page({
   },
 
   scroll(e) {
-    console.log(e)
+    // console.log(e)
   },
 
   scrollToTop() {
@@ -127,7 +125,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("options------>",options);
     if(options.over){
       this.setData({
         over:true
@@ -138,9 +135,7 @@ Page({
     const wxreq = wx.request({
       url: `https://api.orderour.com/api/wxClient/giftInfo?uid=${wx.getStorageSync('openid')}&giftId=${options.giftId}`,
       success: function (res){
-        console.log("拼图进度========>",res);
         if(res.data === ""){
-          console.log("no gift progress")
           //证明没有该奖品的记录，所以碎片应为0
           let giftProgress = {
             uid:wx.getStorageSync('openid'),
@@ -163,6 +158,10 @@ Page({
         }else if(res.data.data.pro){
           console.log("拼图进度=====>",res.data.data);
           let resData = res.data.data.pro;
+          let canGet = false;
+          if(resData.pic1>0&&resData.pic2>0&&resData.pic3>0&&resData.pic4>0&&resData.pic5>0&&resData.pic6>0&&resData.pic7>0&&resData.pic8>0&&resData.pic9>0){
+            canGet = true;
+          }
           let giftPro ={
             uid:wx.getStorageSync('openid'),
             giftId:options.giftId,
@@ -177,7 +176,8 @@ Page({
               {pic:resData.pic8},
               {pic:resData.pic9},
             ],
-            canGet:resData.canGet,
+           
+            canGet:canGet,
             imgSrc:res.data.data.imgSrc
           } 
         that.setData({ gift:giftPro});//和页面进行绑定可以动态的渲染到页面

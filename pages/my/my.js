@@ -1,5 +1,7 @@
 // pages/my/my.js
 const { $Toast } = require('../../dist/base/index');
+const WXAPI = require('../../wxapi/main')
+
 Page({
 
   /**
@@ -8,9 +10,8 @@ Page({
   data: {
     headSrc:"../../static/defaultHead.jpg",
     active: 3,
+    showAddress:false,
   },
-
-
 
   changeAddress(){
     $Toast({
@@ -35,7 +36,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+  //是否显示地址，tiaoGuoShenHe
+  WXAPI.showAddress({
+    openId: wx.getStorageSync('openid')
+  }).then(res => {
+    console.log("体力", res)
+    if(res.data.status === 1){
+      this.setData({
+        showAddress:true
+      })
+    }
+  });
   },
 
   /**

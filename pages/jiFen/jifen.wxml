@@ -25,8 +25,9 @@
 </view>
 	<i-toast id="toast" />
 </view>
-<i-modal title="恭喜" visible="{{ getedPic }}" bind:ok="sureGet" bind:cancel="seeGood" cancel-text="查看" ok-text="领取">
-    <view>获得{{giftName}}，{{picName}}</view>
+<i-modal i-class="showWindow" title="恭喜您获得" visible="{{ getedPic }}" bind:ok="sureGet" bind:cancel="seeGood" cancel-text="查看" ok-text="领取">
+	<image src="{{getGiftImg}}"></image>
+    <view class="tip">{{giftName}}，{{picName}}</view>
 </i-modal>
 <van-popup
   show="{{ show }}"

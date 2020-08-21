@@ -11,6 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    getGiftImg:"https://api.orderour.com/public/image/gift/gift-8ot5kdhidkdxc2dg7.jpg",
     djs_data: 0,
     energy: 200, //体力要动态获取
     show: false,
@@ -19,6 +20,7 @@ Page({
     giftName: "", //本次获得的奖品名
     picName: "", //本次获得的碎片名
     giftId: "", //本次碎片得商品id，不一定对
+    getedPic:false
   },
   handleOpen1() {
     this.setData({
@@ -47,6 +49,7 @@ Page({
     })
   },
   seeGood() {
+    console.log("奖品id",this.data.giftId)
     wx.navigateTo({
       url: `/pages/gift/fragments?giftId=${this.data.giftId}` //实际路径要写全
     })
@@ -272,7 +275,8 @@ Page({
         this.setData({
           giftName: res.data.giftName,
           picName: picName,
-          giftId: res.data.uid
+          giftId: res.data.giftId,
+          getGiftImg:res.data.imgSrc,
         })
         // $Toast({
         //   content: `恭喜获得${res.data.giftName}${picName}`

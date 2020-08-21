@@ -1,6 +1,18 @@
 /* pages/jiFen/jifen.wxss */
 /**index.wxss**/
+.showWindow{
 
+}
+
+.showWindow image{
+  width: 270rpx;
+  border-radius: 8rpx;
+  height: 330rpx;
+}
+
+.showWindow .tip{
+  font-size: 33rpx;
+}
 .container{
   overflow: hidden;
   background: url("https://api.orderour.com/public/image/gift/gift-8ot5kd3mnkdg3r7os.jpg");
