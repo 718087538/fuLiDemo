@@ -2,7 +2,7 @@
 <view class="container">
 	<view class="page-body">
 		<view class="page-section page-section-spacing swiper">
-			<swiper class="swiperBox" indicator-active-color="#fff"  circular="true" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+			<swiper class="swiperBox" indicator-active-color="#fff" circular="true" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
 				<block wx:for="{{swiperList}}" wx:key="*this">
 					<swiper-item class="swiperItem">
 						<view class="swiper-item {{item}}">
@@ -13,38 +13,53 @@
 			</swiper>
 		</view>
 	</view>
-<i-notice-bar icon="systemprompt" loop speed="{{playNoticeSpeed}}">
-	{{noticeList}}
-</i-notice-bar>
+	<i-notice-bar icon="systemprompt" loop speed="{{playNoticeSpeed}}">
+		{{noticeList}}
+	</i-notice-bar>
 	<view class="middleBanner" bindtap="goJiFen">
-	<view class="a" >
-		<image src="{{comeBtnBg}}"></image>
-	</view>
+		<view class="a">
+			<image src="{{comeBtnBg}}"></image>
+		</view>
 	</view>
 	<view class="giftShow">
-		<view  wx:for="{{giftList}}" wx:key="*this">
-			<navigator class="giftIt"  url="../giftInfo/index?goodsId={{item._id}}">
-			<image src="{{item.goodsImg}}"></image>
-			<view class="right">
-				<view class="title">{{item.title}}</view>
-				<view class="priceBox">
-				<view class="tag">
-				<text>包邮到家</text>	<text>0元领</text>
-				</view>
-						<view class="price">
-						<text class="priceLogo">￥:<text  class="priceNum">0.00</text>	</text>	<text class="hasNum">仅剩:{{item.num}}件</text>
+		<view wx:for="{{giftList}}" wx:key="*this">
+			<navigator class="giftIt" url="../giftInfo/index?goodsId={{item._id}}">
+				<image src="{{item.goodsImg}}"></image>
+				<view class="right">
+					<view class="title">{{item.title}}</view>
+					<view class="priceBox">
+						<view class="tag">
+							<text>包邮到家</text> <text>0元领</text>
 						</view>
+						<view class="price">
+							<text class="priceLogo">￥:<text  class="priceNum">0.00</text> </text> <text class="hasNum">仅剩:{{item.num}}件</text>
+						</view>
+					</view>
+
+
 				</view>
-				
-		
-			</view></navigator>
+			</navigator>
 		</view>
 	</view>
 	<i-toast id="toast" />
 </view>
 <view class="goGet" wx:if="{{read}}">
 	<navigator url="/pages/index/read">
-	{{showTitle}}
+		{{showTitle}}
 	</navigator>
+</view>
+
+<view class="wanLa" wx:if="{{showWanLa}}" bindtap="closeWanLa">
+	<image class="wanImg" src="https://gifttown-1302268471.file.myqcloud.com/%E5%A5%96%E5%93%81%E5%B0%8F%E9%95%87%E5%B0%8F%E7%A8%8B%E5%BA%8F/laiwanla.png"></image>
+</view>
+<view class="wanLa" wx:if="{{getPicSuccessful}}" bindtap="">
+	<view class="tipBox">
+		<view class="succTip">恭喜您</view> 
+		<view class="succTip2">获得{{getgiftName}}，{{getPicSuccPicName}}</view>
+		<image class="goodImg" src="{{getPicSuccImg}}"></image>
+		<view class="succTip2 succTip3">请前往我的奖品，对应奖品查看</view>
+		<i-button bind:click="closeSuccess" type="success">领取</i-button>
+	</view>
+
 </view>
 <view class="stand"></view>

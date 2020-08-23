@@ -15,7 +15,7 @@ Page({
   },
 
   data: {
-    swiperList:[],
+    swiperList: [],
     motto: 'Hello World',
     userInfo: {},
     current: 'homepage',
@@ -30,11 +30,16 @@ Page({
     duration: 1000,
     noticeList: '欢迎光临', //首页通知
     playNoticeSpeed: 2000, //通知滚动速度，根据数量来计算，2.5s *n 
-    comeBtnBg:'',
-    showRead:false,
-    showTitle:'新人必看'
+    comeBtnBg: '',
+    showRead: false,
+    showTitle: '新人必看',
+    showWanLa:false,//是否显示来晚了，碎片没了
+    getPicSuccessful:false,
+    getPicSuccImg:"",//得到的碎片的图片地址
+    getgiftName:"",
+    getPicSuccPicName:""
   },
-  goJiFen(){
+  goJiFen() {
     wx.removeStorageSync('per_get_goodid')
     wx.navigateTo({
       url: `/pages/jiFen/jifen` //从特定商品跳到浇水，设置缓存优先分配该商品。
@@ -82,41 +87,77 @@ Page({
   getSwiper: function () {
     WXAPI.getSwiper({}).then(res => {
       this.setData({
-        swiperList:res.data
+        swiperList: res.data
       })
     })
   },
   onShow: function () {
     this.read();
   },
+  closeWanLa(){
+    this.setData({
+      showWanLa: false
+    })
+  },
+  closeSuccess(){
+    this.setData({
+      getPicSuccessful: false
+    })
+  },
   onLoad: function (options) {
-    console.log("URL链接==============》",options);
-    console.log("openId==============》",wx.getStorageSync('openid'));
-    if(options.type&&options.invitePeopleId){
-      WXAPI.invitePeople({
-        type:options.type,
-        invitePeopleId:options.invitePeopleId,
-        openId:'996sssssssssss'
-        // openId:wx.getStorageSync('openid')
-      }).then(res=>{
-        console.log("邀请人链接的回应",res);
-        if(res.code === 200){
-       //尝试注册新用户
-       WXAPI.register({
-        openId:wx.getStorageSync('openid'),
-        sex:3
-      }).then(res=>{
-        console.log("是新人，注册的信息",res)
-      })
+    console.log("URL链接==============》", options);
+    
+    console.log("openId==============》", wx.getStorageSync('openid'));
+    //查看是否是分享碎片的链接
+    if (options.picName) {
+      WXAPI.getSharePic({
+        openId:options.openId,
+        picName:options.picName,
+        giftId:options.giftId,
+        myOpenId:wx.getStorageSync('openid'),
+      }).then(res => {
+        console.log(res);
+        
+        if(res.code === 201){
+          this.setData({
+            showWanLa:true
+          })
+        }else if(res.code === 200){
+          this.setData({
+            getPicSuccessful:true,
+            getPicSuccImg:res.data.imgSrc,
+            getgiftName:res.data.giftName,
+            getPicSuccPicName:res.data.picName
+          })
         }
       })
-    }else{
+    }
+    //查看是否是邀请新人的链接
+    if (options.type && options.invitePeopleId) {
+      WXAPI.invitePeople({
+        type: options.type,
+        invitePeopleId: options.invitePeopleId,
+        openId: '996sssssssssss'
+        // openId:wx.getStorageSync('openid')
+      }).then(res => {
+        console.log("邀请人链接的回应", res);
+        if (res.code === 200) {
+          //尝试注册新用户
+          WXAPI.register({
+            openId: wx.getStorageSync('openid'),
+            sex: 3
+          }).then(res => {
+            console.log("是新人，注册的信息", res)
+          })
+        }
+      })
+    } else {
       //尝试注册新用户
       WXAPI.register({
-        openId:wx.getStorageSync('openid'),
-        sex:3
-      }).then(res=>{
-        console.log("注册的信息",res)
+        openId: wx.getStorageSync('openid'),
+        sex: 3
+      }).then(res => {
+        console.log("注册的信息", res)
       })
     }
 
@@ -126,11 +167,11 @@ Page({
     }).then(res => {
       if (res.code == 200) {
         let toString = '';
-        for ( let i of res.data){
-          toString+= i.content;
+        for (let i of res.data) {
+          toString += i.content;
         }
         this.setData({
-          noticeList:toString
+          noticeList: toString
         })
       }
     })
@@ -139,7 +180,7 @@ Page({
     }).then(res => {
       if (res.code == 200) {
         this.setData({
-          comeBtnBg:res.data[0].imgSrc
+          comeBtnBg: res.data[0].imgSrc
           // comeBtnBg:'../../static/testBg.png'
         })
       }
@@ -168,17 +209,17 @@ Page({
   },
   read: function (e) {
     WXAPI.getRead({
-      openId:wx.getStorageSync('openid')
-    }).then(res=>{
-      if(res.data != false && res.code === 200){
+      openId: wx.getStorageSync('openid')
+    }).then(res => {
+      if (res.data != false && res.code === 200) {
         this.setData({
-          read:true,
-          showTitle:res.data.showTitle
+          read: true,
+          showTitle: res.data.showTitle
         })
       }
     })
   },
- 
+
   getUserInfo: function (e) {
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
