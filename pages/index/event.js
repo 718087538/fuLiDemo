@@ -17,7 +17,6 @@ Page({
     const wxreq = wx.request({
       url: 'https://api.orderour.com/api/wxClient/notice',
       success: function (res) {
-        console.log(res.data);
         // this.userData = res.data; //无效不能实时的渲染到页面
         for (let i of res.data.data) {
           i.createDate =Util.formatTime(new Date(i.createDate));
@@ -28,7 +27,6 @@ Page({
         }); //和页面进行绑定可以动态的渲染到页面
       },
       fail: function (res) {
-        console.log(res.data);
 
         this.userData = "数据获取失败";
       }
@@ -42,10 +40,8 @@ Page({
   },
   //预览图片，放大预览
   preview(event) {
-    console.log(event.currentTarget.dataset)
     let currentUrl = event.currentTarget.dataset.src;
     let arrindex = event.currentTarget.dataset.outindex;
-    console.log("shuzu", currentUrl, arrindex);
     wx.previewImage({
       current: currentUrl, // 当前显示图片的http链接
       urls: this.data.eventList[arrindex].noticeImg // 需要预览的图片http链接列表

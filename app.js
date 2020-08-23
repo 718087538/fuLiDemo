@@ -13,9 +13,7 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         let code = res.code;
-        console.log("code",code);
         WXAPI.login({code:res.code}).then(res=>{
-          console.log("resss",res)
           //把openiD和session_key缓存在本地
           wx.setStorageSync('openid', res.openid);
           wx.setStorageSync('session_key', res.session_key);
@@ -43,12 +41,9 @@ App({
         }
       }
     }),
-    WXAPI.register({
-      openId:wx.getStorageSync('openid'),
-      sex:3
-    }).then(res=>{
-      console.log("注册的信息",res)
-    })
+//清楚优先获取商品的商品id
+    wx.removeStorageSync('per_get_goodid')
+
   },
   globalData: {
     userInfo: null

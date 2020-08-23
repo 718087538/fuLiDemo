@@ -18,8 +18,6 @@
 </view>
 </view>
 
-<view class="goGet" wx:if="{{!readStart}}">
-	<navigator url="../../pages/jiFen/jifen">
+<view class="goGet" wx:if="{{!readStart}}" bindtap="jiaoShuiGet">
 	浇水抽取
-	</navigator>
 </view>

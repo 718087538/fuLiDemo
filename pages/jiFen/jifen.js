@@ -11,7 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    getGiftImg:"https://api.orderour.com/public/image/gift/gift-8ot5kdhidkdxc2dg7.jpg",
+    getGiftImg:"",
     djs_data: 0,
     energy: 200, //体力要动态获取
     show: false,
@@ -163,47 +163,16 @@ Page({
 
 
 
-  // onShareAppMessage() {
-  //   return {
-  //     title: '0元包邮，家居百货',
-  //     path: `pages/index/index`
-  //   }
-  // },
-  onShareAppMessage(options) {
-    // 自定义分享内容
-    var shareObj = {
-      title: "0元包邮，家居百货", // 小程序的名称
-      path: '/pages/index/index', // 默认是当前页面，必须是以‘/’开头的完整路径
-      imgUrl: '', //自定义图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
-      success: function (res) {
-        // 转发成功之后的回调
-        console.log("分享成功了！")
-
-        if (res.errMsg == 'shareAppMessage:ok') {}
-      },
-      fail: function () {
-        console.log("分享失败！！！")
-        // 转发失败之后的回调
-        if (res.errMsg == 'shareAppMessage:fail cancel') {
-          // 用户取消转发
-        } else if (res.errMsg == 'shareAppMessage:fail') {
-          // 转发失败，其中 detail message 为详细失败信息
-        }
-      },
-      complete() {
-        // 转发结束之后的回调（转发成不成功都会执行）
-      }
-    }
-    // 来自页面内的按钮的转发
-    // if (options.from == 'button') {
-    //   console.log("来源于button");
-    //   // 此处可以修改 shareObj 中的内容
-    //   shareObj.path = '/pages/index/index?btn_name=' + eData.name;
-    // }
-    // 返回shareObj
-    // return shareObj;
+  onShareAppMessage() {
+    return {
+    title: "0元包邮，家居百货", // 小程序的名称
+    path: `/pages/index/index?type="shareApp"&invitePeopleId=${wx.getStorageSync('openid')}`, // 默认是当前页面，必须是以‘/’开头的完整路径
+    imgUrl: '', //自定义图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
+    complete() {
+      // 转发结束之后的回调（转发成不成功都会执行）
+      console.log("分享完成");
+    }}
   },
-
   handleChange({
     detail
   }) {
@@ -238,7 +207,8 @@ Page({
     // if (this.data.results >= this.data.latest) {
     //请求分配碎片
     WXAPI.getFragment({
-      uid: wx.getStorageSync('openid')
+      uid: wx.getStorageSync('openid'),
+      goodId: wx.getStorageSync('per_get_goodid') || '',
     }).then(res => {
       console.log("分配碎片结果", res)
       let picName;

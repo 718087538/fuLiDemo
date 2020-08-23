@@ -39,15 +39,12 @@ Page({
     WXAPI.getGiftList({
       type: wx
     }).then(res => {
-      console.log("统一接口11111", res.data);
       for (let i of res.data) {
         let startDate = new Date(i.startDate);
         let overDate = new Date(i.overDate);
         i.targetTime = new Date(i.startDate).getTime()
-        console.log("对比结果", nowDate < startDate.getTime())
         if (nowDate < startDate.getTime()) {
           //未开始
-          console.log("未开始", i)
           let index = readyStartList.length
           readyStartList[index] = i;
           console.log(readyStartList);
@@ -71,48 +68,6 @@ Page({
         overList,
       });
     })
-    // const wxreq = wx.request({
-    //   url: 'https://api.orderour.com/api/wxClient/gift?type=wx',
-    //   success: function (res) {
-    //     console.log("全部接口",res.data);
-    //     for (let i of res.data.data) {
-    //       let startDate = new Date(i.startDate);
-    //       let overDate = new Date(i.overDate);
-    //       console.log("对比结果", nowDate < startDate.getTime())
-    //       if (nowDate < startDate.getTime()) {
-    //         //未开始
-    //         console.log("未开始", i)
-    //         let index = readyStartList.length
-    //         readyStartList[index] = i;
-    //         console.log(readyStartList);
-    //       } else if (
-    //         nowDate > startDate.getTime() &&
-    //         nowDate < overDate.getTime()
-    //       ) {
-    //         //已开始
-
-    //         let index = startList.length
-    //         startList[index] = i;
-    //       } else if (nowDate > overDate.getTime()) {
-    //         //已结束
-    //         let index = overList.length
-    //         overList[index] = i;
-
-    //       }
-    //     }
-    //     that.setData({
-    //       startList,
-    //       readyStartList,
-    //       overList,
-    //     });
-
-    //     console.log("进行中", startList)
-    //   },
-    //   fail: function (res) {
-    //     console.log(res.data);
-    //     // this.userData = "数据获取失败";
-    //   }
-    // })
   },
   handleChange({
     detail

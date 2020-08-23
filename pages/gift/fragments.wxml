@@ -55,7 +55,7 @@
 </view>
 <view class="picBox">
 	<scroll-view class="rowBox" scroll-x="true" bindscroll="scroll" style="width: 100%">
-		<view id="demo{{index+1}}" data-num="{{index+1}}"  class="demo  demo-text-1" wx:for="{{gift.picList}}" wx:key="index">
+		<view bindtap="sel" id="demo{{index+1}}" data-idx="{{index+1}}" data-sum="{{item.pic}}"  class="demo  demo-text-1" wx:for="{{gift.picList}}" wx:key="index">
 		<!-- <view id="demo{{index+1}}" data-num="{{index+1}}" bindtap="sel" class="demo  demo-text-1" wx:for="{{gift.picList}}" wx:key="index"> -->
       <image class="bg" src="{{gift.imgSrc}}"></image>
       <view class="num">{{item.pic}}</view>
@@ -63,10 +63,11 @@
 		</view>
 	</scroll-view>
 </view>
-<!-- <i-modal title="" visible="{{ showShare }}" actions="{{ showShareList }}" bind:click="goShare">
-   <i-button  open-type='share' type="primary" size="small">送给朋友</i-button>
-</i-modal> -->
+<i-modal title="" visible="{{ showShare }}" actions="{{ showShareList }}" bind:click="goShare">
+   <i-button bindtap="shareAnd"  open-type='share' type="primary" size="small">送【碎片{{picName}}】给朋友</i-button>
+   <view class="shareTip">小提醒：送碎片会立即扣除碎片哦~</view>
+</i-modal>
 <i-button class="heCheng"  wx:if="{{!over}}"  bind:click="synthetic" type="success" size="small">立即合成</i-button>
 <i-button wx:if="{{over}}" disabled  type="primary" size="small">活动已结束</i-button>
-
+<!-- <view>{{ttt.b}}</view> -->
 <i-toast id="toast" />

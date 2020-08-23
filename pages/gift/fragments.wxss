@@ -10,6 +10,10 @@
   width: 100%;
   height: 100%;
 }
+.shareTip{
+  color: rgb(219, 219, 89);
+  font-size: 26rpx;
+}
 .pic {
   position: absolute;
   top: 0;

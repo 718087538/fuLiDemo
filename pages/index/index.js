@@ -30,9 +30,15 @@ Page({
     duration: 1000,
     noticeList: '欢迎光临', //首页通知
     playNoticeSpeed: 2000, //通知滚动速度，根据数量来计算，2.5s *n 
-    comeBtnBg:'../../static/banner/b1.jpg',
+    comeBtnBg:'',
     showRead:false,
     showTitle:'新人必看'
+  },
+  goJiFen(){
+    wx.removeStorageSync('per_get_goodid')
+    wx.navigateTo({
+      url: `/pages/jiFen/jifen` //从特定商品跳到浇水，设置缓存优先分配该商品。
+    })
   },
   handleChange({
     detail
@@ -75,7 +81,6 @@ Page({
   },
   getSwiper: function () {
     WXAPI.getSwiper({}).then(res => {
-      console.log("轮播图", res)
       this.setData({
         swiperList:res.data
       })
@@ -84,11 +89,41 @@ Page({
   onShow: function () {
     this.read();
   },
-  onLoad: function () {
+  onLoad: function (options) {
+    console.log("URL链接==============》",options);
+    console.log("openId==============》",wx.getStorageSync('openid'));
+    if(options.type&&options.invitePeopleId){
+      WXAPI.invitePeople({
+        type:options.type,
+        invitePeopleId:options.invitePeopleId,
+        openId:'996sssssssssss'
+        // openId:wx.getStorageSync('openid')
+      }).then(res=>{
+        console.log("邀请人链接的回应",res);
+        if(res.code === 200){
+       //尝试注册新用户
+       WXAPI.register({
+        openId:wx.getStorageSync('openid'),
+        sex:3
+      }).then(res=>{
+        console.log("是新人，注册的信息",res)
+      })
+        }
+      })
+    }else{
+      //尝试注册新用户
+      WXAPI.register({
+        openId:wx.getStorageSync('openid'),
+        sex:3
+      }).then(res=>{
+        console.log("注册的信息",res)
+      })
+    }
+
+
     WXAPI.getNotice({
       isUse: 1
     }).then(res => {
-      console.log("tongzhi ", res.data)
       if (res.code == 200) {
         let toString = '';
         for ( let i of res.data){
@@ -102,7 +137,6 @@ Page({
     WXAPI.getComeBtn({
       isWx: 1
     }).then(res => {
-      console.log("comebtn ", res)
       if (res.code == 200) {
         this.setData({
           comeBtnBg:res.data[0].imgSrc
@@ -117,33 +151,25 @@ Page({
     const wxreq = wx.request({
       url: 'https://api.orderour.com/api/admin/upGoods',
       success: function (res) {
-        console.log(res.data);
         that.setData({
           giftList: res.data.data
         }); //和页面进行绑定可以动态的渲染到页面
       },
       fail: function (res) {
-        console.log(res.data);
         this.userData = "数据获取失败";
       }
     })
-
-
-
     //获取uuid和code等信息
     // wx.login({
     //   success: function (res) {
     //     console.log('loginCode:', res)
     //   }
     // });
-
-
   },
   read: function (e) {
     WXAPI.getRead({
       openId:wx.getStorageSync('openid')
     }).then(res=>{
-      console.log("展示新人指导？",res);
       if(res.data != false && res.code === 200){
         this.setData({
           read:true,

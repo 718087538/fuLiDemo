@@ -23,11 +23,9 @@ Page({
     WXAPI.putRead({
       openId:wx.getStorageSync('openid')
     }).then(res => {
-      console.log("设置为已读", res)
     })
     WXAPI.getHelpImg({
     }).then(res => {
-      console.log("图片", res)
       this.setData({
         helpImg:res.data[0].imgSrc
       })

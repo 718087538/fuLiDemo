@@ -80,4 +80,6 @@ module.exports = {
   putRead:data => request('/wxClient/read','put',data),//设置新人指导已读
   getHelpImg:data => request('/admin/addImgHelp','get',data),//新人指导图片
   showAddress:data => request('/admin/addressStatus','get',data),//新人指导图片
+  invitePeople:data => request('/wxClient/invitePeople','post',data),//判断是否邀请新人成功
+  addShare:data => request('/wxClient/addShare','post',data),//分享碎片给人
 }

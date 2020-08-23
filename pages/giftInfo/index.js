@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+  goodsId:"",//本商品的id
   imgList:[],
   readStart:false,//是否是未上架的。
   startTime:'',//准备开始活动的时间
@@ -12,6 +13,14 @@ Page({
   myFormat1: ['天', '时', '分', '秒'],
   status: '进行中...',
   clearTimer: false
+  },
+  jiaoShuiGet(){
+    if(this.data.goodsId){
+      wx.setStorageSync('per_get_goodid', this.data.goodsId);
+    }
+    wx.navigateTo({
+      url: `/pages/jiFen/jifen` //从特定商品跳到浇水，设置缓存优先分配该商品。
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -23,7 +32,7 @@ Page({
         startTime:options.startTime
       })
     }
-    console.log(options)
+
     var that = this;//把this对象复制到临时变量that
     const wxreq = wx.request({
       url: 'https://api.orderour.com/api/admin/upGoodsList',
@@ -31,12 +40,14 @@ Page({
         goodsId:options.goodsId,
       },
       success: function (res){
-        console.log(res.data.data);
+
+        that.setData({
+          goodsId:options.goodsId,
+        })
         // this.userData = res.data; //无效不能实时的渲染到页面
         that.setData({ imgList: res.data.data[0].imgArray});//和页面进行绑定可以动态的渲染到页面
       },
       fail: function (res){
-        console.log(res.data);
         this.userData = "数据获取失败";
       }
     })
