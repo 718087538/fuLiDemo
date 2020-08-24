@@ -1,6 +1,6 @@
 <!--pages/my/my.wxml-->
 <view class="myInfo">
-	<image class="bg" src="https://gifttown-1302268471.file.myqcloud.com/%E5%A5%96%E5%93%81%E5%B0%8F%E9%95%87%E5%B0%8F%E7%A8%8B%E5%BA%8F/mybg.jpg"></image>
+	<image class="bg" src="https://gifttown-1302268471.file.myqcloud.com/%E5%A5%96%E5%93%81%E5%B0%8F%E9%95%87%E5%B0%8F%E7%A8%8B%E5%BA%8F/bg.jpg"></image>
 	<!-- <image class="headImg" src="{{headSrc}}"></image> -->
 	<view class="headImgBox">
 		<open-data class="headImg" type="userAvatarUrl"></open-data>
@@ -41,11 +41,11 @@
 		<image src="../../static/my/status6.png"></image>
 		<view>意见反馈</view>
 	</navigator>
-		<navigator class="navItem" url="suggeston">
+		<navigator class="navItem" url="ranking">
 		<image src="../../static/my/status7.png"></image>
 		<view>邀请排行</view>
 	</navigator>
-		<navigator class="navItem" url="suggeston">
+		<navigator class="navItem" url="myShare">
 		<image src="../../static/my/status8.png"></image>
 		<view>我的邀请</view>
 	</navigator>

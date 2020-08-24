@@ -180,6 +180,20 @@
 					"id": -1,
 					"name": "pages/jiFen/jifen",
 					"pathName": "pages/jiFen/jifen",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/ranking",
+					"pathName": "pages/my/ranking",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/myShare",
+					"pathName": "pages/my/myShare",
 					"scene": null
 				}
 			]

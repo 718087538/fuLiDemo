@@ -1,0 +1,21 @@
+<!--pages/my/ranking.wxml-->
+<view class="imgBox">
+	<image class="titleBg" src="https://gifttown-1302268471.file.myqcloud.com/%E5%A5%96%E5%93%81%E5%B0%8F%E9%95%87%E5%B0%8F%E7%A8%8B%E5%BA%8F/rank.png"></image>
+  <view class="pai">排行榜</view>
+</view>
+<view class="box">
+	<view class="line1">
+		<view class="t1">排名</view>
+		<view class="t2">用户名</view>
+		<view class="t3">总收入水滴/g</view>
+	</view>
+	<view class="line1 line2" wx:for="{{list}}" wx:key="index">
+		<view class="t1" wx:if="{{index>2 }}">{{index + 1}}</view>
+		<image class="img1" wx:if="{{index==0 }}" src="https://gifttown-1302268471.file.myqcloud.com/%E5%A5%96%E5%93%81%E5%B0%8F%E9%95%87%E5%B0%8F%E7%A8%8B%E5%BA%8F/n1.png"></image>
+		<image class="img1" wx:if="{{index==1 }}" src="https://gifttown-1302268471.file.myqcloud.com/%E5%A5%96%E5%93%81%E5%B0%8F%E9%95%87%E5%B0%8F%E7%A8%8B%E5%BA%8F/n2.png"></image>
+		<image class="img1" wx:if="{{index==2 }}" src="https://gifttown-1302268471.file.myqcloud.com/%E5%A5%96%E5%93%81%E5%B0%8F%E9%95%87%E5%B0%8F%E7%A8%8B%E5%BA%8F/n3.png"></image>
+		<!-- <view class="t1" wx:if="{{index> }}">{{index + 1}}</view> -->
+		<view class="t2"><text>{{item.child[0].name}} </text> <text class="xing">****</text> </view>
+		<view class="t3 t3_1">{{item.inviteSum * 10}}</view>
+	</view>
+</view>

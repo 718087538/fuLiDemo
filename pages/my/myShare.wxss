@@ -1,0 +1,28 @@
+/* pages/my/myShare.wxss */
+.bgBox{
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.shuiDi{
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: #fff;
+  text-align: center;
+  font-size: 36rpx;
+}
+.bgBox image{
+  width: 100%;
+}
+
+.line{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1px solid #f6f6f6;
+  font-size: 30rpx;
+}

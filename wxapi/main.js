@@ -83,4 +83,6 @@ module.exports = {
   invitePeople:data => request('/wxClient/invitePeople','post',data),//判断是否邀请新人成功
   addShare:data => request('/wxClient/addShare','post',data),//分享碎片给人
   getSharePic:data => request('/wxClient/sharepic','get',data),//尝试获取
+  getRank:data => request('/wxClient/rankList','get',data),//分享排行榜
+  shareInfo:data => request('/wxClient/shareInfo','get',data),//个人分享记录
 }

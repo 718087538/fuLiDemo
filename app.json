@@ -14,7 +14,9 @@
     "pages/my/editAddress",
     "pages/my/manAddress",
     "pages/my/suggeston",
-    "pages/index/read"
+    "pages/index/read",
+    "pages/my/ranking",
+    "pages/my/myShare"
   ],
   "window": {
     "navigationBarTitleText": "WeChat",

@@ -1,0 +1,23 @@
+<!--pages/my/myShare.wxml-->
+<view class="bgBox">
+  <image src="https://gifttown-1302268471.file.myqcloud.com/%E5%A5%96%E5%93%81%E5%B0%8F%E9%95%87%E5%B0%8F%E7%A8%8B%E5%BA%8F/myShare.png"></image>
+  <view class="shuiDi">
+    <view class="num">{{info.inviteSum * 200}}g</view>
+    <view>共获得水滴</view>
+  </view>
+</view>
+<view class="line">
+  <view>共奖励水滴：</view>
+  <view>{{info.inviteSum * 200}}g</view>
+</view>
+<view class="line">
+  <view>共邀请成功：</view>
+  <view>{{info.inviteSum}}次</view>
+</view>
+<view class="line">
+  <view>共邀请：</view>
+ <view>{{info.shareSum}}次</view>
+</view>
+
+
+
