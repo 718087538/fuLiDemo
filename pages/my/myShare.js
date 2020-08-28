@@ -11,7 +11,8 @@ Page({
       inviteSum:0,
       recentInvite:0,
       shareSum:0
-    }
+    },
+    recentyInvite:true
   },
 
   /**
@@ -22,14 +23,25 @@ Page({
       openId:wx.getStorageSync('openid')
     }).then(res => {
    
-      if(res.code === 200){
+      if(res.code === 200&&res.data){
         this.setData({
           info:res.data
         })
       }
     });
   },
-
+  reInvite(){
+    WXAPI.reInvite({
+      openId:wx.getStorageSync('openid')
+    }).then(res => {
+          if(res.code === 200){
+            let str = 'info.recentInvite'
+            this.setData({
+              [str]:0
+            })
+          }
+        });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

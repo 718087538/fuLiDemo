@@ -85,4 +85,10 @@ module.exports = {
   getSharePic:data => request('/wxClient/sharepic','get',data),//尝试获取
   getRank:data => request('/wxClient/rankList','get',data),//分享排行榜
   shareInfo:data => request('/wxClient/shareInfo','get',data),//个人分享记录
+  addInvite:data => request('/wxClient/addShareList','post',data),//增加邀请新人记录
+  reInvite:data => request('/wxClient/reInvite','post',data),//重置邀请新人成功记录
+  upMyData:data => request('/wxClient/upMyData','post',data),//上传个人信息
+
+
+  
 }

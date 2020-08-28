@@ -13,6 +13,10 @@
           <i-button  type="primary">领取</i-button>
         </navigator>
       </view>
+       <view class="noOrder" wx:if="{{waitGetList.length<1}}">
+        <image class="noOrderImg" src="../../static/my/no_order.png"></image>
+        <i-load-more tip="暂无数据" loading="{{ false }}" />
+       </view>
     </i-cell>
   </i-cell-group>
   </van-tab>
@@ -23,6 +27,10 @@
         <view class="title">{{item.goodsInfo[0].giftName}}</view>
         <view class="waitSend">待发货</view>
       </view>
+      <view class="noOrder" wx:if="{{waitSendList.length<1}}">
+        <image class="noOrderImg" src="../../static/my/no_order.png"></image>
+        <i-load-more tip="暂无数据" loading="{{ false }}" />
+       </view>
     </i-cell>
   </van-tab>
   <van-tab title="已发货">
@@ -36,6 +44,10 @@
         </view>
       </i-card>
       </view> 
+       <view class="noOrder" wx:if="{{sendedList.length<1}}">
+        <image class="noOrderImg" src="../../static/my/no_order.png"></image>
+        <i-load-more tip="暂无数据" loading="{{ false }}" />
+       </view>
     </i-cell>
  </van-tab>
   <van-tab title="已签收">

@@ -50,7 +50,7 @@
 					<image  wx:if="{{energy.continuousDay == 0 && energy.todayContinuous == false}}" class="waterBg" src="../../static/jifen/02.png"></image>
 					<view class="waterNum">10g</view>
 				</view>
-				<view wx:if="{{energy.continuousDay == 0 && energy.todayContinuous == false}}" class="btn" class="btn" data-type="continuous"  data-num="10" bindtap="addEnergy" > 领取</view>
+				<view wx:if="{{energy.continuousDay == 0 && energy.todayContinuous == false}}" class="btn" data-type="continuous"  data-num="10" bindtap="addEnergy" > 领取</view>
 				<view wx:if="{{energy.continuousDay >= 1  }}" class="btn waitDay">已领</view>
 		</view>
 		<!-- 第2天 -->
@@ -60,7 +60,7 @@
 					<image   wx:if="{{energy.continuousDay == 1 && energy.todayContinuous == false ||energy.continuousDay <1 ||energy.continuousDay ==1  && energy.todayContinuous == true }}" class="waterBg" src="../../static/jifen/02.png"></image>
 					<view class="waterNum">20g</view>
 				</view>
-				<view  wx:if="{{energy.continuousDay == 1 && energy.todayContinuous == false}}" data-type="continuous"  data-num="10" bindtap="addEnergy" > 领取</view>
+				<view  wx:if="{{energy.continuousDay == 1 && energy.todayContinuous == false}}"  class="btn"  data-type="continuous"  data-num="10" bindtap="addEnergy" > 领取</view>
 				<view wx:if="{{energy.continuousDay >= 2  }}" class="btn waitDay">已领</view>
 				<view wx:if="{{energy.continuousDay <1 }}" class="btn waitDay">第2天</view>
 				<view wx:if="{{energy.continuousDay ==1  && energy.todayContinuous == true }}" class="btn waitDay">第2天</view>

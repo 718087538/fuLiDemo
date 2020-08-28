@@ -190,14 +190,21 @@ border-right: 0;
 }
 /* 下面是大图奖品的页面 */
 .bigImgBox {
-  width: 520rpx;
+  width: 560rpx;
   height: 620rpx;
   position: relative;
   margin: 0 auto;
 }
 .title{
   text-align: center;
-  margin: 30rpx 0;
+  margin: 30rpx auto;
+  background-color: rgb(253, 84, 100);
+  width: 520rpx;
+  padding: 20rpx;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 10rpx;
+
 }
 .shopBox{
   display: flex;

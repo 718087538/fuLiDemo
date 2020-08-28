@@ -5,16 +5,38 @@
   width: 130rpx;
   height: 130rpx;
 }
+.loginBox button{
+  background-color: rgb(226, 147, 44);
+  color: #fff;
+}
+.loginStatusBox{
+  display: flex;
+  font-size: 30rpx;
+align-items: center;
+}
+.loginStatus{
+  font-size: 30rpx;
+  margin-top: 10rpx;
+  background-color: rgb(226, 147, 44);
+  /* width: 120rpx; */
+  border-radius: 10rpx;
+  padding: 4rpx 14rpx;
+}
+.loginStatused{
+  background-color: rgb(62, 161, 71);
+}
+.huizhang  .i-badge-dot{
+  font-size: 40rpx;
+  width: 20rpx !important;
+}
 .myInfo{
   margin: 10rpx 20rpx;
   height: 360rpx;
   overflow: hidden;
   border-radius: 14rpx;
   padding: 0 20rpx;
- 
   position: relative;
   display: flex;
-  
   align-items: center;
 }
 .myInfo .bg{

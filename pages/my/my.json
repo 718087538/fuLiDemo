@@ -9,8 +9,8 @@
     "van-tab": "../../miniprogram_npm/vant-weapp/tab/index",
     "van-tabs": "../../miniprogram_npm/vant-weapp/tabs/index",
     "i-card": "../../dist/card/index",
-    "i-load-more": "../../dist/load-more/index"
-
+    "i-load-more": "../../dist/load-more/index",
+    "i-badge": "../../dist/badge/index"
   },
   "navigationBarTitleText": "我的"
 }

@@ -13,7 +13,7 @@
 		{{item.county}}
 		{{item.info}}
 	</view>
-	<navigator url="/pages/my/editAddress?addressId={{item._id}}">
+	<navigator url="/pages/my/editAddress?addressId={{item._id}}&fromType=manaddress">
 		<image class="rightIcon" src="../../static/my/edit.png"></image>
 	</navigator>
 </view>

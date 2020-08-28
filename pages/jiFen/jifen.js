@@ -171,6 +171,11 @@ Page({
     complete() {
       // 转发结束之后的回调（转发成不成功都会执行）
       console.log("分享完成");
+      WXAPI.addInvite({
+        openId:wx.getStorageSync('openid')
+      }).then(res=>{
+        console.log("增加分享记录",res)
+      })
     }}
   },
   handleChange({

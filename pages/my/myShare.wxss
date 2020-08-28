@@ -26,3 +26,10 @@
   border-bottom: 1px solid #f6f6f6;
   font-size: 30rpx;
 }
+.tipBox{
+  font-size: 30rpx;
+  color: #333;
+}
+.tipBox text{
+  font-size:28px;
+}

@@ -7,5 +7,6 @@
     "i-toast": "../../dist/toast/index",
     "i-modal": "../../dist/modal/index",
     "i-button": "../../dist/button/index"
-  }
+  },
+  "navigationBarTitleText": "编辑"
 }

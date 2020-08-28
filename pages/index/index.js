@@ -104,9 +104,15 @@ Page({
       getPicSuccessful: false
     })
   },
+  login(){
+   
+  },
   onLoad: function (options) {
+
+
+
+    // this.login();
     console.log("URL链接==============》", options);
-    
     console.log("openId==============》", wx.getStorageSync('openid'));
     //查看是否是分享碎片的链接
     if (options.picName) {
@@ -137,7 +143,7 @@ Page({
       WXAPI.invitePeople({
         type: options.type,
         invitePeopleId: options.invitePeopleId,
-        openId: '996sssssssssss'
+        openId: wx.getStorageSync('openid')
         // openId:wx.getStorageSync('openid')
       }).then(res => {
         console.log("邀请人链接的回应", res);

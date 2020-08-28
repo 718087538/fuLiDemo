@@ -13,7 +13,6 @@
 		</view>
 		<view class="noAddress" wx:if="{{address.info == ''}}">请新增收获地址</view>
 		<image class="rightIcon" src="../../static/my/right.png"></image>
-
 	</view>
 </navigator>
 

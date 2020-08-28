@@ -11,6 +11,7 @@ Page({
     headSrc:"../../static/defaultHead.jpg",
     active: 3,
     showAddress:false,
+    showLoginBtn:false,//是否展示登录按钮，请求用户信息
   },
 
   changeAddress(){
@@ -32,10 +33,32 @@ Page({
       type: 'success'
   });
   },
+  getUserInfo(e) {
+    // 拿到用户信息进行下一步处理
+    console.log(e.detail.userInfo);
+    let data = e.detail.userInfo;
+    data.openId = wx.getStorageSync('openid')
+    WXAPI.upMyData(data).then(res => {
+      console.log("登录结果", res)
+      if(res.code === 200){
+        wx.setStorageSync('nickName', res.data.nickName);
+        wx.setStorageSync('gender', res.data.gender);
+        this.setData({
+          showLoginBtn:false,
+        })
+      }
+    });
+},
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(wx.getStorageSync('nickName'),wx.setStorageSync('gender'))
+    if(!wx.getStorageSync('nickName')&&!wx.getStorageSync('gender')){
+      this.setData({
+        showLoginBtn:true,
+      })
+    }
   //是否显示地址，tiaoGuoShenHe
   WXAPI.showAddress({
     openId: wx.getStorageSync('openid')

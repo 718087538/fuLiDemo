@@ -8,7 +8,14 @@
 	<view class="name">
 		<!-- <view>微信昵称</view> -->
 		<open-data type="userNickName" lang="zh_CN"></open-data>
-		<!-- <view>13400000001</view> -->
+		<view class="loginStatusBox"  wx:if="{{showLoginBtn}}">状态：<view class="loginStatus">未登录</view>      </view>
+		<view class="loginStatusBox"  wx:if="{{!showLoginBtn}}">状态： <view class="loginStatus loginStatused">已登录</view> </view>
+	</view>
+	<view class="loginBox" wx:if="{{showLoginBtn}}">
+		<i-badge dot i-class='huizhang'>
+    <!-- <view class="demo-badge"></view> -->
+		<button open-type="getUserInfo" bindgetuserinfo="getUserInfo">请登录</button>
+		</i-badge>
 	</view>
 </view>
 
@@ -51,3 +58,5 @@
 	</navigator>
 </view>
 <i-toast id="toast" />
+
+<!-- <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">11111111</button> -->

@@ -21,3 +21,11 @@
 
 
 
+<i-modal title="提醒" show-cancel="{{false}}" visible="{{ info.recentInvite > 0 }}" bind:ok="reInvite" >
+  <view class="tipBox">
+        <view>近期成功邀请
+        <text>{{info.recentInvite}}</text>
+        人</view>
+    <view>已奖励 <text>{{info.recentInvite * 200}}g</text>水滴</view>
+  </view>
+</i-modal>

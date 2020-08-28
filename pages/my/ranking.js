@@ -19,6 +19,7 @@ Page({
     }).then(res => {
       console.log("paihang", res)
       for(let i of res.data){
+        if(i.child&&i.child[0]&&i.child[0].name)
         i.child[0].name =i.child[0].name.substring(0,3)
       }
       if(res.code === 200){

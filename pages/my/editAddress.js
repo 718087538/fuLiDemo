@@ -11,10 +11,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    value1: '',
-    value2: '',
+    value1: '姓名',
+    value2: '15656565656',
     value3: '请选择', //显示的省市区
-    value4: '',
+    value4: '1111111',
     showArea: false, //是否显示地址选择栏目
     ssq: [], //已选择的省市区
     setDefault: false,
@@ -136,7 +136,7 @@ Page({
       isDefalut = 1
     }
     let newAddress = {
-      addressId:this.data.addressId,
+      addressId: this.data.addressId,
       openId: wx.getStorageSync('openid'),
       phone: '',
       name: this.data.value1,
@@ -168,11 +168,21 @@ Page({
           type: 'success',
         });
 
-        setTimeout(() => {
-          wx.navigateTo({
-            url: '/pages/my/adressList',
-          })
-        }, 600);
+        if (wx.getStorageSync('fromType') == "manaddress") {
+          console.log("1")
+          setTimeout(() => {
+            wx.navigateTo({
+              url: '/pages/my/manAddress',
+            })
+          }, 600);
+        } else {
+          console.log("2")
+          setTimeout(() => {
+            wx.navigateTo({
+              url: '/pages/my/adressList',
+            })
+          }, 600);
+        }
       }
       // this.setData({
       //   addressList: res.data
@@ -236,28 +246,40 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.addressId)
-    WXAPI.getAddress({
-      openId: wx.getStorageSync('openid'),
-      addressId: options.addressId
-    }).then(res => {
-      console.log('res', res);
-      let datas = res.data[0]
-      this.setData({
-        value1: datas.name,
-        value2: datas.receivephone,
-        value3: `${datas.provinces},${datas.city},${datas.county}`,
-        value4: datas.info,
-        ssq:[
-          {name:datas.provinces},
-          {name:datas.city},
-          {name:datas.county},
-        ]
+    console.log("optionssssss", options);
+    wx.setStorageSync('fromType', options.fromType); //判断来源类型，然后保存跳转到不同的地方  manaddress 或者其他
+
+    console.log("wx.setStorageSync", wx.getStorageSync('fromType'))
+    console.log("options.addressId", options.addressId)
+    if (options.addressId) {
+      WXAPI.getAddress({
+        openId: wx.getStorageSync('openid'),
+        addressId: options.addressId
+      }).then(res => {
+        console.log('res', res);
+        let datas = res.data[0];
+        this.setData({
+          value1: datas.name,
+          value2: datas.receivephone,
+          value3: `${datas.provinces},${datas.city},${datas.county}`,
+          value4: datas.info,
+          setDefault: datas.isDefalut == 1 ? true : false,
+          ssq: [{
+              name: datas.provinces
+            },
+            {
+              name: datas.city
+            },
+            {
+              name: datas.county
+            },
+          ]
+        })
       })
-    })
-    this.setData({
-      addressId: options.addressId
-    })
+      this.setData({
+        addressId: options.addressId
+      })
+    }
   },
 
   /**

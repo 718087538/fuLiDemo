@@ -27,7 +27,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -194,6 +194,13 @@
 					"id": -1,
 					"name": "pages/my/myShare",
 					"pathName": "pages/my/myShare",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/manAddress",
+					"pathName": "pages/my/manAddress",
 					"scene": null
 				}
 			]
