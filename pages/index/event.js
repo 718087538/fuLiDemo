@@ -1,34 +1,51 @@
 // pages/index/event.js
-var Util= require('../../utils/util.js')
+var Util = require('../../utils/util.js')
+const WXAPI = require('../../wxapi/main')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    eventList: [{}]
+    eventList: [{}],
+    offset: 0, //翻页的页数
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this; //把this对象复制到临时变量that
-    const wxreq = wx.request({
-      url: 'https://api.orderour.com/api/wxClient/notice',
-      success: function (res) {
-        // this.userData = res.data; //无效不能实时的渲染到页面
-        for (let i of res.data.data) {
-          i.createDate =Util.formatTime(new Date(i.createDate));
-          // i.createDate = new Date(i.createDate);
-        }
-        that.setData({
-          eventList: res.data.data
-        }); //和页面进行绑定可以动态的渲染到页面
-      },
-      fail: function (res) {
-
-        this.userData = "数据获取失败";
+    this.getNotice();
+  },
+  getNotice() {
+    WXAPI.seeNotice({
+      offset: this.data.offset,
+    }).then(res => {
+      for (let i of res.data) {
+        i.createDate = Util.formatTime(new Date(i.createDate));
+      }
+      if(res.data.length>0){
+        this.setData({
+          eventList:res.data,
+          offset: this.data.offset + 1
+        });
+      }
+    })
+  },
+  pushNotice() {
+    WXAPI.seeNotice({
+      offset: this.data.offset,
+    }).then(res => {
+      for (let i of res.data) {
+        i.createDate = Util.formatTime(new Date(i.createDate));
+      }
+      let newArr =this.data.eventList.concat(res.data)
+      if(res.data.length>0){
+        this.setData({
+          eventList:newArr,
+          offset: this.data.offset + 1
+        });
       }
     })
   },
@@ -41,10 +58,19 @@ Page({
   //预览图片，放大预览
   preview(event) {
     let currentUrl = event.currentTarget.dataset.src;
+    currentUrl = currentUrl.substring(0,currentUrl.indexOf('?'))
+    
     let arrindex = event.currentTarget.dataset.outindex;
+    let data = this.data.eventList[arrindex].noticeImg;
+    for(let i in data){
+      if(data[i].indexOf('?')!=-1){
+        data[i] = data[i].substring(0,data[i].indexOf('?'))
+      }
+    }
+    // console.log("预览图片",currentUrl,data)
     wx.previewImage({
       current: currentUrl, // 当前显示图片的http链接
-      urls: this.data.eventList[arrindex].noticeImg // 需要预览的图片http链接列表
+      urls: data // 需要预览的图片http链接列表
     })
   },
   /**
@@ -78,8 +104,8 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
+  onReachBottom() {
+    this.pushNotice();
   },
 
   /**

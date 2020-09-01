@@ -15,6 +15,7 @@ Page({
   },
 
   data: {
+    loading:true,//骨架屏
     swiperList: [],
     motto: 'Hello World',
     userInfo: {},
@@ -199,7 +200,8 @@ Page({
       url: 'https://api.orderour.com/api/admin/upGoods',
       success: function (res) {
         that.setData({
-          giftList: res.data.data
+          giftList: res.data.data,
+          loading:false
         }); //和页面进行绑定可以动态的渲染到页面
       },
       fail: function (res) {

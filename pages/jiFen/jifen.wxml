@@ -8,8 +8,9 @@
 <!-- 大树 -->
 
 <!-- 浇水效果 -->
-	<image  wx:if="{{shouYuDi}}"  class="tree jiaoshuiIng" src="../../static/jifen/jiao.gif"></image>
-<image class="tree" src="../../static/jifen/tree.png"></image>
+<image  wx:if="{{shouYuDi}}"  class="shuiDiGif" src="../../static/jifen/jiao.gif"></image>
+<!-- <image class="tree" src="../../static/jifen/tree.png"></image> -->
+<image class="tree   {{scale==true?'treeWater22':''}}" src="../../static/jifen/tree.png"></image>
 <van-cell title="展示弹出层" is-link bind:click="showPopup" />
 <!-- 领水滴 -->
 <view class="doBox getShuiDiBox">
@@ -26,8 +27,10 @@
 	<i-toast id="toast" />
 </view>
 <i-modal i-class="showWindow" title="恭喜您获得" visible="{{ getedPic }}" bind:ok="sureGet" bind:cancel="seeGood" cancel-text="查看" ok-text="领取">
+<!-- <i-modal i-class="showWindow" title="恭喜您获得" visible="{{ getedPic }}" bind:ok="sureGet" bind:cancel="seeGood" cancel-text="查看" ok-text="领取"> -->
 	<image src="{{getGiftImg}}"></image>
-    <view class="tip">{{giftName}}，{{picName}}</view>
+  <view class="tip">{{giftName}} <text class="sowalld">></text> {{picName}}</view>
+	<view class="tip2">集齐9张拼图即可免费领取哦~</view>
 </i-modal>
 <van-popup
   show="{{ show }}"
@@ -60,10 +63,10 @@
 					<image   wx:if="{{energy.continuousDay == 1 && energy.todayContinuous == false ||energy.continuousDay <1 ||energy.continuousDay ==1  && energy.todayContinuous == true }}" class="waterBg" src="../../static/jifen/02.png"></image>
 					<view class="waterNum">20g</view>
 				</view>
-				<view  wx:if="{{energy.continuousDay == 1 && energy.todayContinuous == false}}"  class="btn"  data-type="continuous"  data-num="10" bindtap="addEnergy" > 领取</view>
+				<view  wx:if="{{energy.continuousDay == 1 && energy.todayContinuous == true}}"  class="btn"  data-type="continuous"  data-num="10" bindtap="addEnergy" > 领取</view>
 				<view wx:if="{{energy.continuousDay >= 2  }}" class="btn waitDay">已领</view>
 				<view wx:if="{{energy.continuousDay <1 }}" class="btn waitDay">第2天</view>
-				<view wx:if="{{energy.continuousDay ==1  && energy.todayContinuous == true }}" class="btn waitDay">第2天</view>
+				<view wx:if="{{energy.continuousDay ==1  && energy.todayContinuous == false }}" class="btn waitDay">第2天</view>
 		</view>
 			<!-- 第3天 -->
 				<view class="day">

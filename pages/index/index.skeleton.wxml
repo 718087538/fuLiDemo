@@ -1,0 +1,66 @@
+<!--
+此文件为开发者工具生成，生成时间: 2020/9/1 下午10:52:28 
+使用方法：
+在 pages\index\index.wxml 引入模板
+
+```
+<import src="index.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}" />
+```
+
+在 pages\index\index.wxss 中引入样式
+```
+@import "./index.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+
+<template name="skeleton">
+  <view class="sk-container">
+    <view class="container">
+      <view class="page-body">
+        <view class="page-section page-section-spacing swiper">
+          <swiper autoplay="true" circular="true" class="swiperBox" duration="1000" indicator-active-color="#fff" indicator-dots="true" interval="2000" current="1" current-item-id="true">
+            <swiper-item class="swiperItem" style="position: absolute; width: 100%; height: 100%; transform: translate(0%, 0px) translateZ(0px);">
+              <view class="swiper-item object Object">
+                <image class="sk-image">
+                </image>
+              </view>
+            </swiper-item>
+            <swiper-item class="swiperItem" style="position: absolute; width: 100%; height: 100%; transform: translate(-100%, 0px) translateZ(0px);">
+              <view class="swiper-item object Object">
+                <image class="sk-image">
+                </image>
+              </view>
+            </swiper-item>
+          </swiper>
+        </view>
+      </view>
+      <view is="dist/notice-bar/index">
+        <view class=" bar-index--i-noticebar" style="color: #f76a24; background-color: #fefcec">
+          <view is="dist/icon/index" class="bar-index--i-noticebar-icon">
+            <view class="icon-index--i-icon icon-index--i-icon-systemprompt sk-pseudo sk-pseudo-circle" style="font-size: 24px; color:#f76a24">
+            </view>
+          </view>
+          <view class="bar-index--i-noticebar-content-wrap">
+            <view class="bar-index--i-noticebar-content bar-index--i-noticebar-content-loop sk-transparent sk-text-30-5556-243 sk-text" style="transition: transform 16618.8ms linear 0ms; transform: translateX(-332.375px); transform-origin: 50% 50% 0px;">
+              在奖品小镇上，有各种免费试用装和奖品等您来领取~
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="middleBanner">
+        <view class="a">
+          <image class="sk-image">
+          </image>
+        </view>
+      </view>
+    </view>
+    <view class="goGet">
+      <navigator class="sk-transparent sk-text-27-5000-78 sk-text" style="background-position-x: 50%;">
+        新人必看
+      </navigator>
+    </view>
+  </view>
+</template>

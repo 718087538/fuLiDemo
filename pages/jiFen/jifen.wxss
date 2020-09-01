@@ -1,15 +1,19 @@
 /* pages/jiFen/jifen.wxss */
 /**index.wxss**/
-.showWindow{
-
-}
-
 .showWindow image{
   width: 270rpx;
   border-radius: 8rpx;
   height: 330rpx;
 }
-
+.shuiDiGif{
+  width: 220rpx;
+  height: 80rpx;
+position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 10;
+  transform: translateX(-50%);
+}
 .showWindow .tip{
   font-size: 33rpx;
 }
@@ -46,11 +50,14 @@
   transform: translateX(-50%);
 }
 .tree{
-margin: 0 auto;
+  margin: 0 auto;
   display: block;
   width: 380rpx;
   height: 420rpx;
   /* margin: 350rpx auto 0; */
+}
+.treeWater22{
+  -webkit-animation: treeWater 1s linear;
 }
 .doBox{
   position: absolute;
@@ -132,8 +139,18 @@ position: relative;
 .tip{
   text-align: center;
   color: rgb(114, 114, 114); 
-  margin: 20rpx 0;
+  margin: 20rpx 8rpx;
   font-size: 30rpx;
+}
+.tip .sowalld{
+  font-size: 38rpx;
+  font-weight: bold;
+  color: red;
+}
+.tip2{
+  color: rgb(179, 177, 177);
+  font-size: 30rpx;
+  margin: 10rpx;
 }
 .line1 .day{
   width: 130rpx;
@@ -242,16 +259,6 @@ line-height: 70rpx  !important;
   height: 100%;
   border-radius: 30rpx 30rpx 0 0;
 }
-
-
-
-
-
-
-
-
-
-
 .doing{
   -webkit-animation: translate-style 1.2s linear;
 }
@@ -271,6 +278,11 @@ line-height: 70rpx  !important;
   }
   100% {
     transform: translate(-120rpx,-650rpx) rotate(-45deg);
+  }
+}
+@-webkit-keyframes treeWater {
+  50% {
+      scale: 1.05;
   }
 }
 /* view{

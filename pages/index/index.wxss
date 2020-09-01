@@ -2,6 +2,7 @@
 /* .notice{
   display: inline-block;
 } */
+@import "./index.skeleton.wxss";
 .tipBox{
   width: 580rpx;
   background: #FFF;

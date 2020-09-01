@@ -88,7 +88,6 @@ module.exports = {
   addInvite:data => request('/wxClient/addShareList','post',data),//增加邀请新人记录
   reInvite:data => request('/wxClient/reInvite','post',data),//重置邀请新人成功记录
   upMyData:data => request('/wxClient/upMyData','post',data),//上传个人信息
-
-
+  seeNotice:data => request('/wxClient/notice','get',data),//查看商家通知
   
 }

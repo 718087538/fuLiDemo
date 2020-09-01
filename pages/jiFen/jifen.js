@@ -20,7 +20,8 @@ Page({
     giftName: "", //本次获得的奖品名
     picName: "", //本次获得的碎片名
     giftId: "", //本次碎片得商品id，不一定对
-    getedPic:false
+    getedPic:false,
+    scale:false,//展示放大树木
   },
   handleOpen1() {
     this.setData({
@@ -69,13 +70,15 @@ Page({
       //展示浇水的水滴动画
       setTimeout(() => {
         this.setData({
-          shouYuDi: true
+          shouYuDi: true,
+          scale:true,
         })
       }, 900)
       //关闭浇水水滴动画
       setTimeout(() => {
         this.setData({
-          shouYuDi: false
+          shouYuDi: false,
+          scale:false,
         })
       }, 2200)
       WXAPI.lowEnergy({

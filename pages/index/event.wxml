@@ -7,7 +7,7 @@
 		</image>
 		<view>奖品小镇</view>
 	</view>
-	<text class="title">{{item.title}}</text>
+	<rich-text class="title" nodes="{{item.title}}"></rich-text>
 	<view class="imgBox">
 		<image src="{{item}}" wx:for="{{item.noticeImg}}" bindtap="preview" wx:key="index" data-src="{{item}}" data-outindex="{{outIndex}}"></image>
 	</view>
