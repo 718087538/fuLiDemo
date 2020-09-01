@@ -74,6 +74,7 @@ Page({
           scale:true,
         })
       }, 900)
+      console.log("scale",this.data.scale);
       //关闭浇水水滴动画
       setTimeout(() => {
         this.setData({

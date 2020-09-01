@@ -1,23 +1,26 @@
 /* pages/jiFen/jifen.wxss */
 /**index.wxss**/
-.showWindow image{
+.showWindow image {
   width: 270rpx;
   border-radius: 8rpx;
   height: 330rpx;
 }
-.shuiDiGif{
+
+.shuiDiGif {
   width: 220rpx;
   height: 80rpx;
-position: absolute;
+  position: absolute;
   top: 0;
   left: 50%;
   z-index: 10;
   transform: translateX(-50%);
 }
-.showWindow .tip{
+
+.showWindow .tip {
   font-size: 33rpx;
 }
-.container{
+
+.container {
   overflow: hidden;
   background: url("https://api.orderour.com/public/image/gift/gift-8ot5kd3mnkdg3r7os.jpg");
   background-position: 0 0;
@@ -26,44 +29,51 @@ position: absolute;
   height: 100vh;
   position: relative;
 }
-.myWater{
+
+.myWater {
   color: #fff;
   font-size: 30rpx;
   position: absolute;
   top: 50rpx;
   left: 20rpx;
 }
-.myWater .energyNum{
+
+.myWater .energyNum {
   color: yellow;
   background-color: #666;
   padding: 4rpx 20rpx;
   border-radius: 10rpx;
   font-size: 45rpx;
 }
-.treeBox{
+
+.treeBox {
   width: 100%;
-  height:850rpx;
+  height: 850rpx;
   /* border: 1px solid red; */
   bottom: 0;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
-.tree{
+
+.tree {
   margin: 0 auto;
   display: block;
   width: 380rpx;
   height: 420rpx;
   /* margin: 350rpx auto 0; */
 }
-.treeWater22{
-  -webkit-animation: treeWater 1s linear;
+
+.treeWater22 {
+  -webkit-animation: treeWater 1.2s linear ;
 }
-.doBox{
+
+.doBox {
   position: absolute;
   bottom: 0rpx;
 }
-.jiaoshuiIng{
+
+.jiaoshuiIng {
   width: 200rpx;
   height: 80rpx;
   position: absolute;
@@ -72,7 +82,8 @@ position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
-.playInfo{
+
+.playInfo {
   color: #333;
   width: 180rpx;
   height: 180rpx;
@@ -81,7 +92,8 @@ position: absolute;
   right: 10rpx;
   z-index: 10;
 }
-.playInfo .costNum{
+
+.playInfo .costNum {
   position: absolute;
   bottom: 10rpx;
   width: 100%;
@@ -91,12 +103,13 @@ position: absolute;
   text-align: center;
 }
 
-.jiaoShuiBtn{
+.jiaoShuiBtn {
   width: 100%;
   height: 100%;
   /* -webkit-animation: translate-style 2s linear infinite; */
 }
-.jiaoShui{
+
+.jiaoShui {
   position: absolute;
   top: 22rpx;
   left: 50%;
@@ -104,7 +117,8 @@ position: absolute;
   width: 100rpx;
   height: 100rpx;
 }
-.getShuiDiBox{
+
+.getShuiDiBox {
   left: 20rpx;
   position: absolute;
   width: 150rpx;
@@ -112,16 +126,19 @@ position: absolute;
   border-radius: 50%;
   overflow: hidden;
 }
+
 .getShuiDiBox {
   bottom: 150rpx;
   width: 180rpx;
   height: 200rpx;
 }
-.getShuiDiBox image{
+
+.getShuiDiBox image {
   width: 100%;
   height: 100%;
 }
-.getShuiDiBox view{
+
+.getShuiDiBox view {
   position: absolute;
   bottom: 30rpx;
   font-size: 28rpx;
@@ -129,62 +146,73 @@ position: absolute;
   text-align: center;
   color: #fff;
 }
-.line1{
+
+.line1 {
   display: flex;
   justify-content: space-around;
-  margin:  0 0 20rpx;
-position: relative;
+  margin: 0 0 20rpx;
+  position: relative;
 }
+
 /* 5天签到样式 */
-.tip{
+.tip {
   text-align: center;
-  color: rgb(114, 114, 114); 
+  color: rgb(114, 114, 114);
   margin: 20rpx 8rpx;
   font-size: 30rpx;
 }
-.tip .sowalld{
+
+.tip .sowalld {
   font-size: 38rpx;
   font-weight: bold;
   color: red;
 }
-.tip2{
+
+.tip2 {
   color: rgb(179, 177, 177);
   font-size: 30rpx;
   margin: 10rpx;
 }
-.line1 .day{
+
+.line1 .day {
   width: 130rpx;
   /* background-color: green; */
   color: #000;
   margin: 0 10rpx;
 }
-.waterBgBox{
+
+.waterBgBox {
   width: 100%;
   height: 130rpx;
   /* border: 1px solid red; */
-position: relative;
+  position: relative;
 }
-.rowLive{
-  width:600rpx;
+
+.rowLive {
+  width: 600rpx;
   position: absolute;
   top: 65rpx;
   height: 7rpx;
   background-color: rgb(92, 148, 212);
 }
-.waterBg{
+
+.waterBg {
   width: 100%;
   height: 100%;
   border-radius: 30rpx;
 }
-.waterNum{
+
+.waterNum {
   position: absolute;
-  bottom: 0rpx;width: 100%;
+  bottom: 0rpx;
+  width: 100%;
   text-align: center;
   font-size: 30rpx;
   color: rgb(35, 57, 119);
   line-height: 50rpx;
 }
-.line1 .btn{
+
+.line1 .btn {
   background-color: yellow;
   text-align: center;
   font-size: 32rpx;
@@ -196,48 +224,56 @@ position: relative;
   /* margin: 10rpx 4rpx 0; */
   border-radius: 30rpx;
 }
-.close{
+
+.close {
   width: 40rpx;
   height: 40rpx;
   position: absolute;
   top: 30rpx;
   right: 30rpx;
 }
-.line1 .waitDay{
-  color: rgb(114, 114, 114); 
+
+.line1 .waitDay {
+  color: rgb(114, 114, 114);
   font-size: 32rpx;
   background-color: transparent;
 }
-.line2{
+
+.line2 {
   display: flex;
   border-top: 2rpx solid rgb(219, 219, 219);
   padding: 10rpx 20rpx 0;
 }
-.line2 image{
+
+.line2 image {
   width: 100rpx;
   height: 100rpx;
   border-radius: 100rpx;
 }
-.line2 .centerText{
+
+.line2 .centerText {
   flex: 1;
   margin: 0 20rpx;
 }
-.line2 .t1{
+
+.line2 .t1 {
   color: #333;
   font-size: 30rpx;
 }
-.line2 .t2{
+
+.line2 .t2 {
   font-size: 26rpx;
   margin-top: 16rpx;
 }
-.rightBtn{
+
+.rightBtn {
   border-radius: 60rpx !important;
   overflow: hidden;
-height: 70rpx !important;
-line-height: 70rpx  !important;
+  height: 70rpx !important;
+  line-height: 70rpx !important;
 }
 
-.meiRi{
+.meiRi {
   width: 300rpx;
   text-align: center;
   color: #fff;
@@ -247,72 +283,91 @@ line-height: 70rpx  !important;
   border-radius: 0 0 150rpx 150rpx;
   line-height: 80rpx;
 }
-.showGet{
+
+.showGet {
   border-radius: 60rpx 60rpx 0 0;
-  overflow: hidden  ;
+  overflow: hidden;
   background: rgb(138, 199, 254) !important;
 }
-.showGetBg2{
+
+.showGetBg2 {
   overflow: hidden;
   background: rgb(255, 255, 255);
-  margin: -30rpx  18rpx 0; 
+  margin: -30rpx 18rpx 0;
   height: 100%;
   border-radius: 30rpx 30rpx 0 0;
 }
-.doing{
+
+.doing {
   -webkit-animation: translate-style 1.2s linear;
 }
 
 @-webkit-keyframes translate-style {
   0% {
-      transform: translateX(0);
+    transform: translateX(0);
   }
+
   /* 33% {
       transform: translate(-200rpx,0);
   } */
   60% {
-      transform: translate(-200rpx,-650rpx) rotate(-45deg);
+    transform: translate(-200rpx, -650rpx) rotate(-45deg);
   }
   80% {
-    transform: translate(-340rpx,-650rpx) rotate(-45deg);
+    transform: translate(-340rpx, -650rpx) rotate(-45deg);
   }
+
   100% {
-    transform: translate(-120rpx,-650rpx) rotate(-45deg);
+    transform: translate(-120rpx, -650rpx) rotate(-45deg);
   }
 }
+
 @-webkit-keyframes treeWater {
+  0% {
+    transform: scale(1);
+  }
+
   50% {
-      scale: 1.05;
+    transform: scale(1.06);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }
+
 /* view{
   color: rgb(155, 56, 56);
 } */
-.porgressBox{
+.porgressBox {
   display: flex;
   align-items: center;
 }
+
 /* //进度条，加水滴 */
-#progress{
+#progress {
   width: 500rpx;
   height: 25rpx;
-  border:1px solid #ccc;
+  border: 1px solid #ccc;
   border-radius: 30rpx;
   overflow: hidden;
-}          
+}
+
 #progress view {
   width: 100%;
   height: 100%;
-  background: #7db9e8 ;    
+  background: #7db9e8;
   text-align: center;
-  color:#fff;
-  animation:load 60s ease-in infinite;
+  color: #fff;
+  animation: load 60s ease-in infinite;
 }
-@keyframes load{
-  0%{
-      width: 0%;
+
+@keyframes load {
+  0% {
+    width: 0%;
   }
-  100%{
-      width:100%;
+
+  100% {
+    width: 100%;
   }
 }

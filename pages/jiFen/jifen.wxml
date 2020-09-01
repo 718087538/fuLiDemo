@@ -10,7 +10,7 @@
 <!-- 浇水效果 -->
 <image  wx:if="{{shouYuDi}}"  class="shuiDiGif" src="../../static/jifen/jiao.gif"></image>
 <!-- <image class="tree" src="../../static/jifen/tree.png"></image> -->
-<image class="tree   {{scale==true?'treeWater22':''}}" src="../../static/jifen/tree.png"></image>
+<image class="tree    {{scale==true?'treeWater22':''}}" src="../../static/jifen/tree.png"></image>
 <van-cell title="展示弹出层" is-link bind:click="showPopup" />
 <!-- 领水滴 -->
 <view class="doBox getShuiDiBox">
