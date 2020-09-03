@@ -1,48 +1,63 @@
 /* pages/index/event.wxss */
-.eventList{
-  padding:10rpx 20rpx 30rpx;
+.eventList {
+  padding: 10rpx 20rpx 30rpx;
   color: #333;
   border-bottom: 2rpx solid #ececec;
 }
-.eventList .title{
+
+.eventList .title {
   font-size: 36rpx;
 }
-.info{
+
+.info {
   display: flex;
   align-items: center;
 }
-.info image{
+
+.info image {
   border: 1px solid #e6e7e7;
   border-radius: 50%;
   width: 60rpx;
   height: 60rpx;
 }
-.info view{
+
+.info view {
   font-size: 30rpx;
-  margin-left:14rpx;
+  margin-left: 14rpx;
   font-weight: bold;
   color: rgb(24, 88, 148);
 }
-.date{
+
+.date {
   font-size: 30rpx;
   color: #555;
-  margin:10rpx 0
+  margin: 10rpx 0
 }
-.imgBox{
+
+.imgBox {
   display: flex;
   flex-wrap: wrap;
 }
-.imgBox image{
+
+.imgBox image {
   width: 228rpx;
   height: 226rpx;
-  display:block;
+  display: block;
   margin-top: 10rpx;
   margin-right: 10rpx;
 }
-.imgBox image:nth-child(3n+3){
+
+.imgBoxOne image {
+  width: 275rpx;
+  margin-top: 10rpx;
+  margin-right: 10rpx;
+}
+
+.imgBox image:nth-child(3n+3) {
   margin-right: 0;
 }
-.bottomNav{
+
+.bottomNav {
   position: fixed;
   width: 100%;
   bottom: 0;
@@ -50,6 +65,7 @@
   justify-content: space-around;
   background-color: #fff;
 }
-.bottomNav .item{
+
+.bottomNav .item {
   text-align: center;
 }

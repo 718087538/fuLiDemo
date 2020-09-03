@@ -11,17 +11,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    getGiftImg:"",
+    getGiftImg: "",
     djs_data: 0,
     energy: 200, //体力要动态获取
     show: false,
     shouYuDi: false, //展示雨滴效果
     dojiaoshui: false, //是否浇水动画进行中
     giftName: "", //本次获得的奖品名
-    picName: "", //本次获得的碎片名
-    giftId: "", //本次碎片得商品id，不一定对
-    getedPic:false,
-    scale:false,//展示放大树木
+    picName: "", //本次获得的拼图名
+    giftId: "", //本次拼图得商品id，不一定对
+    getedPic: false,
+    scale: false, //展示放大树木
+    shareTitle: "",
+    shareImgSrc: "",
   },
   handleOpen1() {
     this.setData({
@@ -50,7 +52,7 @@ Page({
     })
   },
   seeGood() {
-    console.log("奖品id",this.data.giftId)
+    console.log("奖品id", this.data.giftId)
     wx.navigateTo({
       url: `/pages/gift/fragments?giftId=${this.data.giftId}` //实际路径要写全
     })
@@ -71,15 +73,15 @@ Page({
       setTimeout(() => {
         this.setData({
           shouYuDi: true,
-          scale:true,
+          scale: true,
         })
       }, 900)
-      console.log("scale",this.data.scale);
+      console.log("scale", this.data.scale);
       //关闭浇水水滴动画
       setTimeout(() => {
         this.setData({
           shouYuDi: false,
-          scale:false,
+          scale: false,
         })
       }, 2200)
       WXAPI.lowEnergy({
@@ -89,7 +91,7 @@ Page({
         console.log("减体力成功", res)
         var str = 'energy.energyNum';
         if (res.code == 200) {
-          //展示浇水得到的碎片，取消浇水中的变量，让水壶克再次点击
+          //展示浇水得到的拼图，取消浇水中的变量，让水壶克再次点击
           setTimeout(() => {
             this.setData({
               dojiaoshui: false,
@@ -104,7 +106,7 @@ Page({
         } else if (res.code == 201) {
           console.log("体力不足=========")
         }
-        this.gameOver(); //抽碎片
+        this.gameOver(); //抽拼图
       })
     } else if (this.data.energy.energyNum <= 0) {
       $Toast({
@@ -164,23 +166,42 @@ Page({
       }
     })
   },
-
-
-
+  getShareInfo() {
+    let date = new Date();
+    var year = date.getFullYear()
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    if(month<10){
+      month = "0" + month;
+    }
+    if(day<10){
+      day = "0" + day;
+    }
+    let shareDate =year+month+day ;
+    WXAPI.getShareInfo({
+      upDate: shareDate
+    }).then(res => {
+      this.setData({
+        shareTitle: res.data.title,
+        shareImgSrc: res.data.imgSrc
+      })
+    })
+  },
   onShareAppMessage() {
     return {
-    title: "0元包邮，家居百货", // 小程序的名称
-    path: `/pages/index/index?type="shareApp"&invitePeopleId=${wx.getStorageSync('openid')}`, // 默认是当前页面，必须是以‘/’开头的完整路径
-    imgUrl: '', //自定义图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
-    complete() {
-      // 转发结束之后的回调（转发成不成功都会执行）
-      console.log("分享完成");
-      WXAPI.addInvite({
-        openId:wx.getStorageSync('openid')
-      }).then(res=>{
-        console.log("增加分享记录",res)
-      })
-    }}
+      title: this.data.shareTitle, // 小程序的名称
+      path: `/pages/index/index?type="shareApp"&invitePeopleId=${wx.getStorageSync('openid')}`, // 默认是当前页面，必须是以‘/’开头的完整路径
+      imageUrl: this.data.shareImgSrc, //自定义图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
+      complete() {
+        // 转发结束之后的回调（转发成不成功都会执行）
+        console.log("分享完成");
+        WXAPI.addInvite({
+          openId: wx.getStorageSync('openid')
+        }).then(res => {
+          console.log("增加分享记录", res)
+        })
+      }
+    }
   },
   handleChange({
     detail
@@ -214,48 +235,48 @@ Page({
   },
   gameOver() {
     // if (this.data.results >= this.data.latest) {
-    //请求分配碎片
+    //请求分配拼图
     WXAPI.getFragment({
       uid: wx.getStorageSync('openid'),
       goodId: wx.getStorageSync('per_get_goodid') || '',
     }).then(res => {
-      console.log("分配碎片结果", res)
+      console.log("分配拼图结果", res)
       let picName;
       switch (res.data.picName) {
         case 'pic1':
-          picName = "碎片1";
+          picName = "拼图1";
           break;
         case 'pic2':
-          picName = "碎片2";
+          picName = "拼图2";
           break;
         case 'pic3':
-          picName = "碎片3";
+          picName = "拼图3";
           break;
         case 'pic4':
-          picName = "碎片4";
+          picName = "拼图4";
           break;
         case 'pic5':
-          picName = "碎片5";
+          picName = "拼图5";
           break;
         case 'pic6':
-          picName = "碎片6";
+          picName = "拼图6";
           break;
-          case 'pic7':
-            picName = "碎片7";
-            break;
-          case 'pic8':
-            picName = "碎片8";
-            break;
-          case 'pic9':
-            picName = "碎片9";
-            break;
+        case 'pic7':
+          picName = "拼图7";
+          break;
+        case 'pic8':
+          picName = "拼图8";
+          break;
+        case 'pic9':
+          picName = "拼图9";
+          break;
       };
       if (res.code == 200) {
         this.setData({
           giftName: res.data.giftName,
           picName: picName,
           giftId: res.data.giftId,
-          getGiftImg:res.data.imgSrc,
+          getGiftImg: res.data.imgSrc,
         })
         // $Toast({
         //   content: `恭喜获得${res.data.giftName}${picName}`
@@ -266,7 +287,7 @@ Page({
     //   //false代表游戏没完成，进行中
     //   if (!this.data.playOver) {
     //     $Toast({
-    //       content: '好遗憾，分数不足无碎片'
+    //       content: '好遗憾，分数不足无拼图'
     //     });
     //   }
     // }
@@ -300,27 +321,7 @@ Page({
         energy: res.data
       })
     });
-    // var that = this; //把this对象复制到临时变量that
-    // const wxreq = wx.request({
-    //   url: 'https://api.orderour.com/api/admin/upGoods',
-    //   success: function (res) {
-    //     console.log(res.data);
-    //     // this.userData = res.data; //无效不能实时的渲染到页面
-    //     that.setData({
-    //       giftList: res.data.data
-    //     }); //和页面进行绑定可以动态的渲染到页面
-    //   },
-    //   fail: function (res) {
-    //     console.log(res.data);
-    //     this.userData = "数据获取失败";
-    //   }
-    // })
-    //获取uuid和code等信息
-    // wx.login({
-    //   success: function (res) {
-    //     console.log('loginCode:', res)
-    //   }
-    // });
+    this.getShareInfo();
   },
 
   getUserInfo: function (e) {

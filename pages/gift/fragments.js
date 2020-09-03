@@ -59,16 +59,42 @@ Page({
           let idx = this.data.picName - 1;
           let str = `gift.picList[${idx}].pic`;
           let picNum2 = this.data.picNum - 1;
+          shareN=0
           this.setData({
-            [str]: picNum2
+            [str]: picNum2,
+            picNum:picNum2,
+            showShare:false,
           })
         }
       })
     }
     return {
-      title: '送你个碎片，一起免费领奖',
+      title: this.data.shareTitle, // 小程序的名称
+      imageUrl: this.data.shareImgSrc, //自定义图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
       path: `pages/index/index?giftId=${this.data.gift.giftId}&openId=${wx.getStorageSync('openid')}&picName=pic${this.data.picName}`
     }
+  },
+  getShareInfo() {
+    let date = new Date();
+    var year = date.getFullYear()
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    if(month<10){
+      month = "0" + month;
+    }
+    if(day<10){
+      day = "0" + day;
+    }
+    let shareDate =year+month+day ;
+    WXAPI.getShareInfo({
+      upDate: shareDate,
+      giftId:this.data.giftId
+    }).then(res => {
+      this.setData({
+        shareTitle: res.data.title,
+        shareImgSrc: res.data.imgSrc
+      })
+    })
   },
   goShare() {
     this.setData({
@@ -99,6 +125,9 @@ Page({
     showShareList: [{
       name: '取消'
     }],
+    shareTitle: "",
+    shareImgSrc: "",
+    giftId:"",//奖品Id，可以传给获取封面时使用
   },
   //合成奖品的操作
   synthetic() {
@@ -178,7 +207,9 @@ Page({
         over: true
       })
     }
-
+    this.setData({
+      giftId:options.giftId
+    })
     var that = this; //把this对象复制到临时变量that
     const wxreq = wx.request({
       url: `https://api.orderour.com/api/wxClient/giftInfo?uid=${wx.getStorageSync('openid')}&giftId=${options.giftId}`,
@@ -275,7 +306,8 @@ Page({
         console.log(res.data);
         // this.userData = "数据获取失败";
       }
-    })
+    });
+    this.getShareInfo();
   },
 
 

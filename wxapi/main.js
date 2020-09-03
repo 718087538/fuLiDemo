@@ -1,7 +1,7 @@
 // 小程序开发api接口统一配置
 // 如果你的域名是： https://www.baidu.com/cn 那么这里只要填写 cn
 let subDomain = '/api'  // 子域名,没有就等于''
-const API_BASE_URL = 'http://192.168.0.100:7001'  // 主域名 本地
+const API_BASE_URL = 'http://192.168.0.101:7001'  // 主域名 本地
 // const API_BASE_URL = 'https://api.orderour.com'  // 主域名 服务器
 const request = (url, method, data) => {
   let _url = API_BASE_URL + subDomain  + url
@@ -89,5 +89,5 @@ module.exports = {
   reInvite:data => request('/wxClient/reInvite','post',data),//重置邀请新人成功记录
   upMyData:data => request('/wxClient/upMyData','post',data),//上传个人信息
   seeNotice:data => request('/wxClient/notice','get',data),//查看商家通知
-  
+  getShareInfo:data => request('/admin/shareInfo','get',data),//获得分享的封面和标题
 }

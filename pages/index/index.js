@@ -7,15 +7,37 @@ const {
 let start_Time, djs_data, sc_time, test;
 const WXAPI = require('../../wxapi/main')
 Page({
+  getShareInfo() {
+    let date = new Date();
+    var year = date.getFullYear()
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    if (month < 10) {
+      month = "0" + month;
+    }
+    if (day < 10) {
+      day = "0" + day;
+    }
+    let shareDate = year + month + day;
+    WXAPI.getShareInfo({
+      upDate: shareDate
+    }).then(res => {
+      this.setData({
+        shareTitle: res.data.title,
+        shareImgSrc: res.data.imgSrc
+      })
+    })
+  },
   onShareAppMessage() {
     return {
-      title: '免费领好物',
+      title: this.data.shareTitle, // 小程序的名称
+      imageUrl: this.data.shareImgSrc, //自定义图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
       path: 'pages/index/index'
     }
   },
 
   data: {
-    loading:true,//骨架屏
+    loading: true, //骨架屏
     swiperList: [],
     motto: 'Hello World',
     userInfo: {},
@@ -34,11 +56,13 @@ Page({
     comeBtnBg: '',
     showRead: false,
     showTitle: '新人必看',
-    showWanLa:false,//是否显示来晚了，碎片没了
-    getPicSuccessful:false,
-    getPicSuccImg:"",//得到的碎片的图片地址
-    getgiftName:"",
-    getPicSuccPicName:""
+    showWanLa: false, //是否显示来晚了，碎片没了
+    getPicSuccessful: false,
+    getPicSuccImg: "", //得到的碎片的图片地址
+    getgiftName: "",
+    getPicSuccPicName: "",
+    shareTitle: "",
+    shareImgSrc: "",
   },
   goJiFen() {
     wx.removeStorageSync('per_get_goodid')
@@ -95,18 +119,18 @@ Page({
   onShow: function () {
     this.read();
   },
-  closeWanLa(){
+  closeWanLa() {
     this.setData({
       showWanLa: false
     })
   },
-  closeSuccess(){
+  closeSuccess() {
     this.setData({
       getPicSuccessful: false
     })
   },
-  login(){
-   
+  login() {
+
   },
   onLoad: function (options) {
 
@@ -118,23 +142,23 @@ Page({
     //查看是否是分享碎片的链接
     if (options.picName) {
       WXAPI.getSharePic({
-        openId:options.openId,
-        picName:options.picName,
-        giftId:options.giftId,
-        myOpenId:wx.getStorageSync('openid'),
+        openId: options.openId,
+        picName: options.picName,
+        giftId: options.giftId,
+        myOpenId: wx.getStorageSync('openid'),
       }).then(res => {
         console.log(res);
-        
-        if(res.code === 201){
+
+        if (res.code === 201) {
           this.setData({
-            showWanLa:true
+            showWanLa: true
           })
-        }else if(res.code === 200){
+        } else if (res.code === 200) {
           this.setData({
-            getPicSuccessful:true,
-            getPicSuccImg:res.data.imgSrc,
-            getgiftName:res.data.giftName,
-            getPicSuccPicName:res.data.picName
+            getPicSuccessful: true,
+            getPicSuccImg: res.data.imgSrc,
+            getgiftName: res.data.giftName,
+            getPicSuccPicName: res.data.picName
           })
         }
       })
@@ -201,7 +225,7 @@ Page({
       success: function (res) {
         that.setData({
           giftList: res.data.data,
-          loading:false
+          loading: false
         }); //和页面进行绑定可以动态的渲染到页面
       },
       fail: function (res) {
@@ -214,6 +238,8 @@ Page({
     //     console.log('loginCode:', res)
     //   }
     // });
+    this.getShareInfo();
+
   },
   read: function (e) {
     WXAPI.getRead({

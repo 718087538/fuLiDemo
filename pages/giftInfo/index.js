@@ -1,4 +1,6 @@
 // pages/giftInfo/index.js
+const WXAPI = require('../../wxapi/main')
+
 Page({
 
   /**
@@ -12,7 +14,10 @@ Page({
   targetTime1: 0,
   myFormat1: ['天', '时', '分', '秒'],
   status: '进行中...',
-  clearTimer: false
+  clearTimer: false,
+  goodsId:"",//商品Id，可以传给获取封面时使用
+  shareTitle: "",
+  shareImgSrc: "",
   },
   jiaoShuiGet(){
     if(this.data.goodsId){
@@ -32,6 +37,9 @@ Page({
         startTime:options.startTime
       })
     }
+    this.setData({
+      goodsId:options.goodsId
+    })
 
     var that = this;//把this对象复制到临时变量that
     const wxreq = wx.request({
@@ -50,9 +58,31 @@ Page({
       fail: function (res){
         this.userData = "数据获取失败";
       }
+    });
+    this.getShareInfo();
+  },
+  getShareInfo() {
+    let date = new Date();
+    var year = date.getFullYear()
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    if (month < 10) {
+      month = "0" + month;
+    }
+    if (day < 10) {
+      day = "0" + day;
+    }
+    let shareDate = year + month + day;
+    WXAPI.getShareInfo({
+      upDate: shareDate,
+      goodsId:this.data.goodsId
+    }).then(res => {
+      this.setData({
+        shareTitle: res.data.title,
+        shareImgSrc: res.data.imgSrc
+      })
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -98,7 +128,11 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  }
+  onShareAppMessage() {
+    return {
+      title: this.data.shareTitle, // 小程序的名称
+      imageUrl: this.data.shareImgSrc, //自定义图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
+      path: `pages/giftInfo/index/?goodsId=${this.data.goodsId}}`
+    }
+  },
 })
