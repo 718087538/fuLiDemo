@@ -9,23 +9,14 @@
 		<view wx:if="{{!item.name}}">奖品小镇</view>
 	</view>
 	<rich-text class="title" nodes="{{item.title}}"></rich-text>
-	<view class="imgBox" wx:if="{{item.noticeImg.length>1}}">
+	<view class="imgBox" wx:if="{{item.noticeImg.length>1 && item.noticeImg.length!=4}}">
+		<image src="{{item}}" wx:for="{{item.noticeImg}}" bindtap="preview" wx:key="index" data-src="{{item}}" data-outindex="{{outIndex}}"></image>
+	</view>
+	<view class="imgBoxFour" wx:if="{{item.noticeImg.length==4}}">
 		<image src="{{item}}" wx:for="{{item.noticeImg}}" bindtap="preview" wx:key="index" data-src="{{item}}" data-outindex="{{outIndex}}"></image>
 	</view>
 	<view class=" imgBoxOne" wx:if="{{item.noticeImg.length<=1}}">
-		<image src="{{item}}" wx:for="{{item.noticeImg}}" bindtap="preview" wx:key="index" data-src="{{item}}" data-outindex="{{outIndex}}"  mode="widthFix"></image>
+		<image src="{{item}}" wx:for="{{item.noticeImg}}" bindtap="preview" wx:key="index" data-src="{{item}}" data-outindex="{{outIndex}}" mode="widthFix"></image>
 	</view>
 	<view class="date">{{item.createDate}}</view>
 </view>
-
-<!-- 
-<view class="bottomNav">
-	<navigator class="item" url="index">
-		<i-icon type="homepage" size="28" color="#80848f" />
-		<view>首页</view>
-	</navigator>
-	<view class="item">
-		<i-icon type="createtask" size="28" color="#00FF00" />
-		<view>通知</view>
-	</view>
-</view> -->

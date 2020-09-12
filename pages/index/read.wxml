@@ -2,4 +2,4 @@
 
 <!-- 这里是商品的详细展示 -->
 
-	<image src="{{helpImg}}"  mode="widthFix"></image>
+	<image wx:for="{{helpImg}}" wx:key="*this" src="{{item}}"  mode="widthFix"></image>

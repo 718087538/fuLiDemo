@@ -11,10 +11,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    value1: '姓名',
-    value2: '15656565656',
+    value1: '',
+    value2: '',
     value3: '请选择', //显示的省市区
-    value4: '1111111',
+    value4: '',
     showArea: false, //是否显示地址选择栏目
     ssq: [], //已选择的省市区
     setDefault: false,
@@ -328,7 +328,11 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  }
+  onShareAppMessage() {
+    return {
+      title: getApp().globalData.shareTitle, 
+      imageUrl:getApp().globalData.shareImgSrc, 
+      path: 'pages/index/index'
+    }
+  },
 })

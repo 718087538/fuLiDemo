@@ -206,6 +206,7 @@ border-right: 0;
   border-radius: 10rpx;
 
 }
+
 .shopBox{
   display: flex;
   justify-content:flex-end ;
@@ -246,4 +247,19 @@ border-right: 0;
 .bigImgBox .shadow5 {
   left: 50%;
   top: 66%; background-color: rgba(112, 112, 62, 0.4);
+}
+.middleBanner {
+  width: 690rpx;
+  height: 200rpx;
+  margin: 80rpx auto 0;
+}
+.middleBanner .a{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.middleBanner .a image {
+  border-radius: 10rpx;
+  width: 100%;
+  height: 100%;
 }

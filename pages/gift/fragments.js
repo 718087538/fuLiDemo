@@ -128,6 +128,7 @@ Page({
     shareTitle: "",
     shareImgSrc: "",
     giftId:"",//奖品Id，可以传给获取封面时使用
+    imgSrc:""
   },
   //合成奖品的操作
   synthetic() {
@@ -308,8 +309,17 @@ Page({
       }
     });
     this.getShareInfo();
-  },
 
+  },
+  getShareInfo(){
+    WXAPI.getFragmentsAd({
+    }).then(res => {
+      console.log("ressssss",res);
+      this.setData({
+        imgSrc:res.data[0].imgSrc
+      })
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

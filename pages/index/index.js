@@ -63,6 +63,7 @@ Page({
     getPicSuccPicName: "",
     shareTitle: "",
     shareImgSrc: "",
+    spinShow:true
   },
   goJiFen() {
     wx.removeStorageSync('per_get_goodid')
@@ -112,7 +113,8 @@ Page({
   getSwiper: function () {
     WXAPI.getSwiper({}).then(res => {
       this.setData({
-        swiperList: res.data
+        swiperList: res.data,
+        spinShow:false
       })
     })
   },
@@ -133,12 +135,12 @@ Page({
 
   },
   onLoad: function (options) {
+    this.getSwiper();
 
 
 
     // this.login();
-    console.log("URL链接==============》", options);
-    console.log("openId==============》", wx.getStorageSync('openid'));
+    // console.log("openId==============》", wx.getStorageSync('openid'));
     //查看是否是分享碎片的链接
     if (options.picName) {
       WXAPI.getSharePic({
@@ -217,7 +219,6 @@ Page({
       }
     })
 
-    this.getSwiper();
 
     var that = this; //把this对象复制到临时变量that
     const wxreq = wx.request({

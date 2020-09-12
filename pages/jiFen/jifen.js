@@ -181,6 +181,8 @@ Page({
     WXAPI.getShareInfo({
       upDate: shareDate
     }).then(res => {
+  console.log("分享页的内容",res);
+      
       this.setData({
         shareTitle: res.data.title,
         shareImgSrc: res.data.imgSrc

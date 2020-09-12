@@ -1,6 +1,6 @@
 <!--pages/gift/giftList.wxml-->
 <i-tabs current="{{ current }}" color="#467ed4" bindchange="handleChange">
-    <i-tab key="tab1" title="进行中"></i-tab>
+    <i-tab key="tab1" title="我的奖品"></i-tab>
     <i-tab key="tab2" title="即将上架"></i-tab>
     <i-tab key="tab3" title="已结束"></i-tab>
 </i-tabs>

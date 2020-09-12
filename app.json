@@ -16,7 +16,8 @@
     "pages/my/suggeston",
     "pages/index/read",
     "pages/my/ranking",
-    "pages/my/myShare"
+    "pages/my/myShare",
+    "pages/my/merchant"
   ],
   "window": {
     "navigationBarTitleText": "WeChat",
@@ -37,13 +38,13 @@
         "iconPath": "image/gift.png",
         "selectedIconPath": "image/gift_sel.png",
         "pagePath": "pages/gift/giftList",
-        "text": "我的奖品"
+        "text": "奖品列表"
       },
       {
         "iconPath": "image/notice.png",
         "selectedIconPath": "image/notice_sel.png",
         "pagePath": "pages/index/event",
-        "text": "商家通知"
+        "text": "商家朋友圈"
       },
       {
         "iconPath": "image/my.png",

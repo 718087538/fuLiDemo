@@ -12,6 +12,7 @@ Page({
     active: 3,
     showAddress:false,
     showLoginBtn:false,//是否展示登录按钮，请求用户信息
+    merchant:null
   },
 
   changeAddress(){
@@ -53,6 +54,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("URL链接==============》",getApp().globalData.shareTitle);
+
     console.log(wx.getStorageSync('nickName'),wx.setStorageSync('gender'))
     if(!wx.getStorageSync('nickName')&&!wx.getStorageSync('gender')){
       this.setData({
@@ -70,6 +73,15 @@ Page({
       })
     }
   });
+
+  WXAPI.getMerchant({
+
+  }).then(res=>{
+    console.log("加盟",res)
+    this.setData({
+      merchant:res.data
+    })
+  })
   },
 
   /**
@@ -97,7 +109,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
   },
 
   /**
@@ -117,7 +128,11 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  }
+  onShareAppMessage() {
+    return {
+      title: getApp().globalData.shareTitle, 
+      imageUrl:getApp().globalData.shareImgSrc, 
+      path: 'pages/index/index'
+    }
+  },
 })

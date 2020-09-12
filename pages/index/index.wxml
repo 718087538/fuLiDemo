@@ -29,14 +29,12 @@
 					<view class="title">{{item.title}}</view>
 					<view class="priceBox">
 						<view class="tag">
-							<text>包邮到家</text> <text>0元领</text>
+							<text>集齐拼图</text> <text>免费领取</text>
 						</view>
 						<view class="price">
-							<text class="priceLogo">￥:<text  class="priceNum">0.00</text> </text> <text class="hasNum">仅剩:{{item.num}}件</text>
+							<text class="priceLogo">￥:<text  class="priceNum">{{item.price}}</text> </text> <text class="hasNum">仅剩:{{item.num}}件</text>
 						</view>
 					</view>
-
-
 				</view>
 			</navigator>
 		</view>
@@ -63,3 +61,6 @@
 
 </view>
 <view class="stand"></view>
+<view class="container">
+    <i-spin fix size="large" fix wx:if="{{ spinShow }}"></i-spin>
+</view>

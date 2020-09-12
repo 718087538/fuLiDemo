@@ -1,8 +1,33 @@
 //app.js
-const WXAPI = require('./wxapi/main')
+const WXAPI = require('./wxapi/main');
 App({
   APPID: '***',
   AppSecret: '*****',
+  //获取分享的页面
+  getShareInfo() {
+    let date = new Date();
+    var year = date.getFullYear()
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    if (month < 10) {
+      month = "0" + month;
+    }
+    if (day < 10) {
+      day = "0" + day;
+    }
+    let shareDate = year + month + day;
+    WXAPI.getShareInfo({
+      upDate: shareDate
+    }).then(res => {
+      console.log("分享页的内容", res);
+      this.globalData.shareTitle=res.data.title;
+      this.globalData.shareImgSrc=res.data.imgSrc;
+      // this.setData({
+      //   shareTitle: res.data.title,
+      //   shareImgSrc: res.data.imgSrc
+      // })
+    })
+  },
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
@@ -10,7 +35,6 @@ App({
     wx.setStorageSync('logs', logs)
     // 登录
     wx.login({
-
       success: res => {
         console.log("wxlogin............n", res);
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
@@ -18,10 +42,11 @@ App({
         WXAPI.login({
           code: res.code
         }).then(res => {
-          console.log("微信openId等", res);
+          // console.log("微信openId等", res);
           //把openiD和session_key缓存在本地
           wx.setStorageSync('openid', res.openid);
           wx.setStorageSync('session_key', res.session_key);
+          this.getShareInfo()
         })
       }
     })
@@ -52,9 +77,11 @@ App({
       }),
       //清楚优先获取商品的商品id
       wx.removeStorageSync('per_get_goodid')
-
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    shareTitle: "11",
+    shareImgSrc: "",
+    test:"22222"
   }
 })

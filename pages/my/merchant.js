@@ -1,4 +1,4 @@
-// pages/my/ranking.js
+// pages/my/merchant.js
 const WXAPI = require('../../wxapi/main')
 
 Page({
@@ -7,27 +7,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list:[
-    ]
+    imgSrc:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    WXAPI.getRank({
+    WXAPI.getMerchant({
     }).then(res => {
-      console.log("paihang", res)
-      for(let i of res.data){
-        if(i.child&&i.child[0]&&i.child[0].name)
-        i.child[0].name =i.child[0].name.substring(0,3)
-      }
-      if(res.code === 200){
-        this.setData({
-          list:res.data
-        })
-      }
-    });
+      this.setData({
+        imgSrc:res.data.imgSrc
+      })
+    })
   },
 
   /**

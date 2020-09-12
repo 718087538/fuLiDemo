@@ -1,6 +1,6 @@
 /* pages/index/event.wxss */
 .eventList {
-  padding: 10rpx 20rpx 30rpx;
+  padding: 10rpx 20rpx 30rpx 64rpx;
   color: #333;
   border-bottom: 2rpx solid #ececec;
 }
@@ -12,6 +12,7 @@
 .info {
   display: flex;
   align-items: center;
+  margin-left: -60rpx;
 }
 
 .info image {
@@ -40,19 +41,30 @@
 }
 
 .imgBox image {
-  width: 228rpx;
-  height: 226rpx;
+  width: 215rpx;
+  height: 215rpx;
   display: block;
   margin-top: 10rpx;
   margin-right: 10rpx;
 }
 
 .imgBoxOne image {
-  width: 275rpx;
+  width: 280rpx;
   margin-top: 10rpx;
   margin-right: 10rpx;
 }
-
+.imgBoxFour{
+  display: flex;
+  flex-wrap: wrap;
+}
+.imgBoxFour image{
+  width:280rpx;
+  margin-top: 10rpx;
+  height: 280rpx;
+}
+.imgBoxFour image:nth-child(2n+2){
+  margin-left: 10rpx;
+}
 .imgBox image:nth-child(3n+3) {
   margin-right: 0;
 }

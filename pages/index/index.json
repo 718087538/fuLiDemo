@@ -3,7 +3,8 @@
     "i-button": "../../dist/button/index",
     "i-icon": "../../dist/icon/index",
     "i-toast": "../../dist/toast/index",
-    "i-notice-bar": "../../dist/notice-bar/index"
+    "i-notice-bar": "../../dist/notice-bar/index",
+    "i-spin": "../../dist/spin/index"
   },
-  "navigationBarTitleText": "我的展览"
+  "navigationBarTitleText": "奖品小镇"
 }
