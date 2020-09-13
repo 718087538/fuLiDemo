@@ -1,4 +1,11 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "van-popup": "../../miniprogram_npm/vant-weapp/popup/index",
+    "van-tag": "../../miniprogram_npm/vant-weapp/tag/index",
+    "van-button": "../../miniprogram_npm/vant-weapp/button/index",
+    "van-field": "../../miniprogram_npm/vant-weapp/field/index",
+    "i-toast": "../../dist/toast/index",
+    "i-input": "../../dist/input/index"
+  },
   "navigationBarTitleText": "商家入驻"
 }

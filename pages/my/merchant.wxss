@@ -6,3 +6,63 @@ image{
   display: block;
   margin: 0 auto;
 }
+
+.goGet {
+  width: 180rpx;
+  height: 80rpx;
+  border-radius:10rpx;
+  position: fixed;
+  bottom: 100rpx;
+  right: 50rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  background-color: #d81e06;
+  -webkit-animation-name: scaleDraw;
+  /*关键帧名称*/
+  -webkit-animation-timing-function: ease-in-out;
+  /*动画的速度曲线*/
+  -webkit-animation-iteration-count: infinite;
+  /*动画播放的次数*/
+  -webkit-animation-duration: 5s;
+  /*动画所花费的时间*/
+}
+
+@keyframes scaleDraw {
+  /*定义关键帧、scaleDrew是需要绑定到选择器的关键帧名称*/
+  0% {
+    transform: scale(1);
+    /*开始为原始大小*/
+  }
+  25% {
+    transform: scale(1.2);
+    /*放大1.1倍*/
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+}
+.tip{
+  color: #555;
+  font-size: 34rpx;
+  margin:30rpx 20rpx;
+  text-indent: 2em;
+  line-height: 60rpx;
+}
+
+.telBox{
+  display: flex;
+  padding: 0 20rpx;
+}
+.inputBox{
+  flex:1;
+  border:1px solid rgb(136, 134, 134);
+  margin-right: 30rpx;
+}
+.submitBtn{
+  height: 100%;
+}

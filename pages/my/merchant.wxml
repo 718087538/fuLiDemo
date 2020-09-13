@@ -1,3 +1,24 @@
 <!--pages/my/merchant.wxml-->
 
-	<image wx:for="{{imgSrc}}" wx:key="*this" src="{{item}}"  mode="widthFix"></image>
+<image wx:for="{{imgSrc}}" wx:key="*this" src="{{item}}" mode="widthFix"></image>
+
+<view class="goGet" is-link bind:tap="showPopup">
+
+	商家入驻
+
+</view>
+<van-popup position="bottom" custom-style="height: 36%" show="{{ showPopup }}" bind:close="onClose">
+	<view class="tip">
+		亲爱的商家朋友，请留下您的电话号码，稍后会有我们的工作人员联系您
+	</view>
+
+	<view class="telBox">
+		<view class="inputBox">
+			<i-input model:value="{{ phone }}" maxlength="11" autofocus placeholder="请输入手机号" />
+		</view>
+		<van-button class="submitBtn" type="info" bindtap="addMerchant">提交</van-button>
+	</view>
+</van-popup>
+
+
+<i-toast id="toast" />

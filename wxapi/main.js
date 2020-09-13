@@ -93,4 +93,5 @@ module.exports = {
   getFragmentsAd:data => request('/admin/fragmentsAd','get',data),//获得拼图底部广告
   getMerchant:data => request('/admin/merchant','get',data),//获得商家入驻信息
   getGoods:data => request('/admin/upGoods','get',data),//获得首页商品列表
+  addMerchant:data => request('/wxClient/addMerchant','post',data),//提交商家入驻的手机号
 }

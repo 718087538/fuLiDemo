@@ -70,12 +70,9 @@
 <i-button class="heCheng"  wx:if="{{!over}}"  bind:click="synthetic" type="success" size="small">立即合成</i-button>
 <i-button wx:if="{{over}}" disabled  type="primary" size="small">活动已结束</i-button>
 <!-- <view>{{ttt.b}}</view> -->
-
 	<view class="middleBanner" >
 		<view class="a">
 			<image src="{{imgSrc}}"></image>
 		</view>
 	</view>
-
-
 <i-toast id="toast" />
