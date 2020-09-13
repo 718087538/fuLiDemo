@@ -201,6 +201,13 @@
 					"id": -1,
 					"name": "pages/my/manAddress",
 					"pathName": "pages/my/manAddress",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/merchant",
+					"pathName": "pages/my/merchant",
 					"scene": null
 				}
 			]

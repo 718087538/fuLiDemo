@@ -221,16 +221,14 @@ Page({
 
 
     var that = this; //把this对象复制到临时变量that
-    const wxreq = wx.request({
-      url: 'https://api.orderour.com/api/admin/upGoods',
-      success: function (res) {
-        that.setData({
-          giftList: res.data.data,
-          loading: false
-        }); //和页面进行绑定可以动态的渲染到页面
-      },
-      fail: function (res) {
-        this.userData = "数据获取失败";
+    WXAPI.getGoods({
+    }).then(res => {
+      console.log('022ressss',res);
+      if (res.code == 200) {
+        this.setData({
+            giftList: res.data,
+            loading: false
+        })
       }
     })
     //获取uuid和code等信息
