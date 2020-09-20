@@ -9,42 +9,42 @@
 </view>
 <view class="title">集齐9张拼图，免费领取</view>
 <view class="bigImgBox">
-<view class="box">
-      <!-- <img
+	<view class="box">
+		<!-- <img
         src="https://tse2-mm.cn.bing.net/th/id/OIP.XNLaEWztEXmh5950CwLSPgHaE8?pid=Api&rs=1"
         alt
       /> -->
-			<image  class="giftPic" src="{{gift.imgSrc}}"></image>
-      <view class="pic pic1 {{gift.picList[0].pic>=1?'hiddenPic':''}}">
-        <view class="circleRight"></view>
-      </view>
-      <view class="pic pic2 {{gift.picList[1].pic>=1?'hiddenPic':''}}">
-      </view>
-      <view class="pic pic3 {{gift.picList[2].pic>=1?'hiddenPic':''}}">
-        <view class="circleLeft"></view>
-			</view>
-      <view class="pic pic4 {{gift.picList[3].pic>=1?'hiddenPic':''}}">
-        <view class="circleTop"></view>
-        <view class="circleBottom"></view>
-      </view>
-      <view class="pic pic5 {{gift.picList[4].pic>=1?'hiddenPic':''}}">
-        <view class="circleLeft"></view>
-        <view class="circleRight"></view>
-      </view>
-      <view class="pic pic6 {{gift.picList[5].pic>=1?'hiddenPic':''}}">
-    
-        <view class="circleBottom"></view>
-        <view class="circleTop"></view>
-      </view>
-      <view class="pic pic7 {{gift.picList[6].pic>=1?'hiddenPic':''}}">
-        <view class="circleRight"></view>
-      </view>
-      <view class="pic pic8 {{gift.picList[7].pic>=1?'hiddenPic':''}}">
-      </view>
-      <view class="pic pic9 {{gift.picList[8].pic>=1?'hiddenPic':''}}">
-        <view class="circleLeft"></view>
-      </view>
-    </view>
+		<image class="giftPic" src="{{gift.imgSrc}}"></image>
+		<view class="pic pic1 {{gift.picList[0].pic>=1?'hiddenPic':''}}">
+			<view class="circleRight"></view>
+		</view>
+		<view class="pic pic2 {{gift.picList[1].pic>=1?'hiddenPic':''}}">
+		</view>
+		<view class="pic pic3 {{gift.picList[2].pic>=1?'hiddenPic':''}}">
+			<view class="circleLeft"></view>
+		</view>
+		<view class="pic pic4 {{gift.picList[3].pic>=1?'hiddenPic':''}}">
+			<view class="circleTop"></view>
+			<view class="circleBottom"></view>
+		</view>
+		<view class="pic pic5 {{gift.picList[4].pic>=1?'hiddenPic':''}}">
+			<view class="circleLeft"></view>
+			<view class="circleRight"></view>
+		</view>
+		<view class="pic pic6 {{gift.picList[5].pic>=1?'hiddenPic':''}}">
+
+			<view class="circleBottom"></view>
+			<view class="circleTop"></view>
+		</view>
+		<view class="pic pic7 {{gift.picList[6].pic>=1?'hiddenPic':''}}">
+			<view class="circleRight"></view>
+		</view>
+		<view class="pic pic8 {{gift.picList[7].pic>=1?'hiddenPic':''}}">
+		</view>
+		<view class="pic pic9 {{gift.picList[8].pic>=1?'hiddenPic':''}}">
+			<view class="circleLeft"></view>
+		</view>
+	</view>
 	<!-- 
 	<view class="shadow {{gift.picList[0].pic<1?'shadow0':''}}"></view>
 	<view class="shadow {{gift.picList[1].pic<1?'shadow1':''}}"></view>
@@ -55,24 +55,30 @@
 </view>
 <view class="picBox">
 	<scroll-view class="rowBox" scroll-x="true" bindscroll="scroll" style="width: 100%">
-		<view bindtap="sel" id="demo{{index+1}}" data-idx="{{index+1}}" data-sum="{{item.pic}}"  class="demo  demo-text-1" wx:for="{{gift.picList}}" wx:key="index">
-		<!-- <view id="demo{{index+1}}" data-num="{{index+1}}" bindtap="sel" class="demo  demo-text-1" wx:for="{{gift.picList}}" wx:key="index"> -->
-      <image class="bg" src="{{gift.imgSrc}}"></image>
-      <view class="num">{{item.pic}}</view>
+		<view bindtap="sel" id="demo{{index+1}}" data-idx="{{index+1}}" data-sum="{{item.pic}}" class="demo  demo-text-1" wx:for="{{gift.picList}}" wx:key="index">
+			<!-- <view id="demo{{index+1}}" data-num="{{index+1}}" bindtap="sel" class="demo  demo-text-1" wx:for="{{gift.picList}}" wx:key="index"> -->
+			<view class="imgBox">
+				<image class="bg" src="{{gift.imgSrc}}"></image>
+			</view>
+			<view class="num"><text class="t1">数量：</text>    <text class="t2"> {{item.pic}}</text></view>
 			<view class="picName">拼图{{index + 1 }}</view>
 		</view>
 	</scroll-view>
 </view>
+
+
 <i-modal title="" visible="{{ showShare }}" actions="{{ showShareList }}" bind:click="goShare">
-   <i-button bindtap="shareAnd"  open-type='share' type="primary" size="small">送【碎片{{picName}}】给朋友</i-button>
-   <view class="shareTip">小提醒：送碎片会立即扣除碎片哦~</view>
+	<i-button bindtap="shareAnd" open-type='share' type="primary" size="small">送【碎片{{picName}}】给朋友</i-button>
+	<view class="shareTip">小提醒：送碎片会立即扣除碎片哦~</view>
 </i-modal>
-<i-button class="heCheng"  wx:if="{{!over}}"  bind:click="synthetic" type="success" size="small">立即合成</i-button>
-<i-button wx:if="{{over}}" disabled  type="primary" size="small">活动已结束</i-button>
+<i-button class="heCheng" wx:if="{{!over}}" bind:click="synthetic" type="success" size="small">立即合成</i-button>
+<i-button wx:if="{{over}}" disabled type="primary" size="small">活动已结束</i-button>
 <!-- <view>{{ttt.b}}</view> -->
-	<view class="middleBanner" >
-		<view class="a">
+
+<view class="middleBanner">
+		<button class="a" open-type="share">
 			<image src="{{imgSrc}}"></image>
-		</view>
-	</view>
+		</button>
+</view>
+
 <i-toast id="toast" />

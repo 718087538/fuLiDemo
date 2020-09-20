@@ -1,52 +1,60 @@
 <!--pages/gift/giftList.wxml-->
 <i-tabs current="{{ current }}" color="#467ed4" bindchange="handleChange">
-    <i-tab key="tab1" title="我的奖品"></i-tab>
-    <i-tab key="tab2" title="即将上架"></i-tab>
-    <i-tab key="tab3" title="已结束"></i-tab>
+	<i-tab key="tab1" title="我的奖品"></i-tab>
+	<i-tab key="tab2" title="即将上架"></i-tab>
+	<i-tab key="tab3" title="已结束"></i-tab>
 </i-tabs>
 <i-cell-group wx:if="{{current == 'tab1'}}">
-    <i-cell is-link url="/pages/gift/fragments?giftId={{item._id}}&imgSrc={{item.imgSrc}}"  wx:for="{{startList}}" wx:key="index">
-    <view class="li">
-      <image src="{{item.imgSrc}}"></image>
-      <view class="title">  <view class="theTitle">
-        {{item.giftName}}
-        </view></view>
-      </view>
-    </i-cell>
+	<i-cell is-link url="/pages/gift/fragments?giftId={{item._id}}&imgSrc={{item.imgSrc}}" wx:for="{{startList}}" wx:key="index">
+		<view class="li">
+			<image src="{{item.imgSrc}}"></image>
+			<view class="title">
+				<view class="theTitle">
+					{{item.giftName}}
+				</view>
+				<view class="tag">
+					<text wx:if="{{item.pic9>0}}">正在收集中~</text>
+				</view>
+				<view class="waitTime">
+					<text class="type-title">距结束：</text>
+					<i-count-down class="timeCss" target="{{item.overTime}}" show-day="{{true}}" format="{{myFormat1}}" clear-timer="{{clearTimer}}"></i-count-down>
+				</view>
+			</view>
+		</view>
+	</i-cell>
 </i-cell-group>
 
 
 <i-cell-group wx:if="{{current == 'tab2'}}">
-    <i-cell is-link url="/pages/giftInfo/index?goodsId={{item.linkGoodId}}&read=true&startTime={{item.targetTime}}"  wx:for="{{readyStartList}}" wx:key="index">
-    <view class="li">
-      <image src="{{item.imgSrc}}"></image>
-      <view class="title">
-        <view class="theTitle">
-        {{item.giftName}}
-        </view>
-      <view class="waitTime">
-       <text class="type-title">距开始：</text>
-      <i-count-down
-        class="timeCss"
-            target="{{item.targetTime}}"
-            show-day="{{true}}"
-            format="{{myFormat1}}"
-            clear-timer="{{clearTimer}}"
-      ></i-count-down>
-    </view>
-      </view>
-      </view>
-    </i-cell>
+	<i-cell is-link url="/pages/giftInfo/index?goodsId={{item.linkGoodId}}&read=true&startTime={{item.targetTime}}" wx:for="{{readyStartList}}" wx:key="index">
+		<view class="li">
+			<image src="{{item.imgSrc}}"></image>
+			<view class="title">
+				<view class="theTitle">
+					{{item.giftName}}
+				</view>
+				<view class="waitTime">
+					<text class="type-title">距开始：</text>
+					<i-count-down class="timeCss" target="{{item.targetTime}}" show-day="{{true}}" format="{{myFormat1}}" clear-timer="{{clearTimer}}"></i-count-down>
+				</view>
+			</view>
+		</view>
+	</i-cell>
 </i-cell-group>
 
 
 <i-cell-group wx:if="{{current == 'tab3'}}">
-    <i-cell is-link url="/pages/gift/fragments?giftId={{item._id}}&imgSrc={{item.imgSrc}}&over=true"  wx:for="{{overList}}" wx:key="index">
-    <view class="li">
-      <image src="{{item.imgSrc}}"></image>
-      <view class="title">  <view class="theTitle">
-        {{item.giftName}}
-        </view></view>
-      </view>
-    </i-cell>
+	<i-cell is-link url="/pages/gift/fragments?giftId={{item._id}}&imgSrc={{item.imgSrc}}&over=true" wx:for="{{overList}}" wx:key="index">
+		<view class="li">
+			<image src="{{item.imgSrc}}"></image>
+			<view class="title">
+				<view class="theTitle">
+					{{item.giftName}}
+				</view>
+				<view class="tag overtag">
+					<text>已结束</text>
+				</view>
+			</view>
+		</view>
+	</i-cell>
 </i-cell-group>

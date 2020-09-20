@@ -7,20 +7,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-  goodsId:"",//本商品的id
-  imgList:[],
-  readStart:false,//是否是未上架的。
-  startTime:'',//准备开始活动的时间
-  targetTime1: 0,
-  myFormat1: ['天', '时', '分', '秒'],
-  status: '进行中...',
-  clearTimer: false,
-  goodsId:"",//商品Id，可以传给获取封面时使用
-  shareTitle: "",
-  shareImgSrc: "",
+    goodsId: "", //本商品的id
+    imgList: [],
+    readStart: false, //是否是未上架的。
+    startTime: '', //准备开始活动的时间
+    targetTime1: 0,
+    myFormat1: ['天', '时', '分', '秒'],
+    status: '进行中...',
+    clearTimer: false,
+    goodsId: "", //商品Id，可以传给获取封面时使用
+    shareTitle: "",
+    shareImgSrc: "",
   },
-  jiaoShuiGet(){
-    if(this.data.goodsId){
+  jiaoShuiGet() {
+    if (this.data.goodsId) {
       wx.setStorageSync('per_get_goodid', this.data.goodsId);
     }
     wx.navigateTo({
@@ -31,34 +31,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(options.read == 'true'){
+    if (options.read == 'true') {
       this.setData({
-        readStart:true,
-        startTime:options.startTime
+        readStart: true,
+        startTime: options.startTime
       })
     }
     this.setData({
-      goodsId:options.goodsId
+      goodsId: options.goodsId
     })
 
-    var that = this;//把this对象复制到临时变量that
-    const wxreq = wx.request({
-      url: 'https://api.orderour.com/api/admin/upGoodsList',
-      data:{
-        goodsId:options.goodsId,
-      },
-      success: function (res){
+    var that = this; //把this对象复制到临时变量that
 
-        that.setData({
-          goodsId:options.goodsId,
-        })
-        // this.userData = res.data; //无效不能实时的渲染到页面
-        that.setData({ imgList: res.data.data[0].imgArray});//和页面进行绑定可以动态的渲染到页面
-      },
-      fail: function (res){
-        this.userData = "数据获取失败";
-      }
-    });
+    WXAPI.goodsList({
+      goodsId: options.goodsId,
+    }).then(res => {
+      console.log("奖品详细", res)
+      this.setData({
+        goodsId: options.goodsId,
+        imgList: res.data[0].imgArray,
+      })
+    })
     this.getShareInfo();
   },
   getShareInfo() {
@@ -75,7 +68,7 @@ Page({
     let shareDate = year + month + day;
     WXAPI.getShareInfo({
       upDate: shareDate,
-      goodsId:this.data.goodsId
+      goodsId: this.data.goodsId
     }).then(res => {
       this.setData({
         shareTitle: res.data.title,

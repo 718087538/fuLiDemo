@@ -10,6 +10,17 @@
   width: 100%;
   height: 100%;
 }
+.imgBox {
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 150rpx;
+  border-radius: 10rpx;
+  margin: 0 10rpx;
+  
+}
 .shareTip{
   color: rgb(219, 219, 89);
   font-size: 26rpx;
@@ -101,7 +112,7 @@ border-right: 0;
 }
 
 .picBox{
-  height: 150rpx;
+  height: 240rpx;
 }
 .rowBox{
   height: 100%;
@@ -110,8 +121,8 @@ border-right: 0;
 .demo{
   display: inline-block;
   position: relative;
-  overflow: hidden;
-  height: 100%;
+  /* overflow: hidden; */
+  height: 150rpx;
   width: 150rpx;
   border-radius: 10rpx;
   margin: 0 10rpx;
@@ -126,18 +137,27 @@ border-right: 0;
 
 .demo .num{
   position: absolute;
-  top: 50%;
+  bottom: -80rpx;
   left: 50%;
   transform: translate(-50%,-50%);
   color: #b4100a;
+  display: flex;
+  align-items: center;
+}
+.num .t1{
+  font-size: 32rpx;
+}
+.num .t2{
   font-weight: bold;
+  font-size: 35rpx;
 }
 .demo .picName{
   position: absolute;
-  top: 80%;
+  bottom: -108rpx;
   left: 50%;
+  text-align: left;
   transform: translate(-50%,-50%);
-  color: #b4100a;
+  color: #696766;
   font-size: 28rpx;
 }
 #demo2 .bg{
@@ -251,15 +271,21 @@ border-right: 0;
 .middleBanner {
   width: 690rpx;
   height: 200rpx;
-  margin: 80rpx auto 0;
+  margin: 30rpx auto 20rpx;
 }
 .middleBanner .a{
   display: block;
   width: 100%;
+  background-color: #fff;
   height: 100%;
 }
 .middleBanner .a image {
   border-radius: 10rpx;
-  width: 100%;
+  width: 110%;
+  margin-left: -5%;
   height: 100%;
+}
+.rightBtn {
+  height: 70rpx !important;
+  line-height: 70rpx !important;
 }

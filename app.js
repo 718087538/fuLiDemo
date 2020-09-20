@@ -22,10 +22,6 @@ App({
       console.log("分享页的内容", res);
       this.globalData.shareTitle=res.data.title;
       this.globalData.shareImgSrc=res.data.imgSrc;
-      // this.setData({
-      //   shareTitle: res.data.title,
-      //   shareImgSrc: res.data.imgSrc
-      // })
     })
   },
   onLaunch: function () {
@@ -42,7 +38,7 @@ App({
         WXAPI.login({
           code: res.code
         }).then(res => {
-          // console.log("微信openId等", res);
+          console.log("微信openId等", res);
           //把openiD和session_key缓存在本地
           wx.setStorageSync('openid', res.openid);
           wx.setStorageSync('session_key', res.session_key);

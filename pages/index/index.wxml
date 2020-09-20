@@ -48,7 +48,7 @@
 </view>
 
 <view class="wanLa" wx:if="{{showWanLa}}" bindtap="closeWanLa">
-	<image class="wanImg" src="https://gifttown-1302268471.file.myqcloud.com/%E5%A5%96%E5%93%81%E5%B0%8F%E9%95%87%E5%B0%8F%E7%A8%8B%E5%BA%8F/laiwanla.png"></image>
+	<image class="wanImg" src="https://gifttown-1302268471.file.myqcloud.com/%E5%A5%96%E5%93%81%E5%B0%8F%E9%95%87%E5%B0%8F%E7%A8%8B%E5%BA%8F/late.png"></image>
 </view>
 <view class="wanLa" wx:if="{{getPicSuccessful}}" bindtap="">
 	<view class="tipBox">

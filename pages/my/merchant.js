@@ -10,9 +10,8 @@ Page({
    */
   data: {
     imgSrc: null,
-    showPopup: true,
+    showPopup: false,
     phone: '',
-    value1:''
   },
 
   /**

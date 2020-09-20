@@ -89,10 +89,9 @@ Page({
           content: '保存成功',
           type: 'success',
         });
-
         setTimeout(() => {
           wx.navigateTo({
-            url: '/pages/my/adressList',
+            url: '/pages/my/manAddress',
           })
         }, 600);
       }

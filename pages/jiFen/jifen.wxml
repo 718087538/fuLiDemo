@@ -58,7 +58,7 @@
 
 				<view wx:if="{{energy.continuousDay == 1 && energy.todayContinuous == false}}" class="btn" data-type="continuous" data-num="20" bindtap="addEnergy"> 领取</view>
 				<view wx:if="{{energy.continuousDay >= 2  }}" class="btn waitDay">已领</view>
-				<view wx:if="{{energy.continuousDay < 1 }}" class="btn waitDay">第3天</view>
+				<view wx:if="{{energy.continuousDay < 1 }}" class="btn waitDay">第2天</view>
 				<view wx:if="{{energy.continuousDay ==1  && energy.todayContinuous == true }}" class="btn waitDay">第2天</view>
 
 			</view>

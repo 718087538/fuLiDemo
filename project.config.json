@@ -27,12 +27,12 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.0.4",
-	"appid": "wx2f4ee0a82c8f987a",
+	"appid": "wxf42a148098fa85ea",
 	"projectname": "fuLi",
 	"debugOptions": {
 		"hidedInDevtools": []

@@ -90,6 +90,7 @@ Page({
       upDate: shareDate,
       giftId:this.data.giftId
     }).then(res => {
+      console.log("自定义的封面0000000",res)
       this.setData({
         shareTitle: res.data.title,
         shareImgSrc: res.data.imgSrc
@@ -309,9 +310,9 @@ Page({
       }
     });
     this.getShareInfo();
-
+    this.getShareInfoAd();
   },
-  getShareInfo(){
+  getShareInfoAd(){
     WXAPI.getFragmentsAd({
     }).then(res => {
       console.log("ressssss",res);

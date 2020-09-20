@@ -26,7 +26,7 @@ Page({
    */
   onLoad: function (options) {
 
-  
+
 
 
 
@@ -37,17 +37,18 @@ Page({
     let readyStartList = []; //即将开始列表
     let overList = []; //已过期列表
     WXAPI.getGiftList({
-      type: wx
+      type: 'wx',
+      openId:wx.getStorageSync('openid')
     }).then(res => {
       for (let i of res.data) {
         let startDate = new Date(i.startDate);
         let overDate = new Date(i.overDate);
-        i.targetTime = new Date(i.startDate).getTime()
+        i.targetTime = new Date(i.startDate).getTime();
+        i.overTime = new Date(i.overDate).getTime();
         if (nowDate < startDate.getTime()) {
           //未开始
           let index = readyStartList.length
           readyStartList[index] = i;
-          console.log(readyStartList);
         } else if (
           nowDate > startDate.getTime() &&
           nowDate < overDate.getTime()
@@ -62,6 +63,17 @@ Page({
 
         }
       }
+      //已开始奖品按新的在前面
+      startList.sort(function (a, b) {
+        return a.overTime < b.overTime ? -1 : 1;
+      });
+
+      //即将开始按最近开始在前面
+      readyStartList.sort(function (a, b) {
+        return a.startDate < b.startDate ? -1 : 1;
+      });
+
+
       that.setData({
         startList,
         readyStartList,
@@ -132,8 +144,8 @@ Page({
    */
   onShareAppMessage() {
     return {
-      title: getApp().globalData.shareTitle, 
-      imageUrl:getApp().globalData.shareImgSrc, 
+      title: getApp().globalData.shareTitle,
+      imageUrl: getApp().globalData.shareImgSrc,
       path: 'pages/index/index'
     }
   },

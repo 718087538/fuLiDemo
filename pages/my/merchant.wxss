@@ -2,7 +2,7 @@
 
 /* pages/index/read.wxss */
 image{
-  width: 90%;
+  width: 100%;
   display: block;
   margin: 0 auto;
 }
